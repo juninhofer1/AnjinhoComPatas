@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Anjinho Com Patas</string>
+    <string name="action_settings">Settings</string>
+    <string name="descobrir_idade">Resultado</string>
+</resources>

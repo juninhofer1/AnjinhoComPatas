@@ -2,24 +2,16 @@ package br.com.edu.ifsc.ajinhocompatas;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.ColorFilter;
-import android.graphics.LightingColorFilter;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatSpinner;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mikepenz.materialdrawer.Drawer;
@@ -27,85 +19,57 @@ import com.mikepenz.materialdrawer.accountswitcher.AccountHeader;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
-import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
-import com.mikepenz.materialdrawer.model.SectionDrawerItem;
-import com.mikepenz.materialdrawer.model.SwitchDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import java.util.List;
 
 import br.com.edu.ifsc.ajinhocompatas.dao.implementacao.UsuarioDao;
-import br.com.edu.ifsc.ajinhocompatas.props.ActivityProps;
+import br.com.edu.ifsc.ajinhocompatas.props.MenuLateralOpcoesProps;
+import br.com.edu.ifsc.ajinhocompatas.props.MenuLateralProps;
 import br.com.edu.ifsc.ajinhocompatas.utilitarios.ColorUtil;
 import br.com.edu.ifsc.ajinhocompatas.utilitarios.DialogUtil;
 import br.com.edu.ifsc.ajinhocompatas.view.TesteActivity;
+import br.com.edu.ifsc.ajinhocompatas.view.adapter.ViewPagerAdapter;
+import br.com.edu.ifsc.ajinhocompatas.view.fragment.FragmentCaes;
+import br.com.edu.ifsc.ajinhocompatas.view.fragment.FragmentGatos;
 import br.com.edu.ifsc.ajinhocompatas.vo.Usuario;
 
 public class MainActivity extends AppCompatActivity {
 
-//  TODO esboço de programa para testes, será feito um novo projeto....
-    // --------------------------------------------------------------------------------------------------------------
-
-
-
     private Drawer.Result navegationDrawerLeft;
     private AccountHeader.Result hearderNavegationLeft;
-    private Toolbar toolbar;
-
-    private EditText mCaixaTexto;
-    private Button mBotaoIdade;
-    private TextView mResultadoIdade;
+    private Toolbar mToolbar;
+    private TabLayout mTabLayout;
+    private ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        this.toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(this.toolbar);
-        getSupportActionBar().setLogo(R.drawable.icon_app_s);
-        getSupportActionBar().setTitle(null);
+        this.inicializarComponentes();
 
-        //TODO - Keila - aplicativo idade cachorro e gato.
-        mCaixaTexto = (EditText) findViewById(R.id.caixaTextoId);
-        mBotaoIdade = (Button) findViewById(R.id.botaoIdadeId);
-        mResultadoIdade = (TextView) findViewById(R.id.resultadoIdadeId);
-
-        mBotaoIdade.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                //recuperar o que foi digitado
-                //toString converte para string
-                String textoDigitado = mCaixaTexto.getText().toString();
-
-                //isEmpty verifica se essa String está vazia
-                if( textoDigitado.isEmpty() ){
-                    //string vazia
-                    Snackbar.make(view, "Nenhum número digitado!", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                }else{
-                    //converte a string com a idade do cachorro para int
-                    int valorDigitado = Integer.parseInt(textoDigitado);
-                    int resultadoFinal= valorDigitado * 7;
-
-                    mResultadoIdade.setText("A idade do cachorro em anos humanos é: " + resultadoFinal + " anos");
-                }
-            }
-        });
-
-//
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
-
-        criarMenuLateral();
         //Inserindo o primeiro registro no banco, só descomentar :D
 //        utilizandoBancoDeDados();
+    }
+
+    private void inicializarComponentes() {
+        this.mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        this.mTabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        this.mViewPager = (ViewPager) findViewById(R.id.viewPager);
+
+        this.setSupportActionBar(this.mToolbar);
+        this.getSupportActionBar().setLogo(R.drawable.icon_app_s);
+        this.getSupportActionBar().setTitle(null);
+        this.criarMenuLateral();
+        this.criarViewPager(this.mViewPager);
+    }
+
+    private void criarViewPager(ViewPager aViewPager) {
+        ViewPagerAdapter lViewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        lViewPagerAdapter.addFragment(new FragmentCaes(), "Cachorros");
+        lViewPagerAdapter.addFragment(new FragmentGatos(), "Gatos");
+        aViewPager.setAdapter(lViewPagerAdapter);
+        this.mTabLayout.setupWithViewPager(aViewPager);
     }
 
     private void criarMenuLateral(){
@@ -122,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
         this.navegationDrawerLeft = new Drawer()
                 .withActivity(this)
-                .withToolbar(this.toolbar)
+                .withToolbar(this.mToolbar)
                 .withDisplayBelowToolbar(false)
                 .withActionBarDrawerToggle(true)
                 .withDrawerGravity(Gravity.LEFT)
@@ -132,11 +96,7 @@ public class MainActivity extends AppCompatActivity {
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id, IDrawerItem drawerItem) {
-                        if (drawerItem.getIdentifier() == ActivityProps.SAIR.getmId()) {
-                            showDialogoSair();
-                        } else if(drawerItem.getIdentifier() != ActivityProps.INICIAL.getmId()){
-                            startActivity(new Intent(MainActivity.this, TesteActivity.class));
-                        }
+                        evetoClickItensMenuLateral(drawerItem.getIdentifier());
                     }
                 })
                 .withOnDrawerItemLongClickListener(new Drawer.OnDrawerItemLongClickListener() {
@@ -148,34 +108,34 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         this.navegationDrawerLeft.addItem(new PrimaryDrawerItem()
-                .withIdentifier(ActivityProps.INICIAL.getmId())
-                .withName(ActivityProps.INICIAL.getmNomeTela())
+                .withIdentifier(MenuLateralProps.INICIAL.getmId())
+                .withName(MenuLateralProps.INICIAL.getmNomeTela())
                 .withIcon(ColorUtil.alterarCorDrawableMenuItem(getApplication(), R.drawable.icon_home))
                 .withTextColor(getResources().getColor(R.color.colorPrimary)));
 
         this.navegationDrawerLeft.addItem(new PrimaryDrawerItem()
-                .withIdentifier(ActivityProps.FAVORITOS.getmId())
-                .withName(ActivityProps.FAVORITOS.getmNomeTela())
+                .withIdentifier(MenuLateralProps.FAVORITOS.getmId())
+                .withName(MenuLateralProps.FAVORITOS.getmNomeTela())
                 .withIcon(ColorUtil.alterarCorDrawableMenuItem(getApplication(), R.drawable.ic_favorite))
                 .withTextColor(getResources().getColor(R.color.colorPrimary)));
 
         this.navegationDrawerLeft.addItem(new PrimaryDrawerItem()
-                .withIdentifier(ActivityProps.ECONTRE_UM_AMIGO.getmId())
-                .withName(ActivityProps.ECONTRE_UM_AMIGO.getmNomeTela())
+                .withIdentifier(MenuLateralProps.ECONTRE_UM_AMIGO.getmId())
+                .withName(MenuLateralProps.ECONTRE_UM_AMIGO.getmNomeTela())
                 .withIcon(ColorUtil.alterarCorDrawableMenuItem(getApplication(), R.drawable.icon_search))
                 .withTextColor(getResources().getColor(R.color.colorPrimary)));
 
         this.navegationDrawerLeft.addItem(new DividerDrawerItem());
 
         this.navegationDrawerLeft.addItem(new PrimaryDrawerItem()
-                .withIdentifier(ActivityProps.AJUDA.getmId())
-                .withName(ActivityProps.AJUDA.getmNomeTela())
+                .withIdentifier(MenuLateralProps.AJUDA.getmId())
+                .withName(MenuLateralProps.AJUDA.getmNomeTela())
                 .withIcon(ColorUtil.alterarCorDrawableMenuItem(getApplication(), R.drawable.ic_help))
                 .withTextColor(getResources().getColor(R.color.colorPrimary)));
 
         this.navegationDrawerLeft.addItem(new PrimaryDrawerItem()
-                .withIdentifier(ActivityProps.SAIR.getmId())
-                .withName(ActivityProps.AJUDA.getmNomeTela())
+                .withIdentifier(MenuLateralProps.SAIR.getmId())
+                .withName(MenuLateralProps.SAIR.getmNomeTela())
                 .withIcon(ColorUtil.alterarCorDrawableMenuItem(getApplication(), R.drawable.icon_exit))
                 .withTextColor(getResources().getColor(R.color.colorPrimary)));
         navegationDrawerLeft.setSelection(0);
@@ -198,13 +158,25 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-//    private void evetoClickItensMenuLateral(int identificador){
-//        switch (identificador) {
-//            case ActivityProps.INICIAL.getmId():
-//                case;
-//        }
-//
-//    }
+    private void evetoClickItensMenuLateral(int identificador){
+        switch (identificador) {
+            case MenuLateralOpcoesProps.INICIAL:
+                break;
+            case MenuLateralOpcoesProps.ECONTRE_UM_AMIGO:
+                startActivity(new Intent(MainActivity.this, TesteActivity.class));
+                break;
+            case MenuLateralOpcoesProps.FAVORITOS:
+                startActivity(new Intent(MainActivity.this, TesteActivity.class));
+                break;
+            case MenuLateralOpcoesProps.AJUDA:
+                startActivity(new Intent(MainActivity.this, TesteActivity.class));
+                break;
+            case MenuLateralOpcoesProps.SAIR:
+                showDialogoSair();
+                break;
+        }
+
+    }
 
     private void showDialogoSair(){
         DialogInterface.OnClickListener lYesClick = new DialogInterface.OnClickListener() {

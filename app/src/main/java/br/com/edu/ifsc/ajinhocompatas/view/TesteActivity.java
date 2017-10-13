@@ -3,7 +3,6 @@ package br.com.edu.ifsc.ajinhocompatas.view;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 
 import br.com.edu.ifsc.ajinhocompatas.R;
 
@@ -16,7 +15,7 @@ public class TesteActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_teste);
+        setContentView(R.layout.activity_desenvolvimento);
         this.toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(this.toolbar);
         getSupportActionBar().setLogo(R.drawable.icon_app_s);

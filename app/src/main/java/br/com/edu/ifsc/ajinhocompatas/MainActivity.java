@@ -44,6 +44,10 @@ import br.com.edu.ifsc.ajinhocompatas.vo.Usuario;
 public class MainActivity extends AppCompatActivity {
 
 //  TODO esboço de programa para testes, será feito um novo projeto....
+    // -----------------------------------------------------------------------------------------------------------
+
+
+
     private Drawer.Result navegationDrawerLeft;
     private AccountHeader.Result hearderNavegationLeft;
     private Toolbar toolbar;

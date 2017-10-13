@@ -44,7 +44,7 @@ import br.com.edu.ifsc.ajinhocompatas.vo.Usuario;
 public class MainActivity extends AppCompatActivity {
 
 //  TODO esboço de programa para testes, será feito um novo projeto....
-    // -----------------------------------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------------------------------------------
 
 
 

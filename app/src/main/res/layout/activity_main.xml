@@ -24,26 +24,6 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" />
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tabLayout"
-        android:layout_width="385dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="56dp"
-        android:background="@color/colorPrimaryDark">
-
-        <android.support.design.widget.TabItem
-            android:id="@+id/caesId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cães" />
-
-        <android.support.design.widget.TabItem
-            android:id="@+id/gatosId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Gatos" />
-
-    </android.support.design.widget.TabLayout>
 
     <ImageView
         android:id="@+id/logo"
@@ -52,6 +32,42 @@
         android:layout_marginLeft="150dp"
         android:contentDescription=""
         app:srcCompat="@drawable/icon_app" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="55dp"
+            android:layout_weight="0.02"
+            android:background="@color/colorPrimaryDark"
+            app:tabIndicatorColor="@color/colorAccent">
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/tabItemCaes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cães" />
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/tabItemGatos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gatos" />
+
+        </android.support.design.widget.TabLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="0.71" />
+
+    </LinearLayout>
 
 
     <!--<include layout="@layout/content_main" />-->

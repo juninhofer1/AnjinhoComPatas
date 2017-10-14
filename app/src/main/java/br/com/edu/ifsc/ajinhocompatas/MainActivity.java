@@ -58,8 +58,8 @@ public class MainActivity extends AppCompatActivity {
         this.mViewPager = (ViewPager) findViewById(R.id.viewPager);
 
         this.setSupportActionBar(this.mToolbar);
-        this.getSupportActionBar().setLogo(R.drawable.icon_app_s);
-        this.getSupportActionBar().setTitle(null);
+//        this.getSupportActionBar().setLogo(R.drawable.icon_app_s);
+        this.getSupportActionBar().setTitle("Início");
         this.criarMenuLateral();
         this.criarViewPager(this.mViewPager);
     }
@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 //.withHeaderBackground(R.drawable.header)
                 .addProfiles(new ProfileDrawerItem()
                         .withName("Usuário")
+                        //.withIcon(getResources().getDrawable(R.mipmap.ic_usuario_dog))
                         .withEmail(getResources().getString(R.string.app_name)))
                 .build();
 

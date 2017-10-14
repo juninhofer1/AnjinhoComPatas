@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         //Adicionando propriedades na toolbar.
         this.setSupportActionBar(this.mToolbar);
 //        this.getSupportActionBar().setLogo(R.drawable.icon_app_s);
-        this.getSupportActionBar().setTitle("Início");
+        this.getSupportActionBar().setTitle(null);
 
         //Cria o menu lateral e seus itens.
         //Hedear - hearderNavegationLeft

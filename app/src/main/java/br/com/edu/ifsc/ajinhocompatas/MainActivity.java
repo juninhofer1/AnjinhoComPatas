@@ -46,21 +46,35 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //Chama o método de inicialização dos componentes
+        //dentro desse método pode ter varios outros ou só as referencias dos componentes.
         this.inicializarComponentes();
 
         //Inserindo o primeiro registro no banco, só descomentar :D
 //        utilizandoBancoDeDados();
     }
 
+    //Inicializando os componetes e adicionando algumas caracteristicas.
     private void inicializarComponentes() {
+        //Pega Referencia dos componetes do xml - layout
         this.mToolbar = (Toolbar) findViewById(R.id.toolbar);
         this.mTabLayout = (TabLayout) findViewById(R.id.tabLayout);
         this.mViewPager = (ViewPager) findViewById(R.id.viewPager);
 
+        //Adicionando propriedades na toolbar.
         this.setSupportActionBar(this.mToolbar);
 //        this.getSupportActionBar().setLogo(R.drawable.icon_app_s);
-        this.getSupportActionBar().setTitle("Início");
+        this.getSupportActionBar().setTitle(null);
+
+        //Cria o menu lateral e seus itens.
+        //Hedear - hearderNavegationLeft
+        //Opções de menu - navegationDrawerLeft
         this.criarMenuLateral();
+
+        //Cria a tabLayout que possui dois intes Cachorros e gatos
+        //É necessário uma ViewPages para adicionar os fragments que são partes da tela.
+        /*Fragments são semelhantes a activites, mas não são telas como as activities são pequenas fragmentos de telas que
+        serão chamados em uma activity.*/
         this.criarViewPager(this.mViewPager);
     }
 
@@ -79,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                 .withHeaderBackground(R.color.primary)
                 .withThreeSmallProfileImages(false)
                 .withSelectionListEnabledForSingleProfile(false)
-                //.withHeaderBackground(R.drawable.header)
+                .withHeaderBackground(R.drawable.header)
                 .addProfiles(new ProfileDrawerItem()
                         .withName("Usuário")
                         //.withIcon(getResources().getDrawable(R.mipmap.ic_usuario_dog))

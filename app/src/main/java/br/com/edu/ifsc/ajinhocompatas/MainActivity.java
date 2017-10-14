@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                 .withHeaderBackground(R.color.primary)
                 .withThreeSmallProfileImages(false)
                 .withSelectionListEnabledForSingleProfile(false)
-                .withHeaderBackground(R.drawable.header)
+//                .withHeaderBackground(R.drawable.header)
                 .addProfiles(new ProfileDrawerItem()
                         .withName("Usuário")
                         //.withIcon(getResources().getDrawable(R.mipmap.ic_usuario_dog))

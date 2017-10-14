@@ -18,8 +18,8 @@ public class TesteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_desenvolvimento);
         this.toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(this.toolbar);
-        getSupportActionBar().setLogo(R.drawable.icon_app_s);
-        getSupportActionBar().setTitle(" Teste");
+//        getSupportActionBar().setLogo(R.drawable.icon_app_s);
+        getSupportActionBar().setTitle(null);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 

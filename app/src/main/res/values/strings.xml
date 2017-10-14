@@ -4,7 +4,7 @@
     <string name="descobrir_idade">Resultado</string>
     <string name="numero_nao_digitado">Nenhum número digitado!</string>
     <string name="desenvolvimento">Em desenvolvimento</string>
-
+    <string name="text_idade_cachorro">Digite a idade do seu cachorro, para descobrir quantos anos humanos ele possui!</string>
     <string name="opc_menu_inicial">Inicial</string>
     <string name="opc_menu_favoritos">Favoritos</string>
     <string name="opc_menu_encontre_amigo">Encontre um amigo</string>

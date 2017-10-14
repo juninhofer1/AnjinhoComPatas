@@ -12,13 +12,13 @@
     tools:layout_editor_absoluteY="8dp"
     tools:layout_editor_absoluteX="8dp">
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/imageView"
-        android:background="@drawable/icon_app"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+    <!--<ImageView-->
+        <!--android:layout_width="100dp"-->
+        <!--android:layout_height="100dp"-->
+        <!--android:id="@+id/imageView"-->
+        <!--android:background="@mipmap/ic_app_d"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_centerHorizontal="true" />-->
 
     <EditText
         android:layout_width="wrap_content"
@@ -35,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Digite a idade do seu cachorro/gato, para descobrir a idade dele em anos humanos"
+        android:text="@string/text_idade_cachorro"
         android:id="@+id/enunciadoId"
         android:textAlignment="center"
         android:layout_marginTop="50dp"

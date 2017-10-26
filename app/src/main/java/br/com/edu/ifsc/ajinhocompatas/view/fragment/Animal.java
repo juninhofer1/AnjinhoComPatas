@@ -15,7 +15,7 @@ public class Animal {
         this.descricao = descricao;
     }
 
-}
+
 
     public int getImagemId() {
         return imagemId;

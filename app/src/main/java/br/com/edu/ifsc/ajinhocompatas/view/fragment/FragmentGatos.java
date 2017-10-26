@@ -32,10 +32,13 @@ public class FragmentGatos extends Fragment {
         this.mViewGatos = inflater.inflate(R.layout.fragment_gatos, container, false);
         //chama a lista de gatos
         getGatosList();
+
         //cast
         gridViewCat = (GridView) this.mViewGatos.findViewById(R.id.gridViewGatos);
+
         //cria novo adapter (context(telinha), modelo da telinha, conteúdo da telinha)
         gridViewAdapterCat = new GridViewAdapterCat(getContext(), R.layout.grid_item, catList);
+
         //mostra, seta a telinha do grid
        gridViewCat.setAdapter( gridViewAdapterCat );
 
@@ -43,7 +46,7 @@ public class FragmentGatos extends Fragment {
         }
 
     //Lista com as fotos
-    public List<Animal> getGatosList() {
+    public void getGatosList() {
         //cria nova array list
         catList = new ArrayList<>();
         //adiciona na lista

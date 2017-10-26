@@ -8,7 +8,7 @@ public class Animal {
     private int imagemId;
     private String nome;
     private String descricao;
-
+    //é chamado no fragment pra adicionar os componentes abaixo
     public Animal(int imageId, String nome, String descricao) {
         this.imagemId = imageId;
         this.nome = nome;

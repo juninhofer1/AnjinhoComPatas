@@ -40,10 +40,10 @@ public class FragmentGatos extends Fragment {
         gridViewAdapterCat = new GridViewAdapterCat(getContext(), R.layout.grid_item, catList);
 
         //mostra, seta a telinha do grid
-       gridViewCat.setAdapter( gridViewAdapterCat );
+        gridViewCat.setAdapter( gridViewAdapterCat );
 
         return this.mViewGatos;
-        }
+    }
 
     //Lista com as fotos
     public void getGatosList() {

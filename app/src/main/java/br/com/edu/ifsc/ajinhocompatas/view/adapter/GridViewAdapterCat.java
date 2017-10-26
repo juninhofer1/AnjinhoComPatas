@@ -32,10 +32,10 @@ public class GridViewAdapterCat extends ArrayAdapter<Animal> {
 
         if (null == item) {
             LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            item = inflater.inflate(android.R.layout.simple_gallery_item, null);
+            item = inflater.inflate(R.layout.grid_item, null);
         }
         //pega a posição do item e coloca no product
-        Animal product = getItem(position);
+        Animal animal = getItem(position);
 
         //cast da imagem, titulo e descrição do item
         ImageView img = (ImageView) item.findViewById(R.id.imageView);
@@ -43,9 +43,9 @@ public class GridViewAdapterCat extends ArrayAdapter<Animal> {
         TextView descricao = (TextView) item.findViewById(R.id.descricaoId);
 
 
-        img.setImageResource(product.getImagemId());
-        titulo.setText(product.getTitle());
-        descricao.setText(product.getDescription());
+        img.setImageResource(animal.getImagemId());
+        titulo.setText(animal.getTitle());
+        descricao.setText(animal.getDescription());
 
         return item;
 

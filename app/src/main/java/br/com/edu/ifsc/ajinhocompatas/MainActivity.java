@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Inserindo o primeiro registro no banco, só descomentar :D
 //        utilizandoBancoDeDados();
+
     }
 
     //Inicializando os componetes e adicionando algumas caracteristicas.
@@ -80,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void criarViewPager(ViewPager aViewPager) {
         ViewPagerAdapter lViewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-        lViewPagerAdapter.addFragment(new FragmentCaes(), "Cachorros");
+        lViewPagerAdapter.addFragment(new FragmentCaes(), "Cães");
         lViewPagerAdapter.addFragment(new FragmentGatos(), "Gatos");
         aViewPager.setAdapter(lViewPagerAdapter);
         this.mTabLayout.setupWithViewPager(aViewPager);
@@ -210,7 +212,6 @@ public class MainActivity extends AppCompatActivity {
         };
         DialogUtil.dialogYesNo(MainActivity.this, "Deseja sair do aplicativo?", lYesClick, lNoClick).show();
     }
-
 
     private void utilizandoBancoDeDados() {
         UsuarioDao usuarioDao = new UsuarioDao(MainActivity.this);

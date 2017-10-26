@@ -29,6 +29,8 @@ public class FragmentCaes extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         this.mView = inflater.inflate(R.layout.fragment_caes, container, false);
+
+
         this.mCaixaTexto = (EditText) this.mView.findViewById(R.id.caixaTextoId);
         this.mBotaoIdade = (Button) this.mView.findViewById(R.id.botaoIdadeId);
         this.mResultadoIdade = (TextView) this.mView.findViewById(R.id.resultadoIdadeId);

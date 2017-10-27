@@ -21,7 +21,7 @@ import br.com.edu.ifsc.ajinhocompatas.view.adapter.GridViewAdapterCat;
 public class FragmentGatos extends Fragment {
 
     private View mViewGatos;
-    private List<Animal> catList;
+    private List<AnimalGato> catList;
     private GridViewAdapterCat gridViewAdapterCat;
     private GridView gridViewCat;
 
@@ -30,6 +30,7 @@ public class FragmentGatos extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         this.mViewGatos = inflater.inflate(R.layout.fragment_gatos, container, false);
+
         //chama a lista de gatos
         getGatosList();
 
@@ -40,20 +41,23 @@ public class FragmentGatos extends Fragment {
         gridViewAdapterCat = new GridViewAdapterCat(getContext(), R.layout.grid_item, catList);
 
         //mostra, seta a telinha do grid
-        gridViewCat.setAdapter( gridViewAdapterCat );
+        gridViewCat.setAdapter(gridViewAdapterCat);
 
+        //retorna a telinha
         return this.mViewGatos;
     }
 
     //Lista com as fotos
     public void getGatosList() {
+
         //cria nova array list
         catList = new ArrayList<>();
+
         //adiciona na lista
-        catList.add(new Animal(R.drawable.cat, "Cat 1", "Persa"));
-        catList.add(new Animal(R.drawable.cat2, "Cat 2", "Siamês"));
-        catList.add(new Animal(R.drawable.cat3, "Cat 3", "Azul Russo"));
-        catList.add(new Animal(R.drawable.cat4, "Cat 4", "Exótico"));
+        catList.add(new AnimalGato(R.drawable.cat, "Cat 1", "Persa"));
+        catList.add(new AnimalGato(R.drawable.cat2, "Cat 2", "Siamês"));
+        catList.add(new AnimalGato(R.drawable.cat3, "Cat 3", "Azul Russo"));
+        catList.add(new AnimalGato(R.drawable.cat4, "Cat 4", "Exótico"));
     };
-    }
+}
 

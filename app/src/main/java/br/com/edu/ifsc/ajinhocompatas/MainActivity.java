@@ -30,8 +30,7 @@ import br.com.edu.ifsc.ajinhocompatas.utilitarios.ColorUtil;
 import br.com.edu.ifsc.ajinhocompatas.utilitarios.DialogUtil;
 import br.com.edu.ifsc.ajinhocompatas.view.TesteActivity;
 import br.com.edu.ifsc.ajinhocompatas.view.adapter.ViewPagerAdapter;
-import br.com.edu.ifsc.ajinhocompatas.view.fragment.FragmentCaes;
-import br.com.edu.ifsc.ajinhocompatas.view.fragment.FragmentGatos;
+import br.com.edu.ifsc.ajinhocompatas.view.fragment.FragmentAnimais;
 import br.com.edu.ifsc.ajinhocompatas.vo.Usuario;
 
 public class MainActivity extends AppCompatActivity {
@@ -81,9 +80,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void criarViewPager(ViewPager aViewPager) {
+
+        Bundle bundleDog = new Bundle();
+        //false cão;
+        bundleDog.putBoolean("animalzinho", false);
+
+        Bundle bundleCat = new Bundle();
+        //true gato;
+        bundleCat.putBoolean("animalzinho", true);
+
+        FragmentAnimais fragmentCao = new FragmentAnimais();
+        fragmentCao.setArguments(bundleDog);
+
+        FragmentAnimais fragmentGato = new FragmentAnimais();
+        fragmentGato.setArguments(bundleCat);
+
         ViewPagerAdapter lViewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-        lViewPagerAdapter.addFragment(new FragmentCaes(), "Cães");
-        lViewPagerAdapter.addFragment(new FragmentGatos(), "Gatos");
+        lViewPagerAdapter.addFragment(fragmentCao, "Cães");
+        lViewPagerAdapter.addFragment(fragmentGato, "Gatos");
         aViewPager.setAdapter(lViewPagerAdapter);
         this.mTabLayout.setupWithViewPager(aViewPager);
     }

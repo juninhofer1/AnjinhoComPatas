@@ -12,14 +12,15 @@ import android.widget.TextView;
 import java.util.List;
 
 import br.com.edu.ifsc.ajinhocompatas.R;
-import br.com.edu.ifsc.ajinhocompatas.view.fragment.AnimalGato;
+import br.com.edu.ifsc.ajinhocompatas.vo.Animal;
 
 /**
- * Created by keila on 25/10/2017.
+ * Created by keila on 26/10/2017.
  */
 
-public class GridViewAdapterCat extends ArrayAdapter<AnimalGato> {
-    public GridViewAdapterCat(Context context, int resource, List<AnimalGato> objects) {
+public class GridViewAdapterAnimais extends ArrayAdapter<Animal>{
+    public GridViewAdapterAnimais(Context context, int resource, List<Animal> objects) {
+
         //praticamente um this dp ArrayAdapter<AnimalGato>
         super(context, resource, objects);
     }
@@ -36,19 +37,20 @@ public class GridViewAdapterCat extends ArrayAdapter<AnimalGato> {
         }
 
         //pega a posição do item e coloca no animal
-        AnimalGato animalGato = getItem(position);
+        Animal animal = getItem(position);
 
-        //cast da imagem, titulo e descrição do item
+        //cast da imagem, titulo e descrição do item do grid_item
         ImageView img = (ImageView) item.findViewById(R.id.imageView);
         TextView titulo = (TextView) item.findViewById(R.id.tituloId);
         TextView descricao = (TextView) item.findViewById(R.id.descricaoId);
 
 
-        img.setImageResource(animalGato.getImagemGatoId());
-        titulo.setText(animalGato.getTitle());
-        descricao.setText(animalGato.getDescription());
+        img.setImageResource(animal.getImagem()));
+        titulo.setText(animal.getNome());
+        descricao.setText(animal.getDescricao());
 
         return item;
 
     }
+
 }

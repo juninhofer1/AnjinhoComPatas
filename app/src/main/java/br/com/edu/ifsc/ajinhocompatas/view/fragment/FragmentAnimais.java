@@ -70,7 +70,7 @@ public class FragmentAnimais extends Fragment {
             listAnimal.add(new Animal(R.drawable.dog4, "Mine", "Labrador"));
             listAnimal.add(new Animal(R.drawable.dog5, "Pompom", "Labrador"));
             listAnimal.add(new Animal(R.drawable.dog6, "Billy Gean", "Labrador"));
-            listAnimal.add(new Animal(R.drawable.dog7, "Molly", "Labrador"));
+            listAnimal.add(new Animal(R.drawable.dog7, "Molly", "Pintcher"));
             listAnimal.add(new Animal(R.drawable.dog8, "Pepê", "Labrador"));
         }
 

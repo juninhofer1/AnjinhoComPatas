@@ -3,4 +3,5 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="tamanho_botao">185dp</dimen>
+    <dimen name="width_texto_detalhes_animais">209dp</dimen>
 </resources>

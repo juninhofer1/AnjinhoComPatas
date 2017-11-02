@@ -30,8 +30,7 @@ import br.com.edu.ifsc.ajinhocompatas.utilitarios.ColorUtil;
 import br.com.edu.ifsc.ajinhocompatas.utilitarios.DialogUtil;
 import br.com.edu.ifsc.ajinhocompatas.view.TesteActivity;
 import br.com.edu.ifsc.ajinhocompatas.view.adapter.ViewPagerAdapter;
-import br.com.edu.ifsc.ajinhocompatas.view.fragment.FragmentCaes;
-import br.com.edu.ifsc.ajinhocompatas.view.fragment.FragmentGatos;
+import br.com.edu.ifsc.ajinhocompatas.view.fragment.FragmentAnimais;
 import br.com.edu.ifsc.ajinhocompatas.vo.Usuario;
 
 public class MainActivity extends AppCompatActivity {
@@ -41,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar mToolbar;
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Inserindo o primeiro registro no banco, só descomentar :D
 //        utilizandoBancoDeDados();
+
     }
 
     //Inicializando os componetes e adicionando algumas caracteristicas.
@@ -79,9 +80,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void criarViewPager(ViewPager aViewPager) {
+
+        Bundle bundleDog = new Bundle();
+        //false cão;
+        bundleDog.putBoolean("animalzinho", false);
+
+        Bundle bundleCat = new Bundle();
+        //true gato;
+        bundleCat.putBoolean("animalzinho", true);
+
+        FragmentAnimais fragmentCao = new FragmentAnimais();
+        fragmentCao.setArguments(bundleDog);
+
+        FragmentAnimais fragmentGato = new FragmentAnimais();
+        fragmentGato.setArguments(bundleCat);
+
         ViewPagerAdapter lViewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-        lViewPagerAdapter.addFragment(new FragmentCaes(), "Cachorros");
-        lViewPagerAdapter.addFragment(new FragmentGatos(), "Gatos");
+        lViewPagerAdapter.addFragment(fragmentCao, "Cães");
+        lViewPagerAdapter.addFragment(fragmentGato, "Gatos");
         aViewPager.setAdapter(lViewPagerAdapter);
         this.mTabLayout.setupWithViewPager(aViewPager);
     }
@@ -210,7 +226,6 @@ public class MainActivity extends AppCompatActivity {
         };
         DialogUtil.dialogYesNo(MainActivity.this, "Deseja sair do aplicativo?", lYesClick, lNoClick).show();
     }
-
 
     private void utilizandoBancoDeDados() {
         UsuarioDao usuarioDao = new UsuarioDao(MainActivity.this);

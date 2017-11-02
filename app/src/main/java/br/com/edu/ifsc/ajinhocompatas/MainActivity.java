@@ -28,7 +28,8 @@ import br.com.edu.ifsc.ajinhocompatas.props.MenuLateralOpcoesProps;
 import br.com.edu.ifsc.ajinhocompatas.props.MenuLateralProps;
 import br.com.edu.ifsc.ajinhocompatas.utilitarios.ColorUtil;
 import br.com.edu.ifsc.ajinhocompatas.utilitarios.DialogUtil;
-import br.com.edu.ifsc.ajinhocompatas.view.TesteActivity;
+import br.com.edu.ifsc.ajinhocompatas.view.DesenvolvimentoActivity;
+import br.com.edu.ifsc.ajinhocompatas.view.LoginActivity;
 import br.com.edu.ifsc.ajinhocompatas.view.adapter.ViewPagerAdapter;
 import br.com.edu.ifsc.ajinhocompatas.view.fragment.FragmentAnimais;
 import br.com.edu.ifsc.ajinhocompatas.vo.Usuario;
@@ -109,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 .withHeaderBackground(R.color.primary)
                 .withThreeSmallProfileImages(false)
                 .withSelectionListEnabledForSingleProfile(false)
-                .withHeaderBackground(R.drawable.header)
+//                .withHeaderBackground(R.drawable.header)
                 .addProfiles(new ProfileDrawerItem()
                         .withName("Usuário")
                         //.withIcon(getResources().getDrawable(R.mipmap.ic_usuario_dog))
@@ -160,6 +161,12 @@ public class MainActivity extends AppCompatActivity {
         this.navegationDrawerLeft.addItem(new DividerDrawerItem());
 
         this.navegationDrawerLeft.addItem(new PrimaryDrawerItem()
+                .withIdentifier(MenuLateralProps.Entrar.getmId())
+                .withName(MenuLateralProps.Entrar.getmNomeTela())
+                .withIcon(ColorUtil.alterarCorDrawableMenuItem(getApplication(), R.drawable.ic_login))
+                .withTextColor(getResources().getColor(R.color.colorPrimary)));
+
+        this.navegationDrawerLeft.addItem(new PrimaryDrawerItem()
                 .withIdentifier(MenuLateralProps.AJUDA.getmId())
                 .withName(MenuLateralProps.AJUDA.getmNomeTela())
                 .withIcon(ColorUtil.alterarCorDrawableMenuItem(getApplication(), R.drawable.ic_help))
@@ -195,16 +202,19 @@ public class MainActivity extends AppCompatActivity {
             case MenuLateralOpcoesProps.INICIAL:
                 break;
             case MenuLateralOpcoesProps.ECONTRE_UM_AMIGO:
-                startActivity(new Intent(MainActivity.this, TesteActivity.class));
+                startActivity(new Intent(MainActivity.this, DesenvolvimentoActivity.class));
                 break;
             case MenuLateralOpcoesProps.FAVORITOS:
-                startActivity(new Intent(MainActivity.this, TesteActivity.class));
+                startActivity(new Intent(MainActivity.this, DesenvolvimentoActivity.class));
                 break;
             case MenuLateralOpcoesProps.AJUDA:
-                startActivity(new Intent(MainActivity.this, TesteActivity.class));
+                startActivity(new Intent(MainActivity.this, DesenvolvimentoActivity.class));
                 break;
             case MenuLateralOpcoesProps.SAIR:
                 showDialogoSair();
+                break;
+            case MenuLateralOpcoesProps.ENTRAR:
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
                 break;
         }
 

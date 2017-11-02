@@ -10,7 +10,7 @@ import br.com.edu.ifsc.ajinhocompatas.R;
  * Created by Wilson on 07/10/2017.
  */
 
-public class TesteActivity extends AppCompatActivity {
+public class DesenvolvimentoActivity extends AppCompatActivity {
     private Toolbar toolbar;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,8 +18,8 @@ public class TesteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_desenvolvimento);
         this.toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(this.toolbar);
-        getSupportActionBar().setLogo(R.drawable.icon_app_s);
-        getSupportActionBar().setTitle(" Teste");
+//        getSupportActionBar().setLogo(R.drawable.icon_app_s);
+        getSupportActionBar().setTitle(null);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 

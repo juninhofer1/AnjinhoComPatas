@@ -11,6 +11,7 @@ public enum MenuLateralProps {
     INICIAL (MenuLateralOpcoesProps.INICIAL, R.string.opc_menu_inicial),
     FAVORITOS (MenuLateralOpcoesProps.FAVORITOS, R.string.opc_menu_favoritos),
     ECONTRE_UM_AMIGO (MenuLateralOpcoesProps.ECONTRE_UM_AMIGO, R.string.opc_menu_encontre_amigo),
+    Entrar (MenuLateralOpcoesProps.ENTRAR, R.string.opc_menu_entrar),
     AJUDA (MenuLateralOpcoesProps.AJUDA, R.string.opc_menu_ajuda),
     SAIR (MenuLateralOpcoesProps.SAIR, R.string.opc_menu_sair);
 

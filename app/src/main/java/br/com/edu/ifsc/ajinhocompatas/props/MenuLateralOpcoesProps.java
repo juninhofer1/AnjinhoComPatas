@@ -10,4 +10,5 @@ public class MenuLateralOpcoesProps {
     public static final int ECONTRE_UM_AMIGO = 3;
     public static final int AJUDA = 4;
     public static final int SAIR = 5;
+    public static final int ENTRAR = 6;
 }

@@ -45,7 +45,7 @@ public class GridViewAdapterAnimais extends ArrayAdapter<Animal>{
         TextView descricao = (TextView) item.findViewById(R.id.descricaoId);
 
 
-        img.setImageResource(animal.getImagem()));
+        img.setImageResource(animal.getImagem());
         titulo.setText(animal.getNome());
         descricao.setText(animal.getDescricao());
 

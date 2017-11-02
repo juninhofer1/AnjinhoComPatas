@@ -4,16 +4,15 @@
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
-
     <GridView
-        android:id="@+id/gridViewGatos"
+        android:id="@+id/gridViewCaes"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:numColumns="2"
         android:columnWidth="20dp"
-        android:verticalSpacing="20dp"
         android:horizontalSpacing="5dp"
+        android:numColumns="2"
+        android:layout_margin="5dp"
         android:stretchMode="columnWidth"
-        />
+        android:verticalSpacing="5dp" />
 
 </LinearLayout>

@@ -30,7 +30,7 @@ public class FragmentAnimais extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        this.mViewCaes = inflater.inflate(R.layout.fragment_caes, container, false);
+        this.mViewCaes = inflater.inflate(R.layout.fragment_grid_animal, container, false);
 
         Bundle bundle = getArguments();
         boolean isGato = bundle.getBoolean("animalzinho");

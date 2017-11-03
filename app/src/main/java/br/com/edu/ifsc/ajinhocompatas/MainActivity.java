@@ -28,6 +28,7 @@ import br.com.edu.ifsc.ajinhocompatas.props.MenuLateralOpcoesProps;
 import br.com.edu.ifsc.ajinhocompatas.props.MenuLateralProps;
 import br.com.edu.ifsc.ajinhocompatas.utilitarios.ColorUtil;
 import br.com.edu.ifsc.ajinhocompatas.utilitarios.DialogUtil;
+import br.com.edu.ifsc.ajinhocompatas.view.Animal_detalhes;
 import br.com.edu.ifsc.ajinhocompatas.view.DesenvolvimentoActivity;
 import br.com.edu.ifsc.ajinhocompatas.view.LoginActivity;
 import br.com.edu.ifsc.ajinhocompatas.view.adapter.ViewPagerAdapter;
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Inserindo o primeiro registro no banco, só descomentar :D
 //        utilizandoBancoDeDados();
+
 
     }
 

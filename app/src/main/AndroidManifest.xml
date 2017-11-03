@@ -22,8 +22,9 @@
             android:theme="@style/AppTheme.NoActionBar"> <!-- android:label="@string/app_name" -->
         </activity>
         <activity
-            android:name=".view.TesteActivity"
+            android:name=".view.DesenvolvimentoActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".view.Animal_detalhes" />
 
     </application>
 

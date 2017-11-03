@@ -21,16 +21,16 @@ import br.com.edu.ifsc.ajinhocompatas.vo.Animal;
 
 public class FragmentAnimais extends Fragment {
 
-    private View mViewCaes;
+    private View mView;
     private List<Animal> listAnimal;
-    private GridViewAdapterAnimais gridViewAdapterDog;
-    private GridView gridViewDog;
+    private GridViewAdapterAnimais gridViewAdapter;
+    private GridView gridView;
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        this.mViewCaes = inflater.inflate(R.layout.fragment_grid_animal, container, false);
+        this.mView = inflater.inflate(R.layout.fragment_grid_animal, container, false);
 
         Bundle bundle = getArguments();
         boolean isGato = bundle.getBoolean("animalzinho");
@@ -39,16 +39,16 @@ public class FragmentAnimais extends Fragment {
         getList(isGato);
 
         //cast
-        gridViewDog = (GridView) this.mViewCaes.findViewById(R.id.gridViewCaes);
+        gridView = (GridView) this.mView.findViewById(R.id.gridView);
 
         //cria novo adapter (context(telinha), modelo da telinha, conteúdo da telinha)
-        gridViewAdapterDog = new GridViewAdapterAnimais(getContext(), R.layout.grid_item, listAnimal);
+        gridViewAdapter = new GridViewAdapterAnimais(getContext(), R.layout.grid_item, listAnimal);
 
         //mostra, seta a telinha do grid
-        gridViewDog.setAdapter( gridViewAdapterDog );
+        gridView.setAdapter(gridViewAdapter);
 
         //retorna a telinha
-        return this.mViewCaes;
+        return this.mView;
     }
 
     //Lista com as fotos dos dogs

@@ -8,12 +8,59 @@ public class Animal {
     private int imagem;
     private String nome;
     private String descricao;
+    private String raca;
+    private String tamanho;
+    private String cor;
+    private String idade;
+
 
     //é chamado no fragment pra adicionar os componentes abaixo
     public Animal(int imageId, String nome, String descricao) {
         this.imagem = imageId;
         this.nome = nome;
         this.descricao = descricao;
+    }
+
+    public Animal(int imageId, String nome, String descricao, String raca, String tamanho, String cor, String idade){
+        this.imagem = imageId;
+        this.nome = nome;
+        this.descricao = descricao;
+        this.raca = raca;
+        this.tamanho = tamanho;
+        this.cor = cor;
+        this.idade =idade;
+    }
+
+    public String getRaca() {
+        return raca;
+    }
+
+    public void setRaca(String raca) {
+        this.raca = raca;
+    }
+
+    public String getTamanho() {
+        return tamanho;
+    }
+
+    public void setTamanho(String tamanho) {
+        this.tamanho = tamanho;
+    }
+
+    public String getCor() {
+        return cor;
+    }
+
+    public void setCor(String cor) {
+        this.cor = cor;
+    }
+
+    public String getIdade() {
+        return idade;
+    }
+
+    public void setIdade(String idade) {
+        this.idade = idade;
     }
 
     public int getImagem() {

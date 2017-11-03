@@ -28,7 +28,7 @@ import br.com.edu.ifsc.ajinhocompatas.props.MenuLateralOpcoesProps;
 import br.com.edu.ifsc.ajinhocompatas.props.MenuLateralProps;
 import br.com.edu.ifsc.ajinhocompatas.utilitarios.ColorUtil;
 import br.com.edu.ifsc.ajinhocompatas.utilitarios.DialogUtil;
-import br.com.edu.ifsc.ajinhocompatas.view.TesteActivity;
+import br.com.edu.ifsc.ajinhocompatas.view.DesenvolvimentoActivity;
 import br.com.edu.ifsc.ajinhocompatas.view.adapter.ViewPagerAdapter;
 import br.com.edu.ifsc.ajinhocompatas.view.fragment.FragmentAnimais;
 import br.com.edu.ifsc.ajinhocompatas.vo.Usuario;
@@ -195,13 +195,13 @@ public class MainActivity extends AppCompatActivity {
             case MenuLateralOpcoesProps.INICIAL:
                 break;
             case MenuLateralOpcoesProps.ECONTRE_UM_AMIGO:
-                startActivity(new Intent(MainActivity.this, TesteActivity.class));
+                startActivity(new Intent(MainActivity.this, DesenvolvimentoActivity.class));
                 break;
             case MenuLateralOpcoesProps.FAVORITOS:
-                startActivity(new Intent(MainActivity.this, TesteActivity.class));
+                startActivity(new Intent(MainActivity.this, DesenvolvimentoActivity.class));
                 break;
             case MenuLateralOpcoesProps.AJUDA:
-                startActivity(new Intent(MainActivity.this, TesteActivity.class));
+                startActivity(new Intent(MainActivity.this, DesenvolvimentoActivity.class));
                 break;
             case MenuLateralOpcoesProps.SAIR:
                 showDialogoSair();

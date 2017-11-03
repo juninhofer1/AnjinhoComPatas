@@ -10,7 +10,19 @@
     <string name="opc_menu_encontre_amigo">Encontre um amigo</string>
     <string name="opc_menu_ajuda">Ajuda</string>
     <string name="opc_menu_sair">Sair</string>
+    <string name="opc_menu_entrar">Entrar</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Senha</string>
+    <string name="action_sign_in">Entrar</string>
+    <string name="action_sign_in_short">Entrar</string>
+    <string name="error_invalid_email">Enderesso de email incorreto</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">Senha incorreta</string>
+    <string name="error_field_required">Informe esse campo</string>
+    <string name="permission_rationale">As permissão de contatos são necessárias para fornecer e-mails</string>
 </resources>

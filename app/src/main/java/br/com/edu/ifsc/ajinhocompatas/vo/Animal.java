@@ -13,17 +13,12 @@ public class Animal implements Serializable{
     private String raca;
     private String tamanho;
     private String cor;
-    private String idade;
+    private int idade;
 
 
     //é chamado no fragment pra adicionar os componentes abaixo
-    public Animal(int imageId, String nome, String descricao) {
-        this.imagem = imageId;
-        this.nome = nome;
-        this.descricao = descricao;
-    }
 
-    public Animal(int imageId, String nome, String descricao, String raca, String tamanho, String cor, String idade){
+    public Animal(int imageId, String nome, String descricao, String raca, String tamanho, String cor, int idade){
         this.imagem = imageId;
         this.nome = nome;
         this.descricao = descricao;
@@ -57,11 +52,11 @@ public class Animal implements Serializable{
         this.cor = cor;
     }
 
-    public String getIdade() {
+    public int getIdade() {
         return idade;
     }
 
-    public void setIdade(String idade) {
+    public void setIdade(int idade) {
         this.idade = idade;
     }
 

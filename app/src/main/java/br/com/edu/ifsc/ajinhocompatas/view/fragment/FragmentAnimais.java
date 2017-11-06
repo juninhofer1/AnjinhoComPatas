@@ -88,8 +88,8 @@ public class FragmentAnimais extends Fragment {
 
         //adiciona na lista
         if (isGato) {
-            listAnimal.add(new Animal(R.drawable.cat, "Cat 1", "Persa"));
-            listAnimal.add(new Animal(R.drawable.cat2, "Cat 2", "Siamês"));
+            listAnimal.add(new Animal(R.drawable.cat, "Cat 1", "bonitinho colocando meia", "siamês", "pequeno", "azul", 2));
+            listAnimal.add(new Animal(R.drawable.cat2, "Cat 2", "Siamês", "médio", "amarelo"));
             listAnimal.add(new Animal(R.drawable.cat3, "Cat 3", "Azul Russo"));
             listAnimal.add(new Animal(R.drawable.cat4, "Cat 4", "Exótico"));
         } else {

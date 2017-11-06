@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -83,13 +84,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void criarViewPager(ViewPager aViewPager) {
-
-        Bundle bundleDog = new Bundle();
         //false cão;
+        Bundle bundleDog = new Bundle();
         bundleDog.putBoolean("animalzinho", false);
 
-        Bundle bundleCat = new Bundle();
         //true gato;
+        Bundle bundleCat = new Bundle();
         bundleCat.putBoolean("animalzinho", true);
 
         FragmentAnimais fragmentCao = new FragmentAnimais();
@@ -97,8 +97,9 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentAnimais fragmentGato = new FragmentAnimais();
         fragmentGato.setArguments(bundleCat);
-
-        ViewPagerAdapter lViewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction();
+        ViewPagerAdapter lViewPagerAdapter = new ViewPagerAdapter(fragmentManager);
         lViewPagerAdapter.addFragment(fragmentCao, "Cães");
         lViewPagerAdapter.addFragment(fragmentGato, "Gatos");
         aViewPager.setAdapter(lViewPagerAdapter);

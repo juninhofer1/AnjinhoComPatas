@@ -1,10 +1,13 @@
 package br.com.edu.ifsc.ajinhocompatas.vo;
 
+import java.io.Serializable;
+
 /**
  * Created by keila on 26/10/2017.
  */
 
-public class Animal {
+public class Animal implements Serializable {
+
     private int imagem;
     private String nome;
     private String descricao;

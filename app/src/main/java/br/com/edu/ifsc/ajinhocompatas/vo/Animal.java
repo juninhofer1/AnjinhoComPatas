@@ -6,8 +6,7 @@ import java.io.Serializable;
  * Created by keila on 26/10/2017.
  */
 
-public class Animal implements Serializable {
-
+public class Animal implements Serializable{
     private int imagem;
     private String nome;
     private String descricao;

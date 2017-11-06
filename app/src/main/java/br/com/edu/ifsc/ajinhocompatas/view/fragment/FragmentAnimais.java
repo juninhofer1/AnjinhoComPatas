@@ -53,7 +53,7 @@ public class FragmentAnimais extends Fragment {
         //cria novo adapter (context(telinha), modelo telinha,conteúdo da telinha, inteface para click na tela)
         gridViewAdapter = new GridViewAdapterAnimaisRecycler(getContext(), R.layout.grid_item, listAnimal, onItemClickRecycler);
 
-//        Define se o recyclerview será uma lista ou uma grid
+//        Define se o recyclerview será uma lista ou uma grid 2 para definir as colunas
         gridView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext().getApplicationContext(),2);
 //        define a configuração acima em nosso recycler

@@ -25,7 +25,15 @@
             android:name=".view.DesenvolvimentoActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".view.Animal_detalhes" />
+        <activity
+            android:name=".view.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".view.AnimalDetalhesActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
 
     </application>
 

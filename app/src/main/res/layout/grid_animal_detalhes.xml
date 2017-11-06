@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="br.com.edu.ifsc.ajinhocompatas.view.Animal_detalhes">
+    tools:context="br.com.edu.ifsc.ajinhocompatas.view.AnimalDetalhesActivity">
 
     <ImageView
         android:id="@+id/imagemDetalhesId"
         android:layout_width="0dp"
         android:layout_height="231dp"
-        android:layout_marginTop="0dp"
         android:scaleType="centerCrop"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -62,7 +61,7 @@
 
     <TextView
         android:id="@+id/racaAnimalId"
-        android:layout_width="@dimen/width_texto_detalhes_animais"
+        android:layout_width="209dp"
         android:layout_height="17dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
@@ -86,26 +85,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Idade:"
+
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="401dp" />
 
     <TextView
         android:id="@+id/tamanhoAnimalId"
-        android:layout_width="@dimen/width_texto_detalhes_animais"
+        android:layout_width="209dp"
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteX="89dp"
         tools:layout_editor_absoluteY="337dp" />
 
     <TextView
         android:id="@+id/corAnimalId"
-        android:layout_width="@dimen/width_texto_detalhes_animais"
+        android:layout_width="209dp"
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteX="51dp"
         tools:layout_editor_absoluteY="369dp" />
 
     <TextView
         android:id="@+id/idadeAnimalId"
-        android:layout_width="@dimen/width_texto_detalhes_animais"
+        android:layout_width="209dp"
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteX="66dp"
         tools:layout_editor_absoluteY="401dp" />

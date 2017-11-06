@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.edu.ifsc.ajinhocompatas.R;
+import br.com.edu.ifsc.ajinhocompatas.view.AnimalDetalhesActivity;
 import br.com.edu.ifsc.ajinhocompatas.view.DesenvolvimentoActivity;
 import br.com.edu.ifsc.ajinhocompatas.view.adapter.GridViewAdapterAnimaisRecycler;
 import br.com.edu.ifsc.ajinhocompatas.view.adapter.OnItemClickRecycler;
@@ -71,7 +72,7 @@ public class FragmentAnimais extends Fragment {
 //            Pega Item na lista
             Animal lAnimal = listAnimal.get(position);
 //            Cria intente para abrir a activity
-            Intent intent = new Intent(getActivity(), DesenvolvimentoActivity.class);
+            Intent intent = new Intent(getActivity(), AnimalDetalhesActivity.class);
 //            passa como parametro uma animal para a activity que vai abrir
             intent.putExtra("animalzinhoSelecionado", lAnimal);
 //            starta a activity

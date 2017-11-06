@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-        pupularAutoComplete();
+//        pupularAutoComplete();
 
         mSenhaView = (EditText) findViewById(R.id.password);
         mSenhaView.setOnEditorActionListener(new TextView.OnEditorActionListener() {

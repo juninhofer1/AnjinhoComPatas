@@ -20,7 +20,7 @@
     <string name="prompt_password">Senha</string>
     <string name="action_sign_in">Entrar</string>
     <string name="action_sign_in_short">Entrar</string>
-    <string name="error_invalid_email">Enderesso de email incorreto</string>
+    <string name="error_invalid_email">Endereço de email incorreto</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">Senha incorreta</string>
     <string name="error_field_required">Informe esse campo</string>

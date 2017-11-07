@@ -1,6 +1,7 @@
 package br.com.edu.ifsc.ajinhocompatas.view;
 
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -30,14 +32,22 @@ public class LoginActivity extends AppCompatActivity {
     private static final int REQUEST_READ_CONTACTS = 0;
     private AutoCompleteTextView mEmailView;
     private EditText mSenhaView;
+    private TextView textViewCadastrese;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        this.toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(this.toolbar);
+//        getSupportActionBar().setLogo(R.drawable.icon_app_s);
+        getSupportActionBar().setTitle(null);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        textViewCadastrese = (TextView) findViewById(R.id.textViewCadastrese);
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-//        pupularAutoComplete();
+        pupularAutoComplete();
 
         mSenhaView = (EditText) findViewById(R.id.password);
         mSenhaView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -58,6 +68,14 @@ public class LoginActivity extends AppCompatActivity {
                 logar();
             }
         });
+
+        textViewCadastrese.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, DesenvolvimentoActivity.class));
+            }
+        });
+
 
     }
 
@@ -148,6 +166,12 @@ public class LoginActivity extends AppCompatActivity {
     private boolean isSenhaValido(String password) {
         //TODO: Replace this with your own logic
         return password.length() > 4;
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return super.onSupportNavigateUp();
     }
 }
 

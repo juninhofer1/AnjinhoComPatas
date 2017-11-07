@@ -38,6 +38,7 @@ import br.com.edu.ifsc.ajinhocompatas.vo.Animal;
             mAnimal = (Animal) getIntent().getExtras().get("animalzinhoSelecionado");
 
             ImageView imagemAnimalDetalhes = (ImageView) findViewById(R.id.imagemDetalhesId);
+            TextView nomeAnimal = (TextView) findViewById(R.id.nomeAnimalId);
             Button botaoAdotar = (Button) findViewById(R.id.buttonAdotarId);
             TextView racaAnimal = (TextView) findViewById(R.id.racaAnimalId);
             TextView tamanhoAnimal = (TextView) findViewById(R.id.tamanhoAnimalId);
@@ -45,6 +46,10 @@ import br.com.edu.ifsc.ajinhocompatas.vo.Animal;
             TextView idadeAnimal = (TextView) findViewById(R.id.idadeAnimalId);
 
             racaAnimal.setText(mAnimal.getDescricao());
+            imagemAnimalDetalhes.setImageResource(mAnimal.getImagem());
+            nomeAnimal.setText(mAnimal.getNome());
+
+
         }
     }
 

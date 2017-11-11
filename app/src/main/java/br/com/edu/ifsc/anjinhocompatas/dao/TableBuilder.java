@@ -1,4 +1,4 @@
-package br.com.edu.ifsc.ajinhocompatas.dao;
+package br.com.edu.ifsc.anjinhocompatas.dao;
 
 import java.util.HashMap;
 

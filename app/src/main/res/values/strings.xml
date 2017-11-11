@@ -14,7 +14,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="label_cadastre_se">Cadastre-se</string>
+    <string name="label_cadastre_se">Não possui cadastro? Cadastre-se</string>
 
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Senha</string>
@@ -25,4 +25,7 @@
     <string name="error_incorrect_password">Senha incorreta</string>
     <string name="error_field_required">Informe esse campo</string>
     <string name="permission_rationale">As permissão de contatos são necessárias para fornecer e-mails</string>
+
+    <string name="facebook_app_id">1119184398216323</string>
+    <string name="fb_login_protocol_scheme">fb[APP_ID]</string>
 </resources>

@@ -1,4 +1,4 @@
-package br.com.edu.ifsc.ajinhocompatas.dao.implementacao;
+package br.com.edu.ifsc.anjinhocompatas.dao.implementacao;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,9 +7,9 @@ import android.database.Cursor;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.edu.ifsc.ajinhocompatas.dao.BasicDAO;
-import br.com.edu.ifsc.ajinhocompatas.dao.TableBuilder;
-import br.com.edu.ifsc.ajinhocompatas.vo.Usuario;
+import br.com.edu.ifsc.anjinhocompatas.dao.BasicDAO;
+import br.com.edu.ifsc.anjinhocompatas.dao.TableBuilder;
+import br.com.edu.ifsc.anjinhocompatas.vo.Usuario;
 
 /**
  * Created by Mobile on 09/10/2017.

@@ -1,4 +1,4 @@
-package br.com.edu.ifsc.ajinhocompatas.view;
+package br.com.edu.ifsc.anjinhocompatas.view;
 
 
 import android.content.Context;
@@ -20,8 +20,8 @@ import org.w3c.dom.Text;
 
 import java.util.List;
 
-import br.com.edu.ifsc.ajinhocompatas.R;
-import br.com.edu.ifsc.ajinhocompatas.vo.Animal;
+import br.com.edu.ifsc.anjinhocompatas.R;
+import br.com.edu.ifsc.anjinhocompatas.vo.Animal;
 
     /**
      * Created by keila on 02/11/2017.

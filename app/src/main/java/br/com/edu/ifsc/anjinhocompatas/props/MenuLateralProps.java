@@ -1,6 +1,6 @@
-package br.com.edu.ifsc.ajinhocompatas.props;
+package br.com.edu.ifsc.anjinhocompatas.props;
 
-import br.com.edu.ifsc.ajinhocompatas.R;
+import br.com.edu.ifsc.anjinhocompatas.R;
 
 /**
  * Created by Wilson on 07/10/2017.

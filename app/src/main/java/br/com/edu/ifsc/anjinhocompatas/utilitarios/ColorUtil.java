@@ -1,4 +1,4 @@
-package br.com.edu.ifsc.ajinhocompatas.utilitarios;
+package br.com.edu.ifsc.anjinhocompatas.utilitarios;
 
 import android.content.Context;
 import android.graphics.ColorFilter;
@@ -6,7 +6,7 @@ import android.graphics.LightingColorFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 
-import br.com.edu.ifsc.ajinhocompatas.R;
+import br.com.edu.ifsc.anjinhocompatas.R;
 
 /**
  * Created by Wilson on 06/10/2017.

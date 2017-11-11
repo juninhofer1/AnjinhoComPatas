@@ -1,4 +1,4 @@
-package br.com.edu.ifsc.ajinhocompatas.view;
+package br.com.edu.ifsc.anjinhocompatas.view;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,8 +10,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import br.com.edu.ifsc.ajinhocompatas.MainActivity;
-import br.com.edu.ifsc.ajinhocompatas.R;
+import br.com.edu.ifsc.anjinhocompatas.MainActivity;
+import br.com.edu.ifsc.anjinhocompatas.R;
 
 public class SplashScreenActivity extends Activity {
 

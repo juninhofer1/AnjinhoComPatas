@@ -1,4 +1,4 @@
-package br.com.edu.ifsc.ajinhocompatas.vo;
+package br.com.edu.ifsc.anjinhocompatas.vo;
 
 /**
  * Created by Mobile on 09/10/2017.

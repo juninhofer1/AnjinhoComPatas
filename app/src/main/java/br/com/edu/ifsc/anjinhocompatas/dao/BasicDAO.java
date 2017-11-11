@@ -1,4 +1,4 @@
-package br.com.edu.ifsc.ajinhocompatas.dao;
+package br.com.edu.ifsc.anjinhocompatas.dao;
 
 import java.util.Map.Entry;
 
@@ -435,7 +435,6 @@ public class BasicDAO {
 	 * 
 	 * @param table
 	 *            Tabela onde será executada a deleção.
-	 * @param id
 	 *            Chave da linha a ser deletada.
 	 * @return <b>True</b> se a operação foi bem-sucedida; <b>false</b> em caso
 	 *         de erro.

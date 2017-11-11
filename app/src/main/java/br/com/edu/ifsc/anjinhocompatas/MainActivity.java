@@ -1,4 +1,4 @@
-package br.com.edu.ifsc.ajinhocompatas;
+package br.com.edu.ifsc.anjinhocompatas;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -24,16 +24,16 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import java.util.List;
 
-import br.com.edu.ifsc.ajinhocompatas.dao.implementacao.UsuarioDao;
-import br.com.edu.ifsc.ajinhocompatas.props.MenuLateralOpcoesProps;
-import br.com.edu.ifsc.ajinhocompatas.props.MenuLateralProps;
-import br.com.edu.ifsc.ajinhocompatas.utilitarios.ColorUtil;
-import br.com.edu.ifsc.ajinhocompatas.utilitarios.DialogUtil;
-import br.com.edu.ifsc.ajinhocompatas.view.DesenvolvimentoActivity;
-import br.com.edu.ifsc.ajinhocompatas.view.LoginActivity;
-import br.com.edu.ifsc.ajinhocompatas.view.adapter.ViewPagerAdapter;
-import br.com.edu.ifsc.ajinhocompatas.view.fragment.FragmentAnimais;
-import br.com.edu.ifsc.ajinhocompatas.vo.Usuario;
+import br.com.edu.ifsc.anjinhocompatas.dao.implementacao.UsuarioDao;
+import br.com.edu.ifsc.anjinhocompatas.props.MenuLateralOpcoesProps;
+import br.com.edu.ifsc.anjinhocompatas.props.MenuLateralProps;
+import br.com.edu.ifsc.anjinhocompatas.utilitarios.ColorUtil;
+import br.com.edu.ifsc.anjinhocompatas.utilitarios.DialogUtil;
+import br.com.edu.ifsc.anjinhocompatas.view.DesenvolvimentoActivity;
+import br.com.edu.ifsc.anjinhocompatas.view.LoginActivity;
+import br.com.edu.ifsc.anjinhocompatas.view.adapter.ViewPagerAdapter;
+import br.com.edu.ifsc.anjinhocompatas.view.fragment.FragmentAnimais;
+import br.com.edu.ifsc.anjinhocompatas.vo.Usuario;
 
 public class MainActivity extends AppCompatActivity {
 

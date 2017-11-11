@@ -1,4 +1,4 @@
-package br.com.edu.ifsc.ajinhocompatas.utilitarios;
+package br.com.edu.ifsc.anjinhocompatas.utilitarios;
 
 import android.app.Activity;
 import android.app.AlertDialog;

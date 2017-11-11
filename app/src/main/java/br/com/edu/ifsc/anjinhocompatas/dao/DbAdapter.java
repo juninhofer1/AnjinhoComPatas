@@ -1,4 +1,4 @@
-package br.com.edu.ifsc.ajinhocompatas.dao;
+package br.com.edu.ifsc.anjinhocompatas.dao;
 
 import android.content.Context;
 import android.database.SQLException;
@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import br.com.edu.ifsc.ajinhocompatas.dao.implementacao.UsuarioDao;
+import br.com.edu.ifsc.anjinhocompatas.dao.implementacao.UsuarioDao;
 
 public class DbAdapter {
 

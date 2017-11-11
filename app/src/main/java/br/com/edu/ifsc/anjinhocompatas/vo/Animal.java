@@ -1,4 +1,4 @@
-package br.com.edu.ifsc.ajinhocompatas.vo;
+package br.com.edu.ifsc.anjinhocompatas.vo;
 
 import java.io.Serializable;
 

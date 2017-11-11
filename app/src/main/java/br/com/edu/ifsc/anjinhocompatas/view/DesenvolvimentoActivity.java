@@ -1,10 +1,10 @@
-package br.com.edu.ifsc.ajinhocompatas.view;
+package br.com.edu.ifsc.anjinhocompatas.view;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
-import br.com.edu.ifsc.ajinhocompatas.R;
+import br.com.edu.ifsc.anjinhocompatas.R;
 
 /**
  * Created by Wilson on 07/10/2017.

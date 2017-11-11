@@ -1,4 +1,4 @@
-package br.com.edu.ifsc.ajinhocompatas.view.adapter;
+package br.com.edu.ifsc.anjinhocompatas.view.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -10,8 +10,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import br.com.edu.ifsc.ajinhocompatas.R;
-import br.com.edu.ifsc.ajinhocompatas.vo.Animal;
+import br.com.edu.ifsc.anjinhocompatas.R;
+import br.com.edu.ifsc.anjinhocompatas.vo.Animal;
 
 /**
  * Created by keila on 26/10/2017.

@@ -1,4 +1,4 @@
-package br.com.edu.ifsc.ajinhocompatas.view.fragment;
+package br.com.edu.ifsc.anjinhocompatas.view.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,12 +14,12 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.edu.ifsc.ajinhocompatas.R;
-import br.com.edu.ifsc.ajinhocompatas.view.AnimalDetalhesActivity;
-import br.com.edu.ifsc.ajinhocompatas.view.DesenvolvimentoActivity;
-import br.com.edu.ifsc.ajinhocompatas.view.adapter.GridViewAdapterAnimaisRecycler;
-import br.com.edu.ifsc.ajinhocompatas.view.adapter.OnItemClickRecycler;
-import br.com.edu.ifsc.ajinhocompatas.vo.Animal;
+import br.com.edu.ifsc.anjinhocompatas.R;
+import br.com.edu.ifsc.anjinhocompatas.view.AnimalDetalhesActivity;
+import br.com.edu.ifsc.anjinhocompatas.view.DesenvolvimentoActivity;
+import br.com.edu.ifsc.anjinhocompatas.view.adapter.GridViewAdapterAnimaisRecycler;
+import br.com.edu.ifsc.anjinhocompatas.view.adapter.OnItemClickRecycler;
+import br.com.edu.ifsc.anjinhocompatas.vo.Animal;
 
 /**
  * Created by Wilson on 13/10/2017.
@@ -89,18 +89,18 @@ public class FragmentAnimais extends Fragment {
         //adiciona na lista
         if (isGato) {
             listAnimal.add(new Animal(R.drawable.cat, "Cat 1", "bonitinho colocando meia", "siamês", "pequeno", "azul", 2));
-            listAnimal.add(new Animal(R.drawable.cat2, "Cat 2", "Siamês", "médio", "amarelo"));
-            listAnimal.add(new Animal(R.drawable.cat3, "Cat 3", "Azul Russo"));
-            listAnimal.add(new Animal(R.drawable.cat4, "Cat 4", "Exótico"));
+            listAnimal.add(new Animal(R.drawable.cat2, "Cat 2", "Siamês", "médio", "verde", "verde", 2));
+            listAnimal.add(new Animal(R.drawable.cat3, "Cat 3", "Azul Russo", "médio", "cinza", "cinza", 2));
+            listAnimal.add(new Animal(R.drawable.cat4, "Cat 4", "Exótico", "grande", "marrom", "amarelo", 2));
         } else {
-            listAnimal.add(new Animal(R.drawable.dog, "Pedrinho", "Labrador"));
-            listAnimal.add(new Animal(R.drawable.dog2, "Joãozinho", "Yorkshire"));
-            listAnimal.add(new Animal(R.drawable.dog3, "Zé", "Labrador"));
-            listAnimal.add(new Animal(R.drawable.dog4, "Mine", "Labrador"));
-            listAnimal.add(new Animal(R.drawable.dog5, "Pompom", "Labrador"));
-            listAnimal.add(new Animal(R.drawable.dog6, "Billy Gean", "Labrador"));
-            listAnimal.add(new Animal(R.drawable.dog7, "Molly", "Pintcher"));
-            listAnimal.add(new Animal(R.drawable.dog8, "Pepê", "Labrador"));
+            listAnimal.add(new Animal(R.drawable.dog, "Pedrinho", "Labrador", "grande", "preto", "amarelo", 2));
+            listAnimal.add(new Animal(R.drawable.dog2, "Joãozinho", "Yorkshire","pequeno", "amarelo", "amarelo", 2));
+            listAnimal.add(new Animal(R.drawable.dog3, "Zé", "Labrador", "médio", "amarelo", "amarelo", 2));
+            listAnimal.add(new Animal(R.drawable.dog4, "Mine", "Labrador", "pequeno", "branco", "amarelo", 2));
+            listAnimal.add(new Animal(R.drawable.dog6, "Billy Gean", "Labrador","pequeno", "branco", "amarelo", 2));
+            listAnimal.add(new Animal(R.drawable.dog7, "Molly", "Pintcher", "medio", "branco", "amarelo", 2));
+            listAnimal.add(new Animal(R.drawable.dog8, "Pepê", "sashicha","pequeno", "branco", "amarelo", 2));
+            listAnimal.add(new Animal(R.drawable.dog5, "Jurema", "Chiwawa","pequeno", "branco", "amarelo", 2));
         }
     }
 }

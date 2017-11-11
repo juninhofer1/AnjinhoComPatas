@@ -1,4 +1,4 @@
-package br.com.edu.ifsc.ajinhocompatas.view;
+package br.com.edu.ifsc.anjinhocompatas.view;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
@@ -19,8 +19,10 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 
-import br.com.edu.ifsc.ajinhocompatas.R;
+import br.com.edu.ifsc.anjinhocompatas.R;
 
 import static android.Manifest.permission.READ_CONTACTS;
 

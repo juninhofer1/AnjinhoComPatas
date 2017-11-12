@@ -1,14 +1,18 @@
 package br.com.edu.ifsc.anjinhocompatas.vo;
 
+import java.io.Serializable;
+
 /**
  * Created by Mobile on 09/10/2017.
  */
 
-public class Usuario {
+public class Usuario implements Serializable {
+    
     private int id;
     private String nome;
     private String endereco;
     private String email;
+    private String foto;
     private int idade;
 
     public int getId() {

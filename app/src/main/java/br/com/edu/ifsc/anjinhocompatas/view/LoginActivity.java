@@ -19,23 +19,44 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.Profile;
 import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
 import br.com.edu.ifsc.anjinhocompatas.R;
+import br.com.edu.ifsc.anjinhocompatas.vo.Usuario;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
 public class LoginActivity extends AppCompatActivity {
 
-    /**
-     * Id que identifica READ_CONTACTS permissão de contatos.
-     */
-    private static final int REQUEST_READ_CONTACTS = 0;
+    public static final int LOGIN_ID = 10;
+    public static final String LOGIN_EXTRA_USUARIO = "usuario_logado";
+
     private AutoCompleteTextView mEmailView;
     private EditText mSenhaView;
     private TextView textViewCadastrese;
     private Toolbar toolbar;
+    private LoginButton mLoginButtonFacebook;
+    private CallbackManager mCallbackManager;
+    private Usuario mUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,13 +64,55 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         this.toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(this.toolbar);
-//        getSupportActionBar().setLogo(R.drawable.icon_app_s);
         getSupportActionBar().setTitle(null);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         textViewCadastrese = (TextView) findViewById(R.id.textViewCadastrese);
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-//        pupularAutoComplete();
+        mCallbackManager = CallbackManager.Factory.create();
+        mLoginButtonFacebook = (LoginButton) findViewById(R.id.loginButton);
+        mLoginButtonFacebook.setReadPermissions(Arrays.asList(
+                "public_profile", "email", "user_birthday"));
+        mLoginButtonFacebook.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                GraphRequest request = GraphRequest.newMeRequest(
+                        loginResult.getAccessToken(),
+                        new GraphRequest.GraphJSONObjectCallback() {
+                            @Override
+                            public void onCompleted(JSONObject object, GraphResponse response) {
+                                mUsuario = new Usuario();
+                                try {
+                                    String email = object.getString("email");
+                                    mUsuario.setEmail(email);
+                                    String nome = object.getString("name");
+                                    mUsuario.setNome(nome);
+                                    String birthday = object.getString("birthday");
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                Intent intent = new Intent();
+                                intent.putExtra(LOGIN_EXTRA_USUARIO, mUsuario);
+                                setResult(LOGIN_ID, intent);
+                                finish();
+                            }
+                        });
+                Bundle parameters = new Bundle();
+                parameters.putString("fields", "id,name,email,gender, picture,birthday"); // id,first_name,last_name,email,gender,birthday,cover,picture.type(large)
+                request.setParameters(parameters);
+                request.executeAsync();
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+
+            }
+        });
 
         mSenhaView = (EditText) findViewById(R.id.password);
         mSenhaView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -77,46 +140,13 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this, DesenvolvimentoActivity.class));
             }
         });
-
-
     }
 
-    private void pupularAutoComplete() {
-        if (!meusContatosSolicitar()) {
-            return;
-        }
-    }
-
-    private boolean meusContatosSolicitar() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            return true;
-        }
-        if (checkSelfPermission(READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
-            return true;
-        }
-        if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
-            Snackbar.make(mEmailView, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
-                    .setAction(android.R.string.ok, new View.OnClickListener() {
-                        @Override
-                        @TargetApi(Build.VERSION_CODES.M)
-                        public void onClick(View v) {
-                            requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
-                        }
-                    });
-        } else {
-            requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
-        }
-        return false;
-    }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        if (requestCode == REQUEST_READ_CONTACTS) {
-            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                pupularAutoComplete();
-            }
-        }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        mCallbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
@@ -175,5 +205,52 @@ public class LoginActivity extends AppCompatActivity {
         onBackPressed();
         return super.onSupportNavigateUp();
     }
+
+    FacebookCallback<LoginResult> callback = new FacebookCallback<LoginResult>() {
+        @Override
+        public void onSuccess(LoginResult loginResult) {
+            AccessToken accessToken = loginResult.getAccessToken();
+            Profile profile = Profile.getCurrentProfile();
+
+            // Facebook Email address
+            GraphRequest request = GraphRequest.newMeRequest(
+                    loginResult.getAccessToken(),
+                    new GraphRequest.GraphJSONObjectCallback() {
+                        @Override
+                        public void onCompleted(
+                                JSONObject object,
+                                GraphResponse response) {
+//                            Log.v("LoginActivity Response ", response.toString());
+
+                            try {
+                                String Name = object.getString("name");
+
+                                String FEmail = object.getString("email");
+//                                Log.v("Email = ", " " + FEmail);
+                                Toast.makeText(getApplicationContext(), "Name " + Name, Toast.LENGTH_LONG).show();
+
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+            Bundle parameters = new Bundle();
+            parameters.putString("fields", "id,name,email,gender, birthday");
+            request.setParameters(parameters);
+            request.executeAsync();
+        }
+
+        @Override
+        public void onCancel() {
+            LoginManager.getInstance().logOut();
+
+        }
+
+        @Override
+        public void onError(FacebookException e) {
+
+        }
+    };
 }
 

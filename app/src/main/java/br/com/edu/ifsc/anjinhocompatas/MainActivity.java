@@ -15,13 +15,16 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
+import com.facebook.login.LoginManager;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.accountswitcher.AccountHeader;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.edu.ifsc.anjinhocompatas.dao.implementacao.UsuarioDao;
@@ -105,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
         this.mTabLayout.setupWithViewPager(aViewPager);
     }
 
-    private void criarMenuLateral(){
+    private void criarMenuLateral() {
         this.hearderNavegationLeft = new AccountHeader()
                 .withActivity(this)
                 .withCompactStyle(false)
@@ -179,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
                 .withName(MenuLateralProps.SAIR.getmNomeTela())
                 .withIcon(ColorUtil.alterarCorDrawableMenuItem(getApplication(), R.drawable.icon_exit))
                 .withTextColor(getResources().getColor(R.color.colorPrimary)));
-        navegationDrawerLeft.setSelection(0);
+        this.navegationDrawerLeft.setSelection(0);
     }
 
     @Override
@@ -216,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
                 showDialogoSair();
                 break;
             case MenuLateralOpcoesProps.ENTRAR:
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                startActivityForResult(new Intent(MainActivity.this, LoginActivity.class), LoginActivity.LOGIN_ID);
                 break;
         }
 
@@ -226,6 +229,7 @@ public class MainActivity extends AppCompatActivity {
         DialogInterface.OnClickListener lYesClick = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                LoginManager.getInstance().logOut();
                 finish();
             }
         };
@@ -259,5 +263,22 @@ public class MainActivity extends AppCompatActivity {
             for (Usuario usuario : usuarios) {
                 Toast.makeText(MainActivity.this, usuario.getNome(), Toast.LENGTH_SHORT).show();
             }
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (resultCode) {
+            case LoginActivity.LOGIN_ID:
+                Usuario lUsuario = (Usuario) data.getExtras().get(LoginActivity.LOGIN_EXTRA_USUARIO);
+                int lPosicao = this.navegationDrawerLeft.getPositionFromIdentifier(MenuLateralOpcoesProps.ENTRAR);
+                this.navegationDrawerLeft.removeItem(lPosicao);
+                this.hearderNavegationLeft.removeProfile(0);
+                this.hearderNavegationLeft.addProfiles(new ProfileDrawerItem()
+                        .withName(lUsuario.getNome())
+                        .withIcon(getResources().getDrawable(R.mipmap.ic_usuario_dog))
+                        .withEmail(lUsuario.getEmail()));
+                this.navegationDrawerLeft.setSelection(0);
+                break;
+        }
     }
 }

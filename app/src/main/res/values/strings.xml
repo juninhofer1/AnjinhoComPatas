@@ -27,5 +27,6 @@
     <string name="permission_rationale">As permissão de contatos são necessárias para fornecer e-mails</string>
 
     <string name="facebook_app_id">1119184398216323</string>
-    <string name="fb_login_protocol_scheme">fb[APP_ID]</string>
+    <string name="fb_login_protocol_scheme">fb1119184398216323</string>
+
 </resources>

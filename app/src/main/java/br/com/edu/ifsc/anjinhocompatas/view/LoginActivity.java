@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
 
         textViewCadastrese = (TextView) findViewById(R.id.textViewCadastrese);
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-        pupularAutoComplete();
+//        pupularAutoComplete();
 
         mSenhaView = (EditText) findViewById(R.id.password);
         mSenhaView.setOnEditorActionListener(new TextView.OnEditorActionListener() {

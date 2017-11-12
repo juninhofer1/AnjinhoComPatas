@@ -52,7 +52,7 @@ public class UsuarioDao extends BasicDAO {
     public long alterar(Usuario aUsuario) {
         ContentValues values = classificarPorValores(aUsuario);
         //Alterando usuário quando o id for igual
-        return atualizar(TABELA, values, new String[] { ID }, new String[] { String.valueOf(aUsuario.getId()) });
+        return atualizar(TABELA, values, new String[] { EMAIL }, new String[] { String.valueOf(aUsuario.getId()) });
     }
 
     public boolean apagar(Usuario aUsuario) {

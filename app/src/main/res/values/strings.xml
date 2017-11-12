@@ -28,5 +28,9 @@
 
     <string name="facebook_app_id">1119184398216323</string>
     <string name="fb_login_protocol_scheme">fb1119184398216323</string>
+    <string name="fb_operacao_cancelada">Operação cancelada</string>
 
+    <string name="erro_comunicacao">Erro de comunicação</string>
+    <string name="key_usuriao_logado">usuario_logado</string>
+    <string name="key_app_name">anjinho_com_patas</string>
 </resources>

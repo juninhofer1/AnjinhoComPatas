@@ -484,13 +484,9 @@ public class BasicDAO {
 	 */
 	protected long inserir(String table, ContentValues values) {
 		long result = -9;
-//		if(table.equals(PedidoDao.TABELA) || table.equals(ItemPedidoDao.TABELA) || table.equals(TransportadorDao.TABELA))
 		Log.w("BasicoDAO", "INSERT INTO " + table + getInsertFormato(values));
-//		return mDb.insert(table, null, values); //TODO:Rever se der problema de sobreposi��o.
-		
-		
+
 		result = mDb.insertWithOnConflict(table, null, values, SQLiteDatabase.CONFLICT_REPLACE);//Alterado para testes
-		
 		if (result == -1) {
 			Log.e("BasicDAO", "Não foi possivel inserir na tabela");
 		}else{

@@ -32,6 +32,7 @@ import br.com.edu.ifsc.anjinhocompatas.props.MenuLateralOpcoesProps;
 import br.com.edu.ifsc.anjinhocompatas.props.MenuLateralProps;
 import br.com.edu.ifsc.anjinhocompatas.utilitarios.ColorUtil;
 import br.com.edu.ifsc.anjinhocompatas.utilitarios.DialogUtil;
+import br.com.edu.ifsc.anjinhocompatas.utilitarios.SharedPreferencesUtil;
 import br.com.edu.ifsc.anjinhocompatas.view.DesenvolvimentoActivity;
 import br.com.edu.ifsc.anjinhocompatas.view.LoginActivity;
 import br.com.edu.ifsc.anjinhocompatas.view.adapter.ViewPagerAdapter;
@@ -108,6 +109,17 @@ public class MainActivity extends AppCompatActivity {
         this.mTabLayout.setupWithViewPager(aViewPager);
     }
 
+    private ProfileDrawerItem getUsuarioPerfil() {
+        String lEmail = SharedPreferencesUtil.lerPreferenciaString(MainActivity.this, R.string.key_usuriao_logado);
+        ProfileDrawerItem lProfileDrawerItem = new ProfileDrawerItem();
+        lProfileDrawerItem.withName("Usuário").withEmail(getResources().getString(R.string.app_name));
+        if(lEmail != null) {
+            Usuario lUsuario = Usuario.carregarUsuarioPorEmailBD(MainActivity.this, lEmail);
+            lProfileDrawerItem.withName(lUsuario.getNome()).withEmail(lUsuario.getEmail());
+        }
+        return lProfileDrawerItem;
+    }
+
     private void criarMenuLateral() {
         this.hearderNavegationLeft = new AccountHeader()
                 .withActivity(this)
@@ -115,11 +127,7 @@ public class MainActivity extends AppCompatActivity {
                 .withHeaderBackground(R.color.primary)
                 .withThreeSmallProfileImages(false)
                 .withSelectionListEnabledForSingleProfile(false)
-//                .withHeaderBackground(R.drawable.header)
-                .addProfiles(new ProfileDrawerItem()
-                        .withName("Usuário")
-                        //.withIcon(getResources().getDrawable(R.mipmap.ic_usuario_dog))
-                        .withEmail(getResources().getString(R.string.app_name)))
+                .addProfiles(getUsuarioPerfil())
                 .build();
 
         this.navegationDrawerLeft = new Drawer()
@@ -269,7 +277,7 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode) {
             case LoginActivity.LOGIN_ID:
-                Usuario lUsuario = (Usuario) data.getExtras().get(LoginActivity.LOGIN_EXTRA_USUARIO);
+                Usuario lUsuario = (Usuario) data.getExtras().get(getString(R.string.key_usuriao_logado));
                 int lPosicao = this.navegationDrawerLeft.getPositionFromIdentifier(MenuLateralOpcoesProps.ENTRAR);
                 this.navegationDrawerLeft.removeItem(lPosicao);
                 this.hearderNavegationLeft.removeProfile(0);

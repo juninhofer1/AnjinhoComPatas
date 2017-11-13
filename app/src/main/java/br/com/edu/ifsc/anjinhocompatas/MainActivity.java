@@ -2,6 +2,9 @@ package br.com.edu.ifsc.anjinhocompatas;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
@@ -22,16 +25,15 @@ import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
-import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import br.com.edu.ifsc.anjinhocompatas.dao.implementacao.UsuarioDao;
 import br.com.edu.ifsc.anjinhocompatas.props.MenuLateralOpcoesProps;
 import br.com.edu.ifsc.anjinhocompatas.props.MenuLateralProps;
-import br.com.edu.ifsc.anjinhocompatas.utilitarios.ColorUtil;
-import br.com.edu.ifsc.anjinhocompatas.utilitarios.DialogUtil;
+import br.com.edu.ifsc.anjinhocompatas.utilitarios.CoresUtil;
+import br.com.edu.ifsc.anjinhocompatas.utilitarios.DialogoUtil;
+import br.com.edu.ifsc.anjinhocompatas.utilitarios.ImagemUtil;
 import br.com.edu.ifsc.anjinhocompatas.utilitarios.SharedPreferencesUtil;
 import br.com.edu.ifsc.anjinhocompatas.view.DesenvolvimentoActivity;
 import br.com.edu.ifsc.anjinhocompatas.view.LoginActivity;
@@ -46,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar mToolbar;
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
+    private ProfileDrawerItem mProfileDrawerItem;
 
 
     @Override
@@ -55,11 +58,6 @@ public class MainActivity extends AppCompatActivity {
         //Chama o método de inicialização dos componentes
         //dentro desse método pode ter varios outros ou só as referencias dos componentes.
         this.inicializarComponentes();
-
-        //Inserindo o primeiro registro no banco, só descomentar :D
-//        utilizandoBancoDeDados();
-
-
     }
 
     //Inicializando os componetes e adicionando algumas caracteristicas.
@@ -100,8 +98,10 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentAnimais fragmentGato = new FragmentAnimais();
         fragmentGato.setArguments(bundleCat);
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction();
+
         ViewPagerAdapter lViewPagerAdapter = new ViewPagerAdapter(fragmentManager);
         lViewPagerAdapter.addFragment(fragmentCao, "Cães");
         lViewPagerAdapter.addFragment(fragmentGato, "Gatos");
@@ -111,13 +111,14 @@ public class MainActivity extends AppCompatActivity {
 
     private ProfileDrawerItem getUsuarioPerfil() {
         String lEmail = SharedPreferencesUtil.lerPreferenciaString(MainActivity.this, R.string.key_usuriao_logado);
-        ProfileDrawerItem lProfileDrawerItem = new ProfileDrawerItem();
-        lProfileDrawerItem.withName("Usuário").withEmail(getResources().getString(R.string.app_name));
+        this.mProfileDrawerItem = new ProfileDrawerItem();
+        mProfileDrawerItem.withName("Usuário").withEmail(getResources().getString(R.string.app_name));
         if(lEmail != null) {
             Usuario lUsuario = Usuario.carregarUsuarioPorEmailBD(MainActivity.this, lEmail);
-            lProfileDrawerItem.withName(lUsuario.getNome()).withEmail(lUsuario.getEmail());
+            Drawable lDrawable = ImagemUtil.converterBase64(getResources(), lUsuario.getFoto());
+            mProfileDrawerItem.withName(lUsuario.getNome()).withIcon(lDrawable).withEmail(lUsuario.getEmail());
         }
-        return lProfileDrawerItem;
+        return mProfileDrawerItem;
     }
 
     private void criarMenuLateral() {
@@ -156,39 +157,42 @@ public class MainActivity extends AppCompatActivity {
         this.navegationDrawerLeft.addItem(new PrimaryDrawerItem()
                 .withIdentifier(MenuLateralProps.INICIAL.getmId())
                 .withName(MenuLateralProps.INICIAL.getmNomeTela())
-                .withIcon(ColorUtil.alterarCorDrawableMenuItem(getApplication(), R.drawable.icon_home))
+                .withIcon(CoresUtil.alterarCorDrawableMenuItem(getApplication(), R.drawable.icon_home))
                 .withTextColor(getResources().getColor(R.color.colorPrimary)));
 
         this.navegationDrawerLeft.addItem(new PrimaryDrawerItem()
                 .withIdentifier(MenuLateralProps.FAVORITOS.getmId())
                 .withName(MenuLateralProps.FAVORITOS.getmNomeTela())
-                .withIcon(ColorUtil.alterarCorDrawableMenuItem(getApplication(), R.drawable.ic_favorite))
+                .withIcon(CoresUtil.alterarCorDrawableMenuItem(getApplication(), R.drawable.ic_favorite))
                 .withTextColor(getResources().getColor(R.color.colorPrimary)));
 
         this.navegationDrawerLeft.addItem(new PrimaryDrawerItem()
                 .withIdentifier(MenuLateralProps.ECONTRE_UM_AMIGO.getmId())
                 .withName(MenuLateralProps.ECONTRE_UM_AMIGO.getmNomeTela())
-                .withIcon(ColorUtil.alterarCorDrawableMenuItem(getApplication(), R.drawable.icon_search))
+                .withIcon(CoresUtil.alterarCorDrawableMenuItem(getApplication(), R.drawable.icon_search))
                 .withTextColor(getResources().getColor(R.color.colorPrimary)));
 
         this.navegationDrawerLeft.addItem(new DividerDrawerItem());
 
-        this.navegationDrawerLeft.addItem(new PrimaryDrawerItem()
-                .withIdentifier(MenuLateralProps.Entrar.getmId())
-                .withName(MenuLateralProps.Entrar.getmNomeTela())
-                .withIcon(ColorUtil.alterarCorDrawableMenuItem(getApplication(), R.drawable.ic_login))
-                .withTextColor(getResources().getColor(R.color.colorPrimary)));
+        if(SharedPreferencesUtil.lerPreferenciaString(MainActivity.this, R.string.key_usuriao_logado) == null){
+            this.navegationDrawerLeft.addItem(new PrimaryDrawerItem()
+                    .withIdentifier(MenuLateralProps.Entrar.getmId())
+                    .withName(MenuLateralProps.Entrar.getmNomeTela())
+                    .withIcon(CoresUtil.alterarCorDrawableMenuItem(getApplication(), R.drawable.ic_login))
+                    .withTextColor(getResources().getColor(R.color.colorPrimary)));
+
+        }
 
         this.navegationDrawerLeft.addItem(new PrimaryDrawerItem()
                 .withIdentifier(MenuLateralProps.AJUDA.getmId())
                 .withName(MenuLateralProps.AJUDA.getmNomeTela())
-                .withIcon(ColorUtil.alterarCorDrawableMenuItem(getApplication(), R.drawable.ic_help))
+                .withIcon(CoresUtil.alterarCorDrawableMenuItem(getApplication(), R.drawable.ic_help))
                 .withTextColor(getResources().getColor(R.color.colorPrimary)));
 
         this.navegationDrawerLeft.addItem(new PrimaryDrawerItem()
                 .withIdentifier(MenuLateralProps.SAIR.getmId())
                 .withName(MenuLateralProps.SAIR.getmNomeTela())
-                .withIcon(ColorUtil.alterarCorDrawableMenuItem(getApplication(), R.drawable.icon_exit))
+                .withIcon(CoresUtil.alterarCorDrawableMenuItem(getApplication(), R.drawable.icon_exit))
                 .withTextColor(getResources().getColor(R.color.colorPrimary)));
         this.navegationDrawerLeft.setSelection(0);
     }
@@ -238,6 +242,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 LoginManager.getInstance().logOut();
+                SharedPreferencesUtil.removerPreferencia(MainActivity.this, R.string.key_usuriao_logado);
                 finish();
             }
         };
@@ -248,43 +253,24 @@ public class MainActivity extends AppCompatActivity {
 
             }
         };
-        DialogUtil.dialogYesNo(MainActivity.this, "Deseja sair do aplicativo?", lYesClick, lNoClick).show();
+        DialogoUtil.dialogYesNo(MainActivity.this, "Deseja sair do aplicativo?", lYesClick, lNoClick).show();
     }
 
-    private void utilizandoBancoDeDados() {
-        UsuarioDao usuarioDao = new UsuarioDao(MainActivity.this);
-        //Necessário o método open() para abrir o banco de dados, para poder fazer as operações de salvar, alterar, deletar, consultar
-        usuarioDao.open();
-
-        // Cria usuário para teste
-        Usuario lUsuario = new Usuario();
-        lUsuario.setIdade(21);
-        lUsuario.setNome("Mahala Hala (Pipoca doce)");
-        lUsuario.setEndereco("Rua Mahala hala hala");
-        lUsuario.setEmail("mahala@gmail.com");
-
-        //Após criar o objeto do usuário vamos inserilo em nosso banco de dados
-        usuarioDao.salvar(lUsuario);
-
-        List<Usuario> usuarios = usuarioDao.carregarTodosOsUruarios();
-        if(usuarioDao != null)
-            for (Usuario usuario : usuarios) {
-                Toast.makeText(MainActivity.this, usuario.getNome(), Toast.LENGTH_SHORT).show();
-            }
-    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode) {
             case LoginActivity.LOGIN_ID:
                 Usuario lUsuario = (Usuario) data.getExtras().get(getString(R.string.key_usuriao_logado));
+                Drawable lDrawable = ImagemUtil.converterBase64(getResources(), lUsuario.getFoto());
+                mProfileDrawerItem = new ProfileDrawerItem()
+                        .withName(lUsuario.getNome())
+                        .withIcon(lDrawable)
+                        .withEmail(lUsuario.getEmail());
                 int lPosicao = this.navegationDrawerLeft.getPositionFromIdentifier(MenuLateralOpcoesProps.ENTRAR);
                 this.navegationDrawerLeft.removeItem(lPosicao);
                 this.hearderNavegationLeft.removeProfile(0);
-                this.hearderNavegationLeft.addProfiles(new ProfileDrawerItem()
-                        .withName(lUsuario.getNome())
-                        .withIcon(getResources().getDrawable(R.mipmap.ic_usuario_dog))
-                        .withEmail(lUsuario.getEmail()));
+                this.hearderNavegationLeft.addProfiles(mProfileDrawerItem);
                 this.navegationDrawerLeft.setSelection(0);
                 break;
         }

@@ -10,7 +10,7 @@ import android.content.DialogInterface;
  * Created by Wilson on 07/10/2017.
  */
 
-public final class DialogUtil {
+public final class DialogoUtil {
 
     public static Dialog dialogYesNo(Activity aContext, String aMensagem, DialogInterface.OnClickListener aOnclickYes, DialogInterface.OnClickListener aOnclikNo) {
         AlertDialog.Builder builder = new AlertDialog.Builder(aContext)

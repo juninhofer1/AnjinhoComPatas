@@ -42,4 +42,22 @@ public class SharedPreferencesUtil {
         String lPreference = sharedPref.getString(aKeyPreference, null);
         return lPreference;
     }
+
+
+    public static void removerPreferencia(Activity aContext, String aKeyPreference) {
+        SharedPreferences sharedPref = aContext.getSharedPreferences(aContext.getString(R.string.key_app_name), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.remove(aKeyPreference);
+        editor.apply();
+        editor.commit();
+    }
+
+    public static void removerPreferencia(Activity aContext, int aKeyPreference) {
+        SharedPreferences sharedPref = aContext.getSharedPreferences(aContext.getString(R.string.key_app_name), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.remove(aContext.getString(aKeyPreference));
+        editor.apply();
+        editor.commit();
+    }
+
 }

@@ -1,13 +1,19 @@
 package br.com.edu.ifsc.anjinhocompatas.vo;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.io.Serializable;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import br.com.edu.ifsc.anjinhocompatas.dao.implementacao.UsuarioDao;
+import br.com.edu.ifsc.anjinhocompatas.utilitarios.ImagemUtil;
 
 /**
  * Created by Mobile on 09/10/2017.
@@ -79,7 +85,7 @@ public class Usuario implements Serializable {
         this.dataNascimento = dataNascimento;
     }
 
-    public static Usuario converterObjetoJsonFacebook (JSONObject aJsonObject) throws JSONException {
+    public static Usuario converterObjetoJsonFacebook (JSONObject aJsonObject) throws JSONException{
         Usuario lUsuario = new Usuario();
         String lEmail = aJsonObject.getString("email");
         if(lEmail != null) {
@@ -91,16 +97,19 @@ public class Usuario implements Serializable {
             lUsuario.setNome(lNome);
         }
 
-        String lFoto = aJsonObject.getString("picture");
-        if(lFoto != null) {
-            lUsuario.setFoto(lFoto);
+        if(aJsonObject.getJSONObject("picture") != null) {
+            String aUrl = aJsonObject.getJSONObject("picture").getJSONObject("data").getString("url");
+            Bitmap LBitmap = ImagemUtil.getBitmapPelaUrl(aUrl);
+            if(LBitmap != null) {
+                String lImageBase64 = ImagemUtil.converter(LBitmap);
+                lUsuario.setFoto(lImageBase64);
+            }
         }
 
         String lDataNascimento = aJsonObject.getString("birthday");
         if(lDataNascimento != null) {
             lUsuario.setDataNascimento(lDataNascimento);
         }
-
         return lUsuario;
     }
 

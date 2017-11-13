@@ -12,7 +12,7 @@ import br.com.edu.ifsc.anjinhocompatas.R;
  * Created by Wilson on 06/10/2017.
  */
 
-public class ColorUtil {
+public class CoresUtil {
 
     public static Drawable alterarCorDrawable(Context aAplicacao, int aResourceIdImagem, int aResourceColor) {
         Drawable lMyIcon = null;

@@ -13,6 +13,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.facebook.CallbackManager;
@@ -26,6 +27,7 @@ import com.facebook.login.widget.LoginButton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.Arrays;
 
 import br.com.edu.ifsc.anjinhocompatas.R;
@@ -35,7 +37,6 @@ import br.com.edu.ifsc.anjinhocompatas.vo.Usuario;
 public class LoginActivity extends AppCompatActivity {
 
     public static final int LOGIN_ID = 10;
-
     private AutoCompleteTextView mEmailView;
     private EditText mSenhaView;
     private TextView mTextViewCadastrese;
@@ -143,7 +144,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private void loginComFacebook() {
         Intent intent = new Intent();
-        SharedPreferencesUtil.criarPreferenciaString(LoginActivity.this, mUsuario.getEmail(), R.string.key_usuriao_logado);
         intent.putExtra(getString(R.string.key_usuriao_logado), mUsuario);
         setResult(LOGIN_ID, intent);
         finish();
@@ -166,6 +166,7 @@ public class LoginActivity extends AppCompatActivity {
                                 try {
                                     mUsuario = Usuario.converterObjetoJsonFacebook(aObject);
                                     Usuario.savarUsuarioBaseDados(LoginActivity.this, mUsuario);
+                                    SharedPreferencesUtil.criarPreferenciaString(LoginActivity.this, mUsuario.getEmail(), R.string.key_usuriao_logado);
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -173,7 +174,7 @@ public class LoginActivity extends AppCompatActivity {
                             }
                         });
                 Bundle parameters = new Bundle();
-                parameters.putString("fields", "id,name,email,gender, picture,birthday"); // id,first_name,last_name,email,gender,birthday,cover,picture.type(large)
+                parameters.putString("fields", "id,name,email,gender, picture.width(150).height(150),birthday"); // id,first_name,last_name,email,gender,birthday,cover,picture.type(large)
                 request.setParameters(parameters);
                 request.executeAsync();
             }
@@ -190,6 +191,5 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
 }
 

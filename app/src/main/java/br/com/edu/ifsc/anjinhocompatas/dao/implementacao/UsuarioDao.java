@@ -27,6 +27,7 @@ public class UsuarioDao extends BasicDAO {
     public static final String EMAIL = "EMAIL";
     public static final String ENDERECO = "ENDERECO";
     public static final String IDADE = "IDADE";
+    public static final String FOTO = "FOTO";
 
     public static final String CREATE_TABLE = definirTabela();
 
@@ -38,6 +39,7 @@ public class UsuarioDao extends BasicDAO {
             tb.addColuna(EMAIL, tb.TEXT, false);
             tb.addColuna(ENDERECO, tb.TEXT, false);
             tb.addColuna(IDADE, tb.INTEGER, false);
+            tb.addColuna(FOTO, tb.TEXT, false);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -98,6 +100,7 @@ public class UsuarioDao extends BasicDAO {
         values.put(EMAIL, aUsuario.getEmail());
         values.put(ENDERECO, aUsuario.getEndereco());
         values.put(IDADE, aUsuario.getIdade());
+        values.put(FOTO, aUsuario.getFoto());
         return values;
     }
 
@@ -111,6 +114,7 @@ public class UsuarioDao extends BasicDAO {
         user.setEmail(c.getString(c.getColumnIndex(EMAIL)));
         user.setEndereco(c.getString(c.getColumnIndex(ENDERECO)));
         user.setIdade(c.getInt(c.getColumnIndex(IDADE)));
+        user.setFoto(c.getString(c.getColumnIndex(FOTO)));
         return user;
     }
 }

@@ -47,7 +47,7 @@ public class GridViewAdapterAnimaisRecycler extends RecyclerView.Adapter<GridVie
     @Override
     public void onBindViewHolder(GridViewAdapterAnimaisRecycler.ViewHolder viewHolder, int i) {
         viewHolder.nome.setText(mAnimais.get(i).getNome());
-        viewHolder.descricao.setText(mAnimais.get(i).getDescricao());
+        viewHolder.raca.setText(mAnimais.get(i).getRaca());
         viewHolder.img.setImageResource(mAnimais.get(i).getImagem());
     }
 
@@ -59,14 +59,14 @@ public class GridViewAdapterAnimaisRecycler extends RecyclerView.Adapter<GridVie
     public class ViewHolder extends RecyclerView.ViewHolder{
         private ImageView img;
         private TextView nome;
-        private TextView descricao;
+        private TextView raca;
 
 
         public ViewHolder(View view) {
             super(view);
             img = (ImageView) view.findViewById(R.id.imageView);
             nome = (TextView) view.findViewById(R.id.tituloId);
-            descricao = (TextView) view.findViewById(R.id.descricaoId);
+            raca = (TextView) view.findViewById(R.id.descricaoId);
         }
     }
 

@@ -1,5 +1,7 @@
 package br.com.edu.ifsc.anjinhocompatas.vo;
 
+import android.text.Editable;
+
 import java.io.Serializable;
 
 /**
@@ -9,7 +11,6 @@ import java.io.Serializable;
 public class Animal implements Serializable{
     private int imagem;
     private String nome;
-    private String descricao;
     private String raca;
     private String tamanho;
     private String cor;
@@ -18,10 +19,9 @@ public class Animal implements Serializable{
 
     //é chamado no fragment pra adicionar os componentes abaixo
 
-    public Animal(int imageId, String nome, String descricao, String raca, String tamanho, String cor, int idade){
+    public Animal(int imageId, String nome, String raca, String tamanho, String cor, int idade){
         this.imagem = imageId;
         this.nome = nome;
-        this.descricao = descricao;
         this.raca = raca;
         this.tamanho = tamanho;
         this.cor = cor;
@@ -76,11 +76,5 @@ public class Animal implements Serializable{
         this.nome = nome;
     }
 
-    public String getDescricao() {
-        return descricao;
-    }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
 }

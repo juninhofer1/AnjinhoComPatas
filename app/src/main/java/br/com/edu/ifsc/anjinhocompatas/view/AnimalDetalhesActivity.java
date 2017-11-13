@@ -45,9 +45,12 @@ import br.com.edu.ifsc.anjinhocompatas.vo.Animal;
             TextView corAnimal = (TextView) findViewById(R.id.corAnimalId);
             TextView idadeAnimal = (TextView) findViewById(R.id.idadeAnimalId);
 
-            racaAnimal.setText(mAnimal.getDescricao());
+            racaAnimal.setText(mAnimal.getRaca());
             imagemAnimalDetalhes.setImageResource(mAnimal.getImagem());
             nomeAnimal.setText(mAnimal.getNome());
+            tamanhoAnimal.setText(mAnimal.getTamanho());
+            corAnimal.setText(mAnimal.getCor());
+            idadeAnimal.setText(String.valueOf(mAnimal.getIdade()));
 
 
         }

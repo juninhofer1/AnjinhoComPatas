@@ -26,9 +26,6 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
-import java.util.List;
-
-import br.com.edu.ifsc.anjinhocompatas.dao.implementacao.UsuarioDao;
 import br.com.edu.ifsc.anjinhocompatas.props.MenuLateralOpcoesProps;
 import br.com.edu.ifsc.anjinhocompatas.props.MenuLateralProps;
 import br.com.edu.ifsc.anjinhocompatas.utilitarios.CoresUtil;
@@ -38,7 +35,7 @@ import br.com.edu.ifsc.anjinhocompatas.utilitarios.SharedPreferencesUtil;
 import br.com.edu.ifsc.anjinhocompatas.view.DesenvolvimentoActivity;
 import br.com.edu.ifsc.anjinhocompatas.view.LoginActivity;
 import br.com.edu.ifsc.anjinhocompatas.view.adapter.ViewPagerAdapter;
-import br.com.edu.ifsc.anjinhocompatas.view.fragment.FragmentAnimais;
+
 import br.com.edu.ifsc.anjinhocompatas.vo.Usuario;
 
 public class MainActivity extends AppCompatActivity {

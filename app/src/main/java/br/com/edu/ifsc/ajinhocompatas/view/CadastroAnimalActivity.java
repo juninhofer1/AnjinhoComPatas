@@ -25,8 +25,8 @@ public class CadastroAnimalActivity extends AppCompatActivity {
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
         setContentView(R.layout.cadastro_animal);
-
         final Animal mAnimal = new Animal();
+
         int[] idade = {1,2,3,4,5,6,7,8,9,10,11,12,13};
         final String[] racaCao = {"Indeterminada",
                 "Bulldog Francês", "Bulldog Inglês",

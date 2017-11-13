@@ -28,6 +28,10 @@ public class Animal implements Serializable{
         this.idade =idade;
     }
 
+    public Animal() {
+
+    }
+
     public String getRaca() {
         return raca;
     }

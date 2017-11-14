@@ -21,13 +21,13 @@ import br.com.edu.ifsc.anjinhocompatas.vo.Animal;
 
 public class CadastroAnimalActivity extends AppCompatActivity {
 
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
         setContentView(R.layout.cadastro_animal);
         final Animal mAnimal = new Animal();
 
-        int[] idade = {1,2,3,4,5,6,7,8,9,10,11,12,13};
         final String[] racaCao = {"Indeterminada",
                 "Bulldog Francês", "Bulldog Inglês",
                 "Chow Chow",
@@ -38,7 +38,19 @@ public class CadastroAnimalActivity extends AppCompatActivity {
                 "vira-lata",
                 "Yorkshire Terrier"
         };
-        String[] racaGato = {};
+        String[] racaGato = {"Angorá",
+                "Burmese", "British Shorthair",
+                "Gato-de-bengaçla",
+                "Himalaia",
+                "Persa",
+                "Ragdoll",
+                "Siamês", "Siberiano", "Sphynx"
+
+        };
+
+        String [] tamanho = {"Pequeno", "Médio", "Grande"};
+        String [] cor = {"Amarelado", "Branco", "Cinza", "Malhado", "Marrom", "Preto"};
+        int[] idade = {1,2,3,4,5,6,7,8,9,10,11,12,13};
 
         //spinner cao  (contexto, telinha, Array que vai no spinner)
         ArrayAdapter<String> adapterCao = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, racaCao);
@@ -82,9 +94,6 @@ public class CadastroAnimalActivity extends AppCompatActivity {
         }
 
 
-
-
-
-
     }
+
 }

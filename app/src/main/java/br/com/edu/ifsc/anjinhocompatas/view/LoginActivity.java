@@ -80,10 +80,10 @@ public class LoginActivity extends AppCompatActivity {
         this.mTextViewCadastrese.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, DesenvolvimentoActivity.class));
+                startActivity(new Intent(LoginActivity.this, CadastroUsuarioActivity.class));
             }
         });
-        criarEventoLoginFacebookButton();
+        eventoLoginFacebook();
     }
 
     @Override
@@ -149,7 +149,7 @@ public class LoginActivity extends AppCompatActivity {
         finish();
     }
 
-    private void criarEventoLoginFacebookButton() {
+    private void eventoLoginFacebook() {
         LoginManager.getInstance().logOut();
         this.mCallbackManager = CallbackManager.Factory.create();
         this.mLoginButtonFacebook = (LoginButton) findViewById(R.id.loginButton);

@@ -36,6 +36,7 @@ import br.com.edu.ifsc.anjinhocompatas.view.DesenvolvimentoActivity;
 import br.com.edu.ifsc.anjinhocompatas.view.LoginActivity;
 import br.com.edu.ifsc.anjinhocompatas.view.adapter.ViewPagerAdapter;
 
+import br.com.edu.ifsc.anjinhocompatas.view.fragment.FragmentAnimais;
 import br.com.edu.ifsc.anjinhocompatas.vo.Usuario;
 
 public class MainActivity extends AppCompatActivity {

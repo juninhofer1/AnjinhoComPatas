@@ -2,15 +2,11 @@ package br.com.edu.ifsc.anjinhocompatas.vo;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.io.Serializable;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 import br.com.edu.ifsc.anjinhocompatas.dao.implementacao.UsuarioDao;
 import br.com.edu.ifsc.anjinhocompatas.utilitarios.ImagemUtil;

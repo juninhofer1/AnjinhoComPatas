@@ -37,6 +37,11 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
+        <activity
+            android:name="br.com.edu.ifsc.anjinhocompatas.view.CadastroUsuarioActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
 
         <activity android:name="com.facebook.FacebookActivity"

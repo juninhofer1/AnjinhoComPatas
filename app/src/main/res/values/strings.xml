@@ -33,4 +33,12 @@
     <string name="erro_comunicacao">Erro de comunicação</string>
     <string name="key_usuriao_logado">usuario_logado</string>
     <string name="key_app_name">anjinho_com_patas</string>
+
+    <string name="prompt_nome">Nome</string>
+    <string name="prompt_endereco">Endereco</string>
+    <string name="prompt_nascimento">Data de nascimento</string>
+    <string name="prompt_confirmacao_senha">Confirmação senha</string>
+    <string name="prompt_cadastrar">Cadastrar</string>
+
+    <string name="error_preencha_campo">Preencha o campo</string>
 </resources>

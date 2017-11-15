@@ -1,4 +1,4 @@
-package br.com.edu.ifsc.ajinhocompatas.view;
+package br.com.edu.ifsc.anjinhocompatas;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;

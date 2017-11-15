@@ -1,4 +1,4 @@
-package br.com.edu.ifsc.ajinhocompatas.view.fragment;
+package br.com.edu.ifsc.anjinhocompatas.view.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -12,16 +12,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 import br.com.edu.ifsc.anjinhocompatas.CadastroAnimalActivity;
+import br.com.edu.ifsc.anjinhocompatas.MainActivity;
 import br.com.edu.ifsc.anjinhocompatas.R;
 import br.com.edu.ifsc.anjinhocompatas.bancodedados.implementacao.UsuarioDao;
 import br.com.edu.ifsc.anjinhocompatas.modelos.Usuario;
 import br.com.edu.ifsc.anjinhocompatas.utilitarios.DialogoUtil;
 import br.com.edu.ifsc.anjinhocompatas.utilitarios.ImagemUtil;
+import br.com.edu.ifsc.anjinhocompatas.utilitarios.SharedPreferencesUtil;
 
 /**
  * Created by Wilson on 13/11/2017.
@@ -187,7 +190,15 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
         if (aView != null) {
             aView.requestFocus();
         } else {
-            usuarioDao.salvar(mUsuario);
+            if(Usuario.savarUsuarioBaseDados(CadastroUsuarioActivity.this ,mUsuario)){
+                Toast.makeText(CadastroUsuarioActivity.this, getString(R.string.msm_cadastro_sucesso), Toast.LENGTH_LONG);
+                SharedPreferencesUtil.criarPreferenciaString(CadastroUsuarioActivity.this, mUsuario.getEmail(), R.string.key_usuriao_logado);
+                Intent intent = new Intent(CadastroUsuarioActivity.this, MainActivity.class);
+                intent.setFlags( Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intent);
+            } else {
+                Toast.makeText(CadastroUsuarioActivity.this, getString(R.string.msm_cadastro_erro), Toast.LENGTH_LONG);
+            }
         }
     }
 

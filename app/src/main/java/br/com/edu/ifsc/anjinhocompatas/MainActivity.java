@@ -110,8 +110,12 @@ public class MainActivity extends AppCompatActivity {
         mProfileDrawerItem.withName("Usuário").withEmail(getResources().getString(R.string.app_name));
         if(lEmail != null) {
             Usuario lUsuario = Usuario.carregarUsuarioPorEmailBD(MainActivity.this, lEmail);
-            Drawable lDrawable = ImagemUtil.converterBase64(getResources(), lUsuario.getFoto());
-            mProfileDrawerItem.withName(lUsuario.getNome()).withIcon(lDrawable).withEmail(lUsuario.getEmail());
+            if(lUsuario.getFoto() != null) {
+                Drawable lDrawable = ImagemUtil.converterBase64(getResources(), lUsuario.getFoto());
+                mProfileDrawerItem.withName(lUsuario.getNome()).withIcon(lDrawable).withEmail(lUsuario.getEmail());
+            } else {
+                mProfileDrawerItem.withName(lUsuario.getNome()).withEmail(lUsuario.getEmail());
+            }
         }
         return mProfileDrawerItem;
     }

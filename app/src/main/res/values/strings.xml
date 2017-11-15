@@ -43,4 +43,7 @@
     <string name="error_preencha_campo">Preencha o campo</string>
     <string name="error_email_cadastado">Email já está cadastrado</string>
     <string name="error_senha_diferente">Confirmação de senha diferente</string>
+
+    <string name="msm_cadastro_sucesso">Cadastro efetuado com sucesso!</string>
+    <string name="msm_cadastro_erro">Não foi possivel efetuar o cadastro, tente novamente!</string>
 </resources>

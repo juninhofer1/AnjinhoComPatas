@@ -23,6 +23,7 @@ public class Usuario implements Serializable {
     private String email;
     private String foto;
     private String dataNascimento;
+    private String senha;
     private int idade;
 
     public int getId() {
@@ -75,6 +76,14 @@ public class Usuario implements Serializable {
 
     public String getDataNascimento() {
         return dataNascimento;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public void setDataNascimento(String dataNascimento) {

@@ -41,4 +41,6 @@
     <string name="prompt_cadastrar">Cadastrar</string>
 
     <string name="error_preencha_campo">Preencha o campo</string>
+    <string name="error_email_cadastado">Email já está cadastrado</string>
+    <string name="error_senha_diferente">Confirmação de senha diferente</string>
 </resources>

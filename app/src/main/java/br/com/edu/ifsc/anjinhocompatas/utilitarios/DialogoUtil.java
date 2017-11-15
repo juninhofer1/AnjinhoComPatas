@@ -18,7 +18,15 @@ public final class DialogoUtil {
                 .setNegativeButton("Não", aOnclikNo);
         builder.setTitle("Alerta");
         builder.setMessage(aMensagem);
-        // Create the AlertDialog object and return it
+        return builder.create();
+    }
+
+    public static Dialog dialogCamera(Activity aContext, String aMensagem, DialogInterface.OnClickListener aOnclickYes, DialogInterface.OnClickListener aOnclikNo) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(aContext)
+                .setPositiveButton("Galeria", aOnclickYes)
+                .setNegativeButton("Camera", aOnclikNo);
+        builder.setTitle("Foto");
+        builder.setMessage(aMensagem);
         return builder.create();
     }
 }

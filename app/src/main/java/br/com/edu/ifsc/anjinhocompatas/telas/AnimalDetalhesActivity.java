@@ -1,27 +1,14 @@
-package br.com.edu.ifsc.anjinhocompatas.view;
+package br.com.edu.ifsc.anjinhocompatas.telas;
 
-
-import android.content.Context;
-import android.content.Intent;
 
 import android.os.Bundle;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.util.List;
-
 import br.com.edu.ifsc.anjinhocompatas.R;
-import br.com.edu.ifsc.anjinhocompatas.vo.Animal;
+import br.com.edu.ifsc.anjinhocompatas.modelos.Animal;
 
     /**
      * Created by keila on 02/11/2017.

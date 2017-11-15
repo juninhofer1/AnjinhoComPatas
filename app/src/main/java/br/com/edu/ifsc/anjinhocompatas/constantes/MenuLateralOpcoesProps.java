@@ -1,4 +1,4 @@
-package br.com.edu.ifsc.anjinhocompatas.props;
+package br.com.edu.ifsc.anjinhocompatas.constantes;
 
 /**
  * Created by Wilson on 13/10/2017.

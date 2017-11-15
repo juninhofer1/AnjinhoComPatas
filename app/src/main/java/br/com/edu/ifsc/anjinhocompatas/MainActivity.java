@@ -2,9 +2,7 @@ package br.com.edu.ifsc.anjinhocompatas;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
@@ -16,7 +14,6 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
-import android.widget.Toast;
 
 import com.facebook.login.LoginManager;
 import com.mikepenz.materialdrawer.Drawer;
@@ -26,18 +23,18 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
-import br.com.edu.ifsc.anjinhocompatas.props.MenuLateralOpcoesProps;
-import br.com.edu.ifsc.anjinhocompatas.props.MenuLateralProps;
+import br.com.edu.ifsc.anjinhocompatas.constantes.MenuLateralOpcoesProps;
+import br.com.edu.ifsc.anjinhocompatas.constantes.MenuLateralProps;
 import br.com.edu.ifsc.anjinhocompatas.utilitarios.CoresUtil;
 import br.com.edu.ifsc.anjinhocompatas.utilitarios.DialogoUtil;
 import br.com.edu.ifsc.anjinhocompatas.utilitarios.ImagemUtil;
 import br.com.edu.ifsc.anjinhocompatas.utilitarios.SharedPreferencesUtil;
-import br.com.edu.ifsc.anjinhocompatas.view.DesenvolvimentoActivity;
-import br.com.edu.ifsc.anjinhocompatas.view.LoginActivity;
-import br.com.edu.ifsc.anjinhocompatas.view.adapter.ViewPagerAdapter;
+import br.com.edu.ifsc.anjinhocompatas.telas.DesenvolvimentoActivity;
+import br.com.edu.ifsc.anjinhocompatas.telas.LoginActivity;
+import br.com.edu.ifsc.anjinhocompatas.telas.adapter.ViewPagerAdapter;
 
-import br.com.edu.ifsc.anjinhocompatas.view.fragment.FragmentAnimais;
-import br.com.edu.ifsc.anjinhocompatas.vo.Usuario;
+import br.com.edu.ifsc.anjinhocompatas.telas.fragment.FragmentAnimais;
+import br.com.edu.ifsc.anjinhocompatas.modelos.Usuario;
 
 public class MainActivity extends AppCompatActivity {
 

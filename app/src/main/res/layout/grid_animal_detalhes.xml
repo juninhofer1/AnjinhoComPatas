@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="br.com.edu.ifsc.anjinhocompatas.view.AnimalDetalhesActivity">
+    tools:context="br.com.edu.ifsc.anjinhocompatas.telas.AnimalDetalhesActivity">
 
     <ImageView
         android:id="@+id/imagemDetalhesId"

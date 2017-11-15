@@ -1,4 +1,4 @@
-package br.com.edu.ifsc.anjinhocompatas.props;
+package br.com.edu.ifsc.anjinhocompatas.constantes;
 
 import br.com.edu.ifsc.anjinhocompatas.R;
 

@@ -12,8 +12,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import br.com.edu.ifsc.anjinhocompatas.R;
-import br.com.edu.ifsc.anjinhocompatas.vo.Animal;
+import br.com.edu.ifsc.anjinhocompatas.modelos.Animal;
 
 /**
  * Created by keila on 06/11/2017.

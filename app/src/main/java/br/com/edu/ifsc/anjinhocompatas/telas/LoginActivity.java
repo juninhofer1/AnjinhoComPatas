@@ -1,4 +1,4 @@
-package br.com.edu.ifsc.anjinhocompatas.view;
+package br.com.edu.ifsc.anjinhocompatas.telas;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +13,6 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.facebook.CallbackManager;
@@ -32,7 +31,7 @@ import java.util.Arrays;
 
 import br.com.edu.ifsc.anjinhocompatas.R;
 import br.com.edu.ifsc.anjinhocompatas.utilitarios.SharedPreferencesUtil;
-import br.com.edu.ifsc.anjinhocompatas.vo.Usuario;
+import br.com.edu.ifsc.anjinhocompatas.modelos.Usuario;
 
 public class LoginActivity extends AppCompatActivity {
 

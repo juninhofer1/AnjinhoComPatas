@@ -1,4 +1,4 @@
-package br.com.edu.ifsc.anjinhocompatas.view.adapter;
+package br.com.edu.ifsc.anjinhocompatas.telas.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

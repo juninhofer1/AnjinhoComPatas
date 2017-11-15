@@ -1,4 +1,4 @@
-package br.com.edu.ifsc.anjinhocompatas.vo;
+package br.com.edu.ifsc.anjinhocompatas.modelos;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -8,7 +8,7 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 
-import br.com.edu.ifsc.anjinhocompatas.dao.implementacao.UsuarioDao;
+import br.com.edu.ifsc.anjinhocompatas.bancodedados.implementacao.UsuarioDao;
 import br.com.edu.ifsc.anjinhocompatas.utilitarios.ImagemUtil;
 
 /**

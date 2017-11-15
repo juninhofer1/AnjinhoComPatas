@@ -1,4 +1,4 @@
-package br.com.edu.ifsc.anjinhocompatas.view;
+package br.com.edu.ifsc.anjinhocompatas.telas;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

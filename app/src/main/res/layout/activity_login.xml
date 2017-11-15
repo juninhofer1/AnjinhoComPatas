@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context="br.com.edu.ifsc.anjinhocompatas.view.LoginActivity">
+    tools:context="br.com.edu.ifsc.anjinhocompatas.telas.LoginActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

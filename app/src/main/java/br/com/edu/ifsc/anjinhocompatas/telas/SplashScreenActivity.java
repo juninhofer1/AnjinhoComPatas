@@ -1,4 +1,4 @@
-package br.com.edu.ifsc.anjinhocompatas.view;
+package br.com.edu.ifsc.anjinhocompatas.telas;
 
 import android.app.Activity;
 import android.content.Intent;

@@ -1,11 +1,10 @@
-package br.com.edu.ifsc.anjinhocompatas.view.fragment;
+package br.com.edu.ifsc.anjinhocompatas.telas.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,10 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.edu.ifsc.anjinhocompatas.R;
-import br.com.edu.ifsc.anjinhocompatas.view.AnimalDetalhesActivity;
-import br.com.edu.ifsc.anjinhocompatas.view.adapter.GridViewAdapterAnimaisRecycler;
-import br.com.edu.ifsc.anjinhocompatas.view.adapter.OnItemClickRecycler;
-import br.com.edu.ifsc.anjinhocompatas.vo.Animal;
+import br.com.edu.ifsc.anjinhocompatas.telas.AnimalDetalhesActivity;
+import br.com.edu.ifsc.anjinhocompatas.telas.adapter.GridViewAdapterAnimaisRecycler;
+import br.com.edu.ifsc.anjinhocompatas.telas.adapter.OnItemClickRecycler;
+import br.com.edu.ifsc.anjinhocompatas.modelos.Animal;
 
 /**
  * Created by Wilson on 13/10/2017.

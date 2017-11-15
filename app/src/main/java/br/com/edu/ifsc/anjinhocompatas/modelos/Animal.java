@@ -1,6 +1,4 @@
-package br.com.edu.ifsc.anjinhocompatas.vo;
-
-import android.text.Editable;
+package br.com.edu.ifsc.anjinhocompatas.modelos;
 
 import java.io.Serializable;
 

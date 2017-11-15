@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="br.com.edu.ifsc.anjinhocompatas.view.SplashScreenActivity"
+            android:name="br.com.edu.ifsc.anjinhocompatas.telas.SplashScreenActivity"
             android:theme="@style/AppTheme.NoActionBar"> <!-- android:label="@string/app_name" -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,21 +24,21 @@
             android:theme="@style/AppTheme.NoActionBar"> <!-- android:label="@string/app_name" -->
         </activity>
         <activity
-            android:name="br.com.edu.ifsc.anjinhocompatas.view.DesenvolvimentoActivity"
+            android:name="br.com.edu.ifsc.anjinhocompatas.telas.DesenvolvimentoActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-            android:name="br.com.edu.ifsc.anjinhocompatas.view.LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-
-        <activity
-            android:name="br.com.edu.ifsc.anjinhocompatas.view.AnimalDetalhesActivity"
+            android:name="br.com.edu.ifsc.anjinhocompatas.telas.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
         <activity
-            android:name="br.com.edu.ifsc.anjinhocompatas.view.CadastroUsuarioActivity"
+            android:name="br.com.edu.ifsc.anjinhocompatas.telas.AnimalDetalhesActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name="br.com.edu.ifsc.anjinhocompatas.telas.CadastroUsuarioActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 

@@ -1,4 +1,4 @@
-package br.com.edu.ifsc.anjinhocompatas.dao;
+package br.com.edu.ifsc.anjinhocompatas.bancodedados;
 
 import java.util.Map.Entry;
 

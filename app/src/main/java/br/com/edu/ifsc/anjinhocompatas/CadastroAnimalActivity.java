@@ -24,7 +24,8 @@ public class CadastroAnimalActivity extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
-        setContentView(R.layout.cadastro_animal);
+        setContentView(R.layout.activity_cadastro_animal);
+
         final Animal mAnimal = new Animal();
 
         final String[] racaCao = {"Indeterminada",

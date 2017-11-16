@@ -52,9 +52,9 @@ public class CadastroAnimalActivity extends AppCompatActivity {
 
         };
 
-        String [] tamanho = {"Pequeno", "Médio", "Grande"};
-        String [] cor = {"Amarelado", "Branco", "Cinza", "Malhado", "Marrom", "Preto"};
-        int[] idade = {1,2,3,4,5,6,7,8,9,10,11,12,13};
+        final String[] tamanho = {"Pequeno", "Médio", "Grande"};
+        final String[] cor = {"Amarelado", "Branco", "Cinza", "Malhado", "Marrom", "Preto"};
+        final Integer[] idade = {1,2,3,4,5,6,7,8,9,10,11,12,13};
 
         //spinner cao  (contexto, telinha, Array que vai no spinner)
         final ArrayAdapter<String> adapterCao = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, racaCao);
@@ -64,20 +64,32 @@ public class CadastroAnimalActivity extends AppCompatActivity {
         final ArrayAdapter<String> adapterGato = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, racaGato);
         adapterGato.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); //para definir o elemento view que vai aparecer o spinner, funciona sem tbm
 
+        //spinner tamanho animal  (contexto, telinha, Array que vai no spinner)
+        final ArrayAdapter<String> adapterTamanho = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, tamanho);
+        adapterTamanho.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); //para definir o elemento view que vai aparecer o spinner, funciona sem tbm
+
+        //spinner cor animal  (contexto, telinha, Array que vai no spinner)
+        final ArrayAdapter<String> adapterCor = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, cor);
+        adapterCor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); //para definir o elemento view que vai aparecer o spinner, funciona sem tbm
+
+        //spinner cor animal  (contexto, telinha, Array que vai no spinner)
+        final ArrayAdapter<Integer> adapterIdade = new ArrayAdapter<Integer>(this, android.R.layout.simple_spinner_dropdown_item, idade);
+        adapterIdade.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); //para definir o elemento view que vai aparecer o spinner, funciona sem tbm
+
+
         //cast dos itens da telinha cadastroAnimal
-        EditText cadastroAnimalNome = (EditText) findViewById(R.id.cadastroAnimalNomeId);
+        final EditText cadastroAnimalNome = (EditText) findViewById(R.id.cadastroAnimalNomeId);
         final CheckBox checkBoxGato = (CheckBox) findViewById(R.id.checkBoxGatoId);
         final CheckBox checkBoxCao = (CheckBox) findViewById(R.id.checkBoxCaoId);
         final Spinner spinnerCadastroAnimalRaca = (Spinner) findViewById(R.id.spinnerCadastroAnimalRacaId);
-        Spinner spinnerCadastroAnimalTamanho = (Spinner) findViewById(R.id.spinnerCadastroAnimalTamanhoId);
+        final Spinner spinnerCadastroAnimalTamanho = (Spinner) findViewById(R.id.spinnerCadastroAnimalTamanhoId);
         Spinner spinnerCadastroAnimalCor = (Spinner) findViewById(R.id.spinnerCadastroAnimalCorId);
         Spinner spinnerCadastroAnimalIdade = (Spinner) findViewById(R.id.spinnerCadastroAnimalIdadeId);
         Button botaoEnviarImagem = (Button) findViewById(R.id.botaoEnviarImagemId);
         Button botaoCadastrarAnimal = (Button) findViewById(R.id.botaoCadastrarAnimalId);
 
 
-        //seta o nome animal
-        mAnimal.setNome(cadastroAnimalNome.getText().toString());
+
 
         //quando clica no check box cão
         checkBoxCao.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -121,7 +133,7 @@ public class CadastroAnimalActivity extends AppCompatActivity {
 
                         @Override
                         public void onNothingSelected(AdapterView<?> parent) {
-                            Toast.makeText(getApplicationContext(), "Informe qual o tipo de animal!", Toast.LENGTH_LONG).show();
+                            //Toast.makeText(getApplicationContext(), "Informe qual o tipo de animal!", Toast.LENGTH_LONG).show();
                         }
                     });
                     checkBoxCao.setChecked(false); //para desmarcar o check box cao, assim fica só um check box selecionado
@@ -129,6 +141,72 @@ public class CadastroAnimalActivity extends AppCompatActivity {
             }
         });
 
+        //spinner tamanho animal
+        spinnerCadastroAnimalTamanho.setAdapter(adapterTamanho);
+        spinnerCadastroAnimalTamanho.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                mAnimal.setTamanho(tamanho[position]);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        //spinner cor animal
+        spinnerCadastroAnimalCor.setAdapter(adapterCor);
+        spinnerCadastroAnimalCor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                mAnimal.setCor(cor[position]);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        //spinner idade animal
+        spinnerCadastroAnimalIdade.setAdapter(adapterIdade);
+        spinnerCadastroAnimalIdade.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                mAnimal.setIdade(idade[position]);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+
+        //botão cadastrar
+        botaoCadastrarAnimal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //seta o nome animal
+                mAnimal.setNome(cadastroAnimalNome.getText().toString());
+
+                //se não tiver nenhum nome no animal
+                if(cadastroAnimalNome.toString().isEmpty()){
+                    if (checkBoxCao.isChecked())
+                        Toast.makeText(getApplicationContext(), "Adicione um nome para o cão", Toast.LENGTH_SHORT).show();
+                    if (checkBoxGato.isChecked())
+                        Toast.makeText(getApplicationContext(), "Adicione um nome para o cão", Toast.LENGTH_SHORT).show();
+                }
+
+
+
+
+
+
+
+
+            }
+        });
 
 
 

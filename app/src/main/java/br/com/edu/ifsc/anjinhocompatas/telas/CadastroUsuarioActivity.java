@@ -55,7 +55,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
         mImageViewPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Evento para pegar a imagem da galeria ou tirar goto camera...
+//                Evento para pegar a imagem da galeria ou tirar foto camera...
                 eventoEscolherFormaDePegarImagemPerfil();
             }
         });

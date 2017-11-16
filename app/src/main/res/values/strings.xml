@@ -41,4 +41,5 @@
     <string name="prompt_cadastrar">Cadastrar</string>
 
     <string name="error_preencha_campo">Preencha o campo</string>
+    <string name="nomeDoAnimal">Nome do animal</string>
 </resources>

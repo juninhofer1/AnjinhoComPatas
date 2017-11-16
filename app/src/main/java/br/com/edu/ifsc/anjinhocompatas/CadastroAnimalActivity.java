@@ -191,20 +191,12 @@ public class CadastroAnimalActivity extends AppCompatActivity {
                 mAnimal.setNome(cadastroAnimalNome.getText().toString());
 
                 //se não tiver nenhum nome no animal
-                if(cadastroAnimalNome.toString().isEmpty()){
+                if(cadastroAnimalNome.toString().isEmpty()) {
                     if (checkBoxCao.isChecked())
                         Toast.makeText(getApplicationContext(), "Adicione um nome para o cão", Toast.LENGTH_SHORT).show();
                     if (checkBoxGato.isChecked())
                         Toast.makeText(getApplicationContext(), "Adicione um nome para o cão", Toast.LENGTH_SHORT).show();
                 }
-
-
-
-
-
-
-
-
             }
         });
 

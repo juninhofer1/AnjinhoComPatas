@@ -166,11 +166,13 @@ public class MainActivity extends AppCompatActivity {
                 .withIcon(CoresUtil.alterarCorDrawableMenuItem(getApplication(), R.drawable.ic_favorite))
                 .withTextColor(getResources().getColor(R.color.colorPrimary)));
 
-        this.navegationDrawerLeft.addItem(new PrimaryDrawerItem()
-                .withIdentifier(MenuLateralProps.DOAR_UM_AMIGO.getmId())
-                .withName(MenuLateralProps.DOAR_UM_AMIGO.getmNomeTela())
-                .withIcon(CoresUtil.alterarCorDrawableMenuItem(getApplication(), R.drawable.icon_search))
-                .withTextColor(getResources().getColor(R.color.colorPrimary)));
+        if(SharedPreferencesUtil.lerPreferenciaString(MainActivity.this, R.string.key_usuriao_logado) != null) {
+            this.navegationDrawerLeft.addItem(new PrimaryDrawerItem()
+                    .withIdentifier(MenuLateralProps.DOAR_UM_AMIGO.getmId())
+                    .withName(MenuLateralProps.DOAR_UM_AMIGO.getmNomeTela())
+                    .withIcon(CoresUtil.alterarCorDrawableMenuItem(getApplication(), R.drawable.icon_search))
+                    .withTextColor(getResources().getColor(R.color.colorPrimary)));
+        }
 
         this.navegationDrawerLeft.addItem(new DividerDrawerItem());
 
@@ -180,7 +182,6 @@ public class MainActivity extends AppCompatActivity {
                     .withName(MenuLateralProps.Entrar.getmNomeTela())
                     .withIcon(CoresUtil.alterarCorDrawableMenuItem(getApplication(), R.drawable.ic_login))
                     .withTextColor(getResources().getColor(R.color.colorPrimary)));
-
         }
 
         this.navegationDrawerLeft.addItem(new PrimaryDrawerItem()
@@ -261,20 +262,21 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode) {
             case LoginActivity.LOGIN_ID:
-                Usuario lUsuario = (Usuario) data.getExtras().get(getString(R.string.key_usuriao_logado));
-                Drawable lDrawable = null;
-                if(lUsuario.getFoto() != null) {
-                    lDrawable = ImagemUtil.converterBase64(getResources(), lUsuario.getFoto());
-                }
-                mProfileDrawerItem = new ProfileDrawerItem()
-                        .withName(lUsuario.getNome())
-                        .withIcon(lDrawable)
-                        .withEmail(lUsuario.getEmail());
-                int lPosicao = this.navegationDrawerLeft.getPositionFromIdentifier(MenuLateralOpcoesProps.ENTRAR);
-                this.navegationDrawerLeft.removeItem(lPosicao);
-                this.hearderNavegationLeft.removeProfile(0);
-                this.hearderNavegationLeft.addProfiles(mProfileDrawerItem);
-                this.navegationDrawerLeft.setSelection(0);
+//                Usuario lUsuario = (Usuario) data.getExtras().get(getString(R.string.key_usuriao_logado));
+//                Drawable lDrawable = null;
+//                if(lUsuario.getFoto() != null) {
+//                    lDrawable = ImagemUtil.converterBase64(getResources(), lUsuario.getFoto());
+//                }
+//                mProfileDrawerItem = new ProfileDrawerItem()
+//                        .withName(lUsuario.getNome())
+//                        .withIcon(lDrawable)
+//                        .withEmail(lUsuario.getEmail());
+//                int lPosicao = this.navegationDrawerLeft.getPositionFromIdentifier(MenuLateralOpcoesProps.ENTRAR);
+//                this.navegationDrawerLeft.removeItem(lPosicao);
+//                this.hearderNavegationLeft.removeProfile(0);
+//                this.hearderNavegationLeft.addProfiles(mProfileDrawerItem);
+//                this.navegationDrawerLeft.setSelection(0);
+                criarMenuLateral();
                 break;
         }
     }

@@ -262,7 +262,10 @@ public class MainActivity extends AppCompatActivity {
         switch (resultCode) {
             case LoginActivity.LOGIN_ID:
                 Usuario lUsuario = (Usuario) data.getExtras().get(getString(R.string.key_usuriao_logado));
-                Drawable lDrawable = ImagemUtil.converterBase64(getResources(), lUsuario.getFoto());
+                Drawable lDrawable = null;
+                if(lUsuario.getFoto() != null) {
+                    lDrawable = ImagemUtil.converterBase64(getResources(), lUsuario.getFoto());
+                }
                 mProfileDrawerItem = new ProfileDrawerItem()
                         .withName(lUsuario.getNome())
                         .withIcon(lDrawable)

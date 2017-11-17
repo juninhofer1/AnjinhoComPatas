@@ -21,7 +21,7 @@
     <string name="action_sign_in">Entrar</string>
     <string name="action_sign_in_short">Entrar</string>
     <string name="error_invalid_email">Endereço de email incorreto</string>
-    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_invalid_password">Informe a senha</string>
     <string name="error_incorrect_password">Senha incorreta</string>
     <string name="error_field_required">Informe esse campo</string>
     <string name="permission_rationale">As permissão de contatos são necessárias para fornecer e-mails</string>
@@ -47,5 +47,8 @@
     <string name="error_senha_diferente">Confirmação de senha diferente</string>
     <string name="msm_cadastro_sucesso">Cadastro efetuado com sucesso!</string>
     <string name="msm_cadastro_erro">Não foi possivel efetuar o cadastro, tente novamente!</string>
+
+    <string name="msm_usuario_invaldio">Usuario ou senha inválido</string>
+    <string name="msm_realize_cadastro">Realize o cadastro</string>
 
 </resources>

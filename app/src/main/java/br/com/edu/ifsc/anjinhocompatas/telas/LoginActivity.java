@@ -110,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
         View focusView = null;
 
         // Verifica senha
-        if (!TextUtils.isEmpty(lSenha) && !isSenhaValido(lSenha)) {
+        if (lSenha.isEmpty()) {
             mSenhaView.setError(getString(R.string.error_invalid_password));
             focusView = mSenhaView;
             lErroCampo = true;
@@ -131,15 +131,15 @@ public class LoginActivity extends AppCompatActivity {
             focusView.requestFocus();
         } else {
 //            loga usuario
-            Usuario lUsuario = Usuario.carregarUsuarioPorEmailBD(LoginActivity.this, lEmail);
-            if(lUsuario != null) {
-                if(lUsuario.getSenha().equals(lSenha)) {
+            mUsuario = Usuario.carregarUsuarioPorEmailBD(LoginActivity.this, lEmail);
+            if(mUsuario != null) {
+                if(mUsuario.getSenha().equals(lSenha)) {
                     fazerLogin();
                 } else {
-                    Snackbar.make(getCurrentFocus(), getString(R.string.msm_usuario_invaldio), Toast.LENGTH_LONG).show();
+                    Snackbar.make(getCurrentFocus(), getString(R.string.msm_usuario_invaldio), Snackbar.LENGTH_LONG).show();
                 }
             } else {
-                Snackbar.make(getCurrentFocus(), getString(R.string.msm_realize_cadastro), Toast.LENGTH_LONG).show();
+                Snackbar.make(getCurrentFocus(), getString(R.string.msm_realize_cadastro), Snackbar.LENGTH_LONG).show();
             }
         }
     }
@@ -153,6 +153,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void fazerLogin() {
+        SharedPreferencesUtil.criarPreferenciaString(LoginActivity.this, mUsuario.getEmail(), R.string.key_usuriao_logado);
         Intent intent = new Intent();
         intent.putExtra(getString(R.string.key_usuriao_logado), mUsuario);
         setResult(LOGIN_ID, intent);
@@ -176,7 +177,6 @@ public class LoginActivity extends AppCompatActivity {
                                 try {
                                     mUsuario = Usuario.converterObjetoJsonFacebook(aObject);
                                     Usuario.savarUsuarioBaseDados(LoginActivity.this, mUsuario);
-                                    SharedPreferencesUtil.criarPreferenciaString(LoginActivity.this, mUsuario.getEmail(), R.string.key_usuriao_logado);
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }

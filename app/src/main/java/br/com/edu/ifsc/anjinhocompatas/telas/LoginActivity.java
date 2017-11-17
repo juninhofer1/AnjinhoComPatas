@@ -14,6 +14,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -129,7 +130,17 @@ public class LoginActivity extends AppCompatActivity {
         if (lErroCampo) {
             focusView.requestFocus();
         } else {
-            //Loga o usuário
+//            loga usuario
+            Usuario lUsuario = Usuario.carregarUsuarioPorEmailBD(LoginActivity.this, lEmail);
+            if(lUsuario != null) {
+                if(lUsuario.getSenha().equals(lSenha)) {
+                    fazerLogin();
+                } else {
+                    Snackbar.make(getCurrentFocus(), getString(R.string.msm_usuario_invaldio), Toast.LENGTH_LONG).show();
+                }
+            } else {
+                Snackbar.make(getCurrentFocus(), getString(R.string.msm_realize_cadastro), Toast.LENGTH_LONG).show();
+            }
         }
     }
 
@@ -141,7 +152,7 @@ public class LoginActivity extends AppCompatActivity {
         return password.length() > 5;
     }
 
-    private void loginComFacebook() {
+    private void fazerLogin() {
         Intent intent = new Intent();
         intent.putExtra(getString(R.string.key_usuriao_logado), mUsuario);
         setResult(LOGIN_ID, intent);
@@ -169,7 +180,7 @@ public class LoginActivity extends AppCompatActivity {
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
-                                loginComFacebook();
+                                fazerLogin();
                             }
                         });
                 Bundle parameters = new Bundle();

@@ -36,6 +36,7 @@ import br.com.edu.ifsc.anjinhocompatas.telas.adapter.ViewPagerAdapter;
 import br.com.edu.ifsc.anjinhocompatas.telas.fragment.FragmentAnimais;
 import br.com.edu.ifsc.anjinhocompatas.modelos.Usuario;
 
+
 public class MainActivity extends AppCompatActivity {
 
     private Drawer.Result navegationDrawerLeft;
@@ -166,8 +167,8 @@ public class MainActivity extends AppCompatActivity {
                 .withTextColor(getResources().getColor(R.color.colorPrimary)));
 
         this.navegationDrawerLeft.addItem(new PrimaryDrawerItem()
-                .withIdentifier(MenuLateralProps.ECONTRE_UM_AMIGO.getmId())
-                .withName(MenuLateralProps.ECONTRE_UM_AMIGO.getmNomeTela())
+                .withIdentifier(MenuLateralProps.DOAR_UM_AMIGO.getmId())
+                .withName(MenuLateralProps.DOAR_UM_AMIGO.getmNomeTela())
                 .withIcon(CoresUtil.alterarCorDrawableMenuItem(getApplication(), R.drawable.icon_search))
                 .withTextColor(getResources().getColor(R.color.colorPrimary)));
 
@@ -217,8 +218,8 @@ public class MainActivity extends AppCompatActivity {
         switch (identificador) {
             case MenuLateralOpcoesProps.INICIAL:
                 break;
-            case MenuLateralOpcoesProps.ECONTRE_UM_AMIGO:
-                startActivity(new Intent(MainActivity.this, DesenvolvimentoActivity.class));
+            case MenuLateralOpcoesProps.DOAR_UM_AMIGO:
+                startActivity(new Intent(MainActivity.this, CadastroAnimalActivity.class));
                 break;
             case MenuLateralOpcoesProps.FAVORITOS:
                 startActivity(new Intent(MainActivity.this, DesenvolvimentoActivity.class));

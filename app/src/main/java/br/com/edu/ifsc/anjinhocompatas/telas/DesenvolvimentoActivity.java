@@ -11,11 +11,13 @@ import br.com.edu.ifsc.anjinhocompatas.R;
  */
 
 public class DesenvolvimentoActivity extends AppCompatActivity {
+
     private Toolbar toolbar;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_desenvolvimento);
+
         this.toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(this.toolbar);
 //        getSupportActionBar().setLogo(R.drawable.icon_app_s);

@@ -3,7 +3,6 @@
     package="br.com.edu.ifsc.anjinhocompatas">
 
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -13,8 +12,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name="br.com.edu.ifsc.anjinhocompatas.telas.SplashScreenActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"> <!-- android:label="@string/app_name" -->
+            android:theme="@style/AppTheme.NoActionBar"> <!-- android:label="@string/app_name" -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,30 +21,36 @@
         </activity>
         <activity
             android:name="br.com.edu.ifsc.anjinhocompatas.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"> <!-- android:label="@string/app_name" -->
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"> <!-- android:label="@string/app_name" -->
         </activity>
         <activity
             android:name="br.com.edu.ifsc.anjinhocompatas.telas.DesenvolvimentoActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
             android:name="br.com.edu.ifsc.anjinhocompatas.telas.LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
         <activity
             android:name="br.com.edu.ifsc.anjinhocompatas.telas.AnimalDetalhesActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
         <activity
             android:name="br.com.edu.ifsc.anjinhocompatas.telas.CadastroUsuarioActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name="br.com.edu.ifsc.anjinhocompatas.CadastroAnimalActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>

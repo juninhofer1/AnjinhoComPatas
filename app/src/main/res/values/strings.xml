@@ -7,7 +7,7 @@
     <string name="text_idade_cachorro">Digite a idade do seu cachorro, para descobrir quantos anos humanos ele possui!</string>
     <string name="opc_menu_inicial">Inicial</string>
     <string name="opc_menu_favoritos">Favoritos</string>
-    <string name="opc_menu_encontre_amigo">Encontre um amigo</string>
+    <string name="opc_menu_doar_um_amigo">Doar um amigo</string>
     <string name="opc_menu_ajuda">Ajuda</string>
     <string name="opc_menu_sair">Sair</string>
     <string name="opc_menu_entrar">Entrar</string>
@@ -41,9 +41,5 @@
     <string name="prompt_cadastrar">Cadastrar</string>
 
     <string name="error_preencha_campo">Preencha o campo</string>
-    <string name="error_email_cadastado">Email já está cadastrado</string>
-    <string name="error_senha_diferente">Confirmação de senha diferente</string>
-
-    <string name="msm_cadastro_sucesso">Cadastro efetuado com sucesso!</string>
-    <string name="msm_cadastro_erro">Não foi possivel efetuar o cadastro, tente novamente!</string>
+    <string name="nomeDoAnimal">Nome do animal</string>
 </resources>

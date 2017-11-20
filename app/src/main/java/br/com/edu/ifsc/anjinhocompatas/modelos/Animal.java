@@ -7,7 +7,8 @@ import java.io.Serializable;
  */
 
 public class Animal implements Serializable{
-    private int imagem;
+    private int id;
+    private String imagem;
     private String nome;
     private String raca;
     private String tamanho;
@@ -17,7 +18,7 @@ public class Animal implements Serializable{
 
     //é chamado no fragment pra adicionar os componentes abaixo
 
-    public Animal(int imageId, String nome, String raca, String tamanho, String cor, int idade){
+    public Animal(String imageId, String nome, String raca, String tamanho, String cor, int idade){
         this.imagem = imageId;
         this.nome = nome;
         this.raca = raca;
@@ -28,6 +29,14 @@ public class Animal implements Serializable{
 
     public Animal() {
 
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getRaca() {

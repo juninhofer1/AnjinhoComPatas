@@ -23,22 +23,26 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class ImagemUtil {
 
+//    Converte uma imagem String em base64 para um mapa de bits ou bitmap
     public static Bitmap converter(String aBase64) throws IllegalArgumentException {
         byte[] decodedBytes = Base64.decode(aBase64.substring(aBase64.indexOf(",")  + 1), Base64.DEFAULT);
         return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
     }
 
+//    Converte uma imagem bitmap ou mapa de bits para uma string em base64
     public static String converter(Bitmap aBitmap) {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         aBitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
         return Base64.encodeToString(outputStream.toByteArray(), Base64.DEFAULT);
     }
 
+//    Converte uma base 64 para um drawable foto do menu lateral
     public static Drawable converterBase64(Resources aResources, String aBase64) {
         Drawable lDrawable = new BitmapDrawable(aResources, converter(aBase64));
         return lDrawable;
     }
 
+//    Baixa uma imaegm Url e tranforma em um bit map, utilizado para baixar a imagem do facebook
     public static Bitmap getBitmapPelaUrl(String aUrl) {
         Bitmap lBitMapImagemPergil = null;
         try {

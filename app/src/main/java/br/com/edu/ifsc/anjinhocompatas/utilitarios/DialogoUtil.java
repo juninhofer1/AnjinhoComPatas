@@ -12,6 +12,8 @@ import android.content.DialogInterface;
 
 public final class DialogoUtil {
 
+
+//    Utilizado para mostrar uma mnssagem com sim e não
     public static Dialog dialogYesNo(Activity aContext, String aMensagem, DialogInterface.OnClickListener aOnclickYes, DialogInterface.OnClickListener aOnclikNo) {
         AlertDialog.Builder builder = new AlertDialog.Builder(aContext)
                 .setPositiveButton("Sim", aOnclickYes)
@@ -21,6 +23,8 @@ public final class DialogoUtil {
         return builder.create();
     }
 
+
+//    Utilizado para mostrar as opções de camera ou galeria
     public static Dialog dialogCamera(Activity aContext, String aMensagem, DialogInterface.OnClickListener aOnclickYes, DialogInterface.OnClickListener aOnclikNo) {
         AlertDialog.Builder builder = new AlertDialog.Builder(aContext)
                 .setPositiveButton("Galeria", aOnclickYes)

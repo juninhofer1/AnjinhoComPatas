@@ -66,7 +66,7 @@ public class Animal implements Serializable{
         return imagem;
     }
 
-    public void setImagem(int imagem) {
+    public void setImagem(String imagem) {
         this.imagem = imagem;
     }
 

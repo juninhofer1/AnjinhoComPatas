@@ -45,8 +45,8 @@
         android:layout_marginStart="16dp"
         android:text="Enviar imagem:"
         android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/botaoEnviarImagemId"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:layout_editor_absoluteY="426dp" />
 
     <Spinner
         android:id="@+id/spinnerCadastroAnimalIdadeId"
@@ -98,7 +98,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="28dp"
         android:text="Idade:"
         android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -160,33 +160,18 @@
         android:id="@+id/botaoCadastrarAnimalId"
         android:layout_width="0dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="3dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:text="Cadastrar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/botaoEnviarImagemId" />
-
-    <Button
-        android:id="@+id/botaoEnviarImagemId"
-        android:layout_width="202dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="17dp"
-        android:text="Escolher..."
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintLeft_toRightOf="@+id/textView13"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerCadastroAnimalIdadeId" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewCadastroAnimalId" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -236,5 +221,18 @@
         app:layout_constraintTop_toBottomOf="@+id/cadastroAnimalNomeIdTextimput"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="97dp" />
+
+    <ImageView
+        android:id="@+id/imageViewCadastroAnimalId"
+        android:layout_width="55dp"
+        android:layout_height="52dp"
+        app:srcCompat="@android:drawable/ic_menu_camera"
+        app:layout_constraintLeft_toRightOf="@+id/textView13"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCadastroAnimalIdadeId"
+        app:layout_constraintHorizontal_bias="0.503" />
 
 </android.support.constraint.ConstraintLayout>

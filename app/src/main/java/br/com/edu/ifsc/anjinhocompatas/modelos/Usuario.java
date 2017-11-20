@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
+import java.util.List;
 
 import br.com.edu.ifsc.anjinhocompatas.bancodedados.implementacao.UsuarioDao;
 import br.com.edu.ifsc.anjinhocompatas.utilitarios.ImagemUtil;

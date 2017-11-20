@@ -71,7 +71,7 @@ public class Animal implements Serializable{
         this.idade = idade;
     }
 
-    public int getImagem() {
+    public String getImagem() {
         return imagem;
     }
 

@@ -32,13 +32,13 @@ public class GridViewAdapterAnimaisRecycler extends RecyclerView.Adapter<GridVie
 
     @Override
     public GridViewAdapterAnimaisRecycler.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        int ite = i;
+        int item = i;
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(resource, viewGroup, false);
         final ViewHolder mViewHolder = new ViewHolder(view);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onItemListerner.onItemClick(v, mViewHolder.getPosition());
+                onItemListerner.onItemClick(v, mViewHolder.getAdapterPosition());
             }
         });
         return mViewHolder;
@@ -48,7 +48,7 @@ public class GridViewAdapterAnimaisRecycler extends RecyclerView.Adapter<GridVie
     public void onBindViewHolder(GridViewAdapterAnimaisRecycler.ViewHolder viewHolder, int i) {
         viewHolder.nome.setText(mAnimais.get(i).getNome());
         viewHolder.raca.setText(mAnimais.get(i).getRaca());
-        viewHolder.img.setImageResource(mAnimais.get(i).getImagem());
+        viewHolder.img.setImageResource(Integer.parseInt(mAnimais.get(i).getImagem()));
     }
 
     @Override

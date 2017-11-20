@@ -1,9 +1,12 @@
 package br.com.edu.ifsc.anjinhocompatas;
 
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.support.annotation.IdRes;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,17 +15,25 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.RadioGroup;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
 import br.com.edu.ifsc.anjinhocompatas.modelos.Animal;
+import br.com.edu.ifsc.anjinhocompatas.utilitarios.ImagemUtil;
 
 /**
  * Created by keila on 06/11/2017.
  */
 
 public class CadastroAnimalActivity extends AppCompatActivity {
+
+    private Bitmap imagemBitmapAnimalCadastro;
+    private ImageView imageViewImagemCadastroAnimal;
+    private Animal animal;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,7 +46,7 @@ public class CadastroAnimalActivity extends AppCompatActivity {
                 "Bulldog Francês", "Bulldog Inglês",
                 "Chow Chow",
                 "Golden Retriever",
-                "Labrador Retriever","Lulu da Pomerânia", "Lhasa Apso",
+                "Labrador Retriever", "Lulu da Pomerânia", "Lhasa Apso",
                 "Poodle", "Pug", "Pincher",
                 "Rottweiler",
                 "Vira-lata",
@@ -54,7 +65,7 @@ public class CadastroAnimalActivity extends AppCompatActivity {
 
         final String[] tamanho = {"Pequeno", "Médio", "Grande"};
         final String[] cor = {"Amarelado", "Branco", "Cinza", "Malhado", "Marrom", "Preto"};
-        final Integer[] idade = {1,2,3,4,5,6,7,8,9,10,11,12,13};
+        final Integer[] idade = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
 
         //spinner cao  (contexto, telinha, Array que vai no spinner)
         final ArrayAdapter<String> adapterCao = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, racaCao);
@@ -85,10 +96,8 @@ public class CadastroAnimalActivity extends AppCompatActivity {
         final Spinner spinnerCadastroAnimalTamanho = (Spinner) findViewById(R.id.spinnerCadastroAnimalTamanhoId);
         Spinner spinnerCadastroAnimalCor = (Spinner) findViewById(R.id.spinnerCadastroAnimalCorId);
         Spinner spinnerCadastroAnimalIdade = (Spinner) findViewById(R.id.spinnerCadastroAnimalIdadeId);
-        Button botaoEnviarImagem = (Button) findViewById(R.id.botaoEnviarImagemId);
+        imageViewImagemCadastroAnimal = (ImageView) findViewById(R.id.imageViewCadastroAnimalId);
         Button botaoCadastrarAnimal = (Button) findViewById(R.id.botaoCadastrarAnimalId);
-
-
 
 
         //quando clica no check box cão
@@ -121,7 +130,7 @@ public class CadastroAnimalActivity extends AppCompatActivity {
         checkBoxGato.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(checkBoxGato.isChecked()){
+                if (checkBoxGato.isChecked()) {
                     //spinner da raça (Gato)
                     spinnerCadastroAnimalRaca.setAdapter(adapterGato);
                     spinnerCadastroAnimalRaca.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -182,6 +191,13 @@ public class CadastroAnimalActivity extends AppCompatActivity {
             }
         });
 
+        imageViewImagemCadastroAnimal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
 
         //botão cadastrar
         botaoCadastrarAnimal.setOnClickListener(new View.OnClickListener() {
@@ -191,21 +207,62 @@ public class CadastroAnimalActivity extends AppCompatActivity {
                 mAnimal.setNome(cadastroAnimalNome.getText().toString());
 
                 //se não tiver nenhum nome no animal
-                if(cadastroAnimalNome.toString().isEmpty()) {
+                if (cadastroAnimalNome.toString().isEmpty()) {
                     if (checkBoxCao.isChecked())
                         Toast.makeText(getApplicationContext(), "Adicione um nome para o cão", Toast.LENGTH_SHORT).show();
                     if (checkBoxGato.isChecked())
                         Toast.makeText(getApplicationContext(), "Adicione um nome para o cão", Toast.LENGTH_SHORT).show();
                 }
+
+
             }
         });
+    }
 
 
+    private void eventoDeEscolherFormaDePegarImagemAnimalCadastro() {
 
+        DialogInterface.OnClickListener onClickListenerCamera = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                //                2 = chave
+                startActivityForResult(cameraIntent, 2);
+            }
+        };
 
-
-
-
+        DialogInterface.OnClickListener onClickListenerGaleria = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                //                1 = chave
+                startActivityForResult(intent, 1);
+            }
+        };
 
     }
- }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 2 && resultCode == Activity.RESULT_OK) {
+            imagemBitmapAnimalCadastro = (Bitmap) data.getExtras().get("data");
+            imageViewImagemCadastroAnimal.setImageBitmap(imagemBitmapAnimalCadastro);
+            animal.setImagem(ImagemUtil.converter(imagemBitmapAnimalCadastro));
+        } else if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
+            Uri imagemUriAnimalCadastro = data.getData();
+            InputStream imagemStreamAnimalCadastro = null;
+            try {
+                imagemStreamAnimalCadastro = getContentResolver().openInputStream(imagemUriAnimalCadastro);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            imagemBitmapAnimalCadastro = BitmapFactory.decodeStream(imagemStreamAnimalCadastro);
+            animal.setImagem(ImagemUtil.converter(imagemBitmapAnimalCadastro));
+        }
+    }
+    }
+
+
+
+

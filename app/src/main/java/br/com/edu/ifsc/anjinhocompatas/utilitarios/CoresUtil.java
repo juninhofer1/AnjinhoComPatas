@@ -29,4 +29,8 @@ public class CoresUtil {
         return alterarCorDrawable(aAplicacao,aResourceIdImagem, R.color.colorPrimary);
     }
 
+    public static Drawable alterarCorDrawableMenuItem(Context aAplicacao, int aResourceIdImagem, int aColor) {
+        return alterarCorDrawable(aAplicacao,aResourceIdImagem, aColor);
+    }
+
 }

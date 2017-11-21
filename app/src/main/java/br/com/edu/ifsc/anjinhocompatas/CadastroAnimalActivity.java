@@ -248,7 +248,7 @@ public class CadastroAnimalActivity extends AppCompatActivity {
         if (requestCode == 2 && resultCode == Activity.RESULT_OK) {
             imagemBitmapAnimalCadastro = (Bitmap) data.getExtras().get("data");
             imageViewImagemCadastroAnimal.setImageBitmap(imagemBitmapAnimalCadastro);
-            animal.setImagem(ImagemUtil.converter(imagemBitmapAnimalCadastro));
+            animal.setFoto(ImagemUtil.converter(imagemBitmapAnimalCadastro));
         } else if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
             Uri imagemUriAnimalCadastro = data.getData();
             InputStream imagemStreamAnimalCadastro = null;
@@ -258,7 +258,7 @@ public class CadastroAnimalActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             imagemBitmapAnimalCadastro = BitmapFactory.decodeStream(imagemStreamAnimalCadastro);
-            animal.setImagem(ImagemUtil.converter(imagemBitmapAnimalCadastro));
+            animal.setFoto(ImagemUtil.converter(imagemBitmapAnimalCadastro));
         }
     }
     }

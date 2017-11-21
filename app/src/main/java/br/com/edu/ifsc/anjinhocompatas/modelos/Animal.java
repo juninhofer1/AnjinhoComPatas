@@ -8,17 +8,18 @@ import java.io.Serializable;
 
 public class Animal implements Serializable{
     private int id;
-    private String imagem;
+    private int imagem;
     private String nome;
     private String raca;
     private String tamanho;
     private String cor;
     private int idade;
+    private String foto;
 
 
     //é chamado no fragment pra adicionar os componentes abaixo
 
-    public Animal(String imageId, String nome, String raca, String tamanho, String cor, int idade){
+    public Animal(int imageId, String nome, String raca, String tamanho, String cor, int idade){
         this.imagem = imageId;
         this.nome = nome;
         this.raca = raca;
@@ -71,11 +72,11 @@ public class Animal implements Serializable{
         this.idade = idade;
     }
 
-    public String getImagem() {
+    public int getImagem() {
         return imagem;
     }
 
-    public void setImagem(String imagem) {
+    public void setImagem(int imagem) {
         this.imagem = imagem;
     }
 
@@ -87,5 +88,11 @@ public class Animal implements Serializable{
         this.nome = nome;
     }
 
+    public String getFoto() {
+        return foto;
+    }
 
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
 }

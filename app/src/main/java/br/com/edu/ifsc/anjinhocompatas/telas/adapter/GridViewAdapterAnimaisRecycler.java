@@ -48,7 +48,8 @@ public class GridViewAdapterAnimaisRecycler extends RecyclerView.Adapter<GridVie
     public void onBindViewHolder(GridViewAdapterAnimaisRecycler.ViewHolder viewHolder, int i) {
         viewHolder.nome.setText(mAnimais.get(i).getNome());
         viewHolder.raca.setText(mAnimais.get(i).getRaca());
-        viewHolder.img.setImageResource(Integer.parseInt(mAnimais.get(i).getImagem()));
+//        viewHolder.img.setImageResource(Integer.parseInt(mAnimais.get(i).getFoto()));
+        viewHolder.img.setImageResource(mAnimais.get(i).getImagem());
     }
 
     @Override

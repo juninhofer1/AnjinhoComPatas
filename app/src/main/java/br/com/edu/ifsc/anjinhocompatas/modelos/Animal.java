@@ -7,7 +7,9 @@ import java.io.Serializable;
  */
 
 public class Animal implements Serializable{
+
     private int id;
+    private int idDoador;
     private int imagem;
     private String nome;
     private String raca;
@@ -15,7 +17,6 @@ public class Animal implements Serializable{
     private String cor;
     private int idade;
     private String foto;
-
 
     //é chamado no fragment pra adicionar os componentes abaixo
 
@@ -94,5 +95,21 @@ public class Animal implements Serializable{
 
     public void setFoto(String foto) {
         this.foto = foto;
+    }
+
+    public int getIdDoador() {
+        return idDoador;
+    }
+
+    public void setIdDoador(int idDoador) {
+        this.idDoador = idDoador;
+    }
+
+    public boolean salvarAnimalDoacao() {
+        return false;
+    }
+
+    public boolean solicitarAdocao() {
+        return false;
     }
 }

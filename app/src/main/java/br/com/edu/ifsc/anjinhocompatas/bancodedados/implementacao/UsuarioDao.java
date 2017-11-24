@@ -56,7 +56,7 @@ public class UsuarioDao extends BasicDAO {
     public long alterar(Usuario aUsuario) {
         ContentValues values = classificarPorValores(aUsuario);
         //Alterando usuário quando o id for igual
-        return atualizar(TABELA, values, new String[] { EMAIL }, new String[] { String.valueOf(aUsuario.getId()) });
+        return atualizar(TABELA, values, new String[] { EMAIL }, new String[] { String.valueOf(aUsuario.getEmail()) });
     }
 
     public boolean apagar(Usuario aUsuario) {
@@ -77,7 +77,7 @@ public class UsuarioDao extends BasicDAO {
         return lUser;
     }
 
-    public List<Usuario> carregarTodosOsUruarios() {
+    public List<Usuario> carregarTodos() {
         List<Usuario> usuariosList = new ArrayList<>();
 
         Cursor mCursor = mDb.query(TABELA, null, null, null, null, null, ID);

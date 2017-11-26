@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import br.com.edu.ifsc.anjinhocompatas.bancodedados.implementacao.AnimalDao;
+import br.com.edu.ifsc.anjinhocompatas.bancodedados.implementacao.FavoritosDAO;
 import br.com.edu.ifsc.anjinhocompatas.bancodedados.implementacao.UsuarioDao;
 
 public class DbAdapter {
@@ -16,7 +18,7 @@ public class DbAdapter {
 	private SQLiteDatabase mDb;
 
 	public static final String DATABASE_NAME = "ANJO_COM_PATAS_MOVEL";
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 2;
 
 	private Context mCtx;
 
@@ -36,6 +38,8 @@ public class DbAdapter {
 		@Override
 		public void onCreate(SQLiteDatabase db) {
 			db.execSQL(UsuarioDao.CREATE_TABLE);
+			db.execSQL(AnimalDao.CREATE_TABLE);
+			db.execSQL(FavoritosDAO.CREATE_TABLE);
 			Log.w(TAG, "DB criado com sucesso!");
 		}
 

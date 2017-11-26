@@ -1,6 +1,12 @@
 package br.com.edu.ifsc.anjinhocompatas.modelos;
 
+import android.content.Context;
+
 import java.io.Serializable;
+import java.util.List;
+
+import br.com.edu.ifsc.anjinhocompatas.bancodedados.implementacao.AnimalDao;
+import br.com.edu.ifsc.anjinhocompatas.bancodedados.implementacao.UsuarioDao;
 
 /**
  * Created by keila on 26/10/2017.
@@ -8,7 +14,7 @@ import java.io.Serializable;
 
 public class Animal implements Serializable{
 
-    private int id;
+    private Integer id;
     private int idDoador;
     private int imagem;
     private String nome;
@@ -17,6 +23,7 @@ public class Animal implements Serializable{
     private String cor;
     private int idade;
     private String foto;
+    private String tipoAnimal;
 
     //é chamado no fragment pra adicionar os componentes abaixo
 
@@ -29,15 +36,27 @@ public class Animal implements Serializable{
         this.idade =idade;
     }
 
+    public Animal(Integer id, int idDoador, int imagem, String nome, String raca, String tamanho, String cor, int idade, String foto) {
+        this.id = id;
+        this.idDoador = idDoador;
+        this.imagem = imagem;
+        this.nome = nome;
+        this.raca = raca;
+        this.tamanho = tamanho;
+        this.cor = cor;
+        this.idade = idade;
+        this.foto = foto;
+    }
+
     public Animal() {
 
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -112,4 +131,31 @@ public class Animal implements Serializable{
     public boolean solicitarAdocao() {
         return false;
     }
+
+    public String getTipoAnimal() {
+        return tipoAnimal;
+    }
+
+    public void setTipoAnimal(String tipoAnimal) {
+        this.tipoAnimal = tipoAnimal;
+    }
+
+    public static Animal carregarPorId(Context aContext, int id){
+        AnimalDao lAnimalDao = criarConexaoTabelaAnimal(aContext);
+        Animal lUsuario = lAnimalDao.carregarPorId(id);
+        return lUsuario;
+    }
+
+    public static List<Animal> carregarTodosAnimaisPorTipo(Context aContext, String aTipo){
+        AnimalDao lAnimalDao = new AnimalDao(aContext);
+        List<Animal> lAnimais = lAnimalDao.carregarPorTipo(aTipo);
+        return lAnimais;
+    }
+    
+    private static AnimalDao criarConexaoTabelaAnimal(Context aContext) {
+        AnimalDao lAnimalDao = new AnimalDao(aContext);
+        lAnimalDao.open();
+        return lAnimalDao;
+    }
+
 }

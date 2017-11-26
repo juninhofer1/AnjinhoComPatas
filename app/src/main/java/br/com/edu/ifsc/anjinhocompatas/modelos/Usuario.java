@@ -18,7 +18,7 @@ import br.com.edu.ifsc.anjinhocompatas.utilitarios.ImagemUtil;
 
 public class Usuario implements Serializable {
 
-    private int id;
+    private Integer id;
     private String nome;
     private String endereco;
     private String email;
@@ -27,11 +27,11 @@ public class Usuario implements Serializable {
     private String senha;
     private int idade;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -120,25 +120,37 @@ public class Usuario implements Serializable {
     }
 
     public static boolean savarUsuarioBaseDados (Context aContext, Usuario aUsuario){
-        UsuarioDao usuarioDao = new UsuarioDao(aContext);
-        usuarioDao.open();
+        UsuarioDao lUsuarioDao = criarConexaoTabelaUsuario(aContext);
+        lUsuarioDao.open();
         long retornoBD = -1;
-        if(usuarioDao.carregarPorEmail(aUsuario.getEmail()) != null){
-            retornoBD = usuarioDao.alterar(aUsuario);
+        if(lUsuarioDao.carregarPorEmail(aUsuario.getEmail()) != null){
+            retornoBD = lUsuarioDao.alterar(aUsuario);
         } else {
-            retornoBD = usuarioDao.salvar(aUsuario);
+            retornoBD = lUsuarioDao.salvar(aUsuario);
         }
-        if(retornoBD <= 0) {
+        if(retornoBD >= 0) {
             return true;
         }
         return false;
     }
 
-    public static Usuario carregarUsuarioPorEmailBD (Context aContext, String aEmail){
-        UsuarioDao usuarioDao = new UsuarioDao(aContext);
-        usuarioDao.open();
-        Usuario lUsuario = usuarioDao.carregarPorEmail(aEmail);
+    public static Usuario carregarPorEmail(Context aContext, String aEmail){
+        UsuarioDao lUsuarioDao = criarConexaoTabelaUsuario(aContext);
+        lUsuarioDao.open();
+        Usuario lUsuario = lUsuarioDao.carregarPorEmail(aEmail);
         return lUsuario;
+    }
+
+    public static Usuario carregarPorId(Context aContext, Integer id){
+        UsuarioDao lUsuarioDao = criarConexaoTabelaUsuario(aContext);
+        Usuario lUsuario = lUsuarioDao.carregarPorId(id);
+        return lUsuario;
+    }
+
+    private static UsuarioDao criarConexaoTabelaUsuario(Context aContext) {
+        UsuarioDao lUsuarioDao = new UsuarioDao(aContext);
+        lUsuarioDao.open();
+        return lUsuarioDao;
     }
 
 }

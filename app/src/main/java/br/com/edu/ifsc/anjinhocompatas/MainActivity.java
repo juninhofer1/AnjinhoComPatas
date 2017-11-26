@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         this.mProfileDrawerItem = new ProfileDrawerItem();
         mProfileDrawerItem.withName("Usuário").withEmail(getResources().getString(R.string.app_name));
         if(lEmail != null) {
-            Usuario lUsuario = Usuario.carregarUsuarioPorEmailBD(MainActivity.this, lEmail);
+            Usuario lUsuario = Usuario.carregarPorEmail(MainActivity.this, lEmail);
             if(lUsuario.getFoto() != null) {
                 Drawable lDrawable = ImagemUtil.converterBase64(getResources(), lUsuario.getFoto());
                 mProfileDrawerItem.withName(lUsuario.getNome()).withIcon(lDrawable).withEmail(lUsuario.getEmail());

@@ -131,7 +131,7 @@ public class LoginActivity extends AppCompatActivity {
             focusView.requestFocus();
         } else {
 //            loga usuario
-            mUsuario = Usuario.carregarUsuarioPorEmailBD(LoginActivity.this, lEmail);
+            mUsuario = Usuario.carregarPorEmail(LoginActivity.this, lEmail);
             if(mUsuario != null) {
                 if(mUsuario.getSenha().equals(lSenha)) {
                     fazerLogin();

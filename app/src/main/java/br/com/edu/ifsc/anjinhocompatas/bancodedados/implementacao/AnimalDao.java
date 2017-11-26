@@ -10,7 +10,6 @@ import java.util.List;
 import br.com.edu.ifsc.anjinhocompatas.bancodedados.BasicDAO;
 import br.com.edu.ifsc.anjinhocompatas.bancodedados.TableBuilder;
 import br.com.edu.ifsc.anjinhocompatas.modelos.Animal;
-import br.com.edu.ifsc.anjinhocompatas.modelos.Usuario;
 
 /**
  * Created by Wilson on 21/11/2017.
@@ -31,6 +30,7 @@ public class AnimalDao extends BasicDAO {
     public static final String COR = "COR";
     public static final String IDADE = "IDADE";
     public static final String FOTO = "FOTO";
+    public static final String TIPO = "TIPO";
 
     public static final String CREATE_TABLE = definirTabela();
 
@@ -45,6 +45,7 @@ public class AnimalDao extends BasicDAO {
             tb.addColuna(COR, tb.TEXT, false);
             tb.addColuna(IDADE, tb.INTEGER, false);
             tb.addColuna(FOTO, tb.TEXT, false);
+            tb.addColuna(TIPO, tb.TEXT, false);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -63,8 +64,8 @@ public class AnimalDao extends BasicDAO {
         return atualizar(TABELA, values, new String[] { ID }, new String[] { String.valueOf(aAnimal.getId()) });
     }
 
-    public boolean apagar(Usuario aUsuario) {
-        return remover(TABELA, ID, aUsuario.getId());
+    public boolean apagar(Animal aAnimal) {
+        return remover(TABELA, ID, aAnimal.getId());
     }
 
     public Animal carregarPorId(long aId) {
@@ -74,8 +75,24 @@ public class AnimalDao extends BasicDAO {
         return lAnimal;
     }
 
+
     public List<Animal> carregarPorIdDoador(long aIdDoador) {
         Cursor lCursor = consultar(TABELA, ID_DOADOR, String.valueOf(aIdDoador));
+        List<Animal> animalList = new ArrayList<>();
+        if (lCursor != null) {
+            lCursor.moveToFirst();
+            while (!lCursor.isAfterLast()) {
+                Animal aAnimal = cursorDaClasse(lCursor);
+                animalList.add(aAnimal);
+                lCursor.moveToNext();
+            }
+            lCursor.close();
+        }
+        return animalList;
+    }
+
+    public List<Animal> carregarPorTipo(String aTipo) {
+        Cursor lCursor = consultar(TABELA, TIPO, String.valueOf(aTipo));
         List<Animal> animalList = new ArrayList<>();
         if (lCursor != null) {
             lCursor.moveToFirst();
@@ -115,6 +132,7 @@ public class AnimalDao extends BasicDAO {
         values.put(COR, aAnimal.getCor());
         values.put(IDADE, aAnimal.getIdade());
         values.put(FOTO, aAnimal.getFoto());
+        values.put(TIPO, aAnimal.getTipoAnimal());
         return values;
     }
 
@@ -131,6 +149,7 @@ public class AnimalDao extends BasicDAO {
         lAnimal.setCor(c.getString(c.getColumnIndex(COR)));
         lAnimal.setIdade(c.getInt(c.getColumnIndex(IDADE)));
         lAnimal.setFoto(c.getString(c.getColumnIndex(FOTO)));
+        lAnimal.setFoto(c.getString(c.getColumnIndex(TIPO)));
         return lAnimal;
     }
 }

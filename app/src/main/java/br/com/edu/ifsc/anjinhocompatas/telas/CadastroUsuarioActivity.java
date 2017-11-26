@@ -201,13 +201,14 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
             aView.requestFocus();
         } else {
             if(Usuario.savarUsuarioBaseDados(CadastroUsuarioActivity.this ,mUsuario)){
-                Toast.makeText(CadastroUsuarioActivity.this, getString(R.string.msm_cadastro_sucesso), Toast.LENGTH_LONG);
+                Toast.makeText(CadastroUsuarioActivity.this, getString(R.string.msm_cadastro_sucesso), Toast.LENGTH_LONG).show();
                 SharedPreferencesUtil.criarPreferenciaString(CadastroUsuarioActivity.this, mUsuario.getEmail(), R.string.key_usuriao_logado);
                 Intent intent = new Intent(CadastroUsuarioActivity.this, MainActivity.class);
                 intent.setFlags( Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(intent);
+                finish();
             } else {
-                Toast.makeText(CadastroUsuarioActivity.this, getString(R.string.msm_cadastro_erro), Toast.LENGTH_LONG);
+                Toast.makeText(CadastroUsuarioActivity.this, getString(R.string.msm_cadastro_erro), Toast.LENGTH_LONG).show();
             }
         }
     }

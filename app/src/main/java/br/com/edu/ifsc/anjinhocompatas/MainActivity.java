@@ -29,6 +29,7 @@ import br.com.edu.ifsc.anjinhocompatas.bancodedados.implementacao.AnimalDao;
 import br.com.edu.ifsc.anjinhocompatas.constantes.MenuLateralOpcoesProps;
 import br.com.edu.ifsc.anjinhocompatas.constantes.MenuLateralProps;
 import br.com.edu.ifsc.anjinhocompatas.modelos.Animal;
+import br.com.edu.ifsc.anjinhocompatas.telas.CadastroAnimalActivity;
 import br.com.edu.ifsc.anjinhocompatas.utilitarios.CoresUtil;
 import br.com.edu.ifsc.anjinhocompatas.utilitarios.DialogoUtil;
 import br.com.edu.ifsc.anjinhocompatas.utilitarios.ImagemUtil;

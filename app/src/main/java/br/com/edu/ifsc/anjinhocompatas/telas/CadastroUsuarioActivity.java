@@ -17,7 +17,6 @@ import android.widget.Toast;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-import br.com.edu.ifsc.anjinhocompatas.CadastroAnimalActivity;
 import br.com.edu.ifsc.anjinhocompatas.MainActivity;
 import br.com.edu.ifsc.anjinhocompatas.R;
 import br.com.edu.ifsc.anjinhocompatas.bancodedados.implementacao.UsuarioDao;

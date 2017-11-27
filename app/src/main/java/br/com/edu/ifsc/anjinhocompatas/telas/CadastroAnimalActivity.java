@@ -1,4 +1,4 @@
-package br.com.edu.ifsc.anjinhocompatas;
+package br.com.edu.ifsc.anjinhocompatas.telas;
 
 import android.app.Activity;
 import android.content.DialogInterface;
@@ -22,10 +22,9 @@ import android.widget.Toast;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-import br.com.edu.ifsc.anjinhocompatas.bancodedados.implementacao.AnimalDao;
+import br.com.edu.ifsc.anjinhocompatas.R;
 import br.com.edu.ifsc.anjinhocompatas.modelos.Animal;
 import br.com.edu.ifsc.anjinhocompatas.modelos.Usuario;
-import br.com.edu.ifsc.anjinhocompatas.telas.CadastroUsuarioActivity;
 import br.com.edu.ifsc.anjinhocompatas.utilitarios.DialogoUtil;
 import br.com.edu.ifsc.anjinhocompatas.utilitarios.ImagemUtil;
 import br.com.edu.ifsc.anjinhocompatas.utilitarios.SharedPreferencesUtil;

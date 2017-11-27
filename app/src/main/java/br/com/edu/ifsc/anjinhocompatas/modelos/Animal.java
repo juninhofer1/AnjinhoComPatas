@@ -152,6 +152,12 @@ public class Animal implements Serializable{
         return lAnimais;
     }
 
+    public static List<Animal> carregarTodosAnimais(Context aContext){
+        AnimalDao lAnimalDao = new AnimalDao(aContext);
+        List<Animal> lAnimais = lAnimalDao.carregarTodos();
+        return lAnimais;
+    }
+
     private static AnimalDao criarConexaoTabelaAnimal(Context aContext) {
         AnimalDao lAnimalDao = new AnimalDao(aContext);
         lAnimalDao.open();

@@ -30,6 +30,7 @@ import br.com.edu.ifsc.anjinhocompatas.constantes.MenuLateralOpcoesProps;
 import br.com.edu.ifsc.anjinhocompatas.constantes.MenuLateralProps;
 import br.com.edu.ifsc.anjinhocompatas.modelos.Animal;
 import br.com.edu.ifsc.anjinhocompatas.telas.CadastroAnimalActivity;
+import br.com.edu.ifsc.anjinhocompatas.telas.FavoritosActivity;
 import br.com.edu.ifsc.anjinhocompatas.utilitarios.CoresUtil;
 import br.com.edu.ifsc.anjinhocompatas.utilitarios.DialogoUtil;
 import br.com.edu.ifsc.anjinhocompatas.utilitarios.ImagemUtil;
@@ -90,7 +91,6 @@ public class MainActivity extends AppCompatActivity {
         AnimalDao animalDao = new AnimalDao(MainActivity.this);
         animalDao.open();
 
-        List<Animal> animal = Animal.carregarTodosAnimaisPorTipo(MainActivity.this, "gato");
         Bundle bundleDog = new Bundle();
         bundleDog.putBoolean("animalzinho", false);
 
@@ -232,7 +232,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, CadastroAnimalActivity.class));
                 break;
             case MenuLateralOpcoesProps.FAVORITOS:
-                startActivity(new Intent(MainActivity.this, DesenvolvimentoActivity.class));
+                startActivity(new Intent(MainActivity.this, FavoritosActivity.class));
                 break;
             case MenuLateralOpcoesProps.AJUDA:
                 startActivity(new Intent(MainActivity.this, DesenvolvimentoActivity.class));

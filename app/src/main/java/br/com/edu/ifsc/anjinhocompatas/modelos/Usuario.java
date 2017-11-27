@@ -123,7 +123,9 @@ public class Usuario implements Serializable {
         UsuarioDao lUsuarioDao = criarConexaoTabelaUsuario(aContext);
         lUsuarioDao.open();
         long retornoBD = -1;
-        if(lUsuarioDao.carregarPorEmail(aUsuario.getEmail()) != null){
+        Usuario lUsuario = lUsuarioDao.carregarPorEmail(aUsuario.getEmail());
+        if(lUsuario != null){
+            aUsuario.setId(lUsuario.getId());
             retornoBD = lUsuarioDao.alterar(aUsuario);
         } else {
             retornoBD = lUsuarioDao.salvar(aUsuario);

@@ -13,6 +13,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,14 +46,17 @@ public class LoginActivity extends AppCompatActivity {
     private CallbackManager mCallbackManager;
     private Usuario mUsuario;
     private Button mEmailSignInButton;
+    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        this.imageView = (ImageView) findViewById(R.id.logo);
+        imageView.setVisibility(View.GONE);
         this.mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(this.mToolbar);
-        getSupportActionBar().setTitle(null);
+        getSupportActionBar().setTitle("Login");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         this.mTextViewCadastrese = (TextView) findViewById(R.id.textViewCadastrese);

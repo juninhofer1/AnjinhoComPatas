@@ -30,6 +30,7 @@ public class FragmentAnimais extends Fragment {
     private List<Animal> listAnimal;
     private GridViewAdapterAnimaisRecycler gridViewAdapter;
     private RecyclerView gridView;
+    boolean isGato;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -43,25 +44,9 @@ public class FragmentAnimais extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 //        super.onViewCreated(view, savedInstanceState);
         Bundle bundle = getArguments();
-        boolean isGato = bundle.getBoolean("animalzinho");
-
-        //chama a lista de gatos
-        getList(isGato);
+        isGato = bundle.getBoolean("animalzinho");
         //cast
         gridView = (RecyclerView) mView.findViewById(R.id.gridView);
-
-        //cria novo adapter (context(telinha), modelo telinha,conteúdo da telinha, inteface para click na tela)
-        gridViewAdapter = new GridViewAdapterAnimaisRecycler(getContext(), R.layout.grid_item, listAnimal, onItemClickRecycler);
-
-//        Define se o recyclerview será uma lista ou uma grid 2 para definir as colunas
-        gridView.setHasFixedSize(true);
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext().getApplicationContext(),2);
-//        define a configuração acima em nosso recycler
-        gridView.setLayoutManager(layoutManager);
-
-        //mostra, seta a telinha do grid
-        gridView.setAdapter(gridViewAdapter);
-
     }
 
 //    Evento de click, o que será feito quando clckar em um item da lista
@@ -104,5 +89,26 @@ public class FragmentAnimais extends Fragment {
 //            listAnimal.add(new Animal(R.drawable.dog7, "Molly","siamês", "pequeno", "azul", 2));
 //            listAnimal.add(new Animal(R.drawable.dog8, "Pepê","siamês", "pequeno", "azul", 2));
         }
+        if(gridView != null) {
+//        cria novo adapter (context(telinha), modelo telinha,conteúdo da telinha, inteface para click na tela)
+            gridViewAdapter = new GridViewAdapterAnimaisRecycler(getContext(), R.layout.grid_item, listAnimal, onItemClickRecycler);
+
+//        Define se o recyclerview será uma lista ou uma grid 2 para definir as colunas
+            gridView.setHasFixedSize(true);
+            RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext().getApplicationContext(),2);
+//        define a configuração acima em nosso recycler
+            gridView.setLayoutManager(layoutManager);
+
+            //mostra, seta a telinha do grid
+            gridView.setAdapter(gridViewAdapter);
+            gridView.invalidate();
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        //chama a lista de gatos
+        getList(isGato);
     }
 }

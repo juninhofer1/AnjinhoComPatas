@@ -33,7 +33,7 @@ import br.com.edu.ifsc.anjinhocompatas.utilitarios.ImagemUtil;
             if(lAnimal != null) {
                 mAnimal = lAnimal;
             }
-            FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
+            final FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
 
             floatingActionButton.setImageDrawable(CoresUtil.alterarCorDrawableMenuItem(getApplication(),
                     R.drawable.ic_add_favorite, R.color.icons));
@@ -62,12 +62,12 @@ import br.com.edu.ifsc.anjinhocompatas.utilitarios.ImagemUtil;
                 public void onClick(View v) {
                     if (!mFavorito) {
                         mFavorito = true;
-                        CoresUtil.alterarCorDrawableMenuItem(getApplication(),
-                                R.drawable.ic_add_favorite, R.color.favorite);
+                        floatingActionButton.setImageDrawable(CoresUtil.alterarCorDrawableMenuItem(getApplication(),
+                                R.drawable.ic_add_favorite, R.color.favorite));
                     } else {
                         mFavorito = false;
-                        CoresUtil.alterarCorDrawableMenuItem(getApplication(),
-                                R.drawable.ic_add_favorite, R.color.icons);
+                        floatingActionButton.setImageDrawable(CoresUtil.alterarCorDrawableMenuItem(getApplication(),
+                                R.drawable.ic_add_favorite, R.color.icons));
                     }
                 }
             });

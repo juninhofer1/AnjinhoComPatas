@@ -92,7 +92,7 @@ public class AnimalDao extends BasicDAO {
     }
 
     public List<Animal> carregarPorTipo(String aTipo) {
-        Cursor lCursor = consultar(TABELA, TIPO, String.valueOf(aTipo));
+        Cursor lCursor = consultar(TABELA, TIPO, aTipo);
         List<Animal> animalList = new ArrayList<>();
         if (lCursor != null) {
             lCursor.moveToFirst();
@@ -149,7 +149,7 @@ public class AnimalDao extends BasicDAO {
         lAnimal.setCor(c.getString(c.getColumnIndex(COR)));
         lAnimal.setIdade(c.getInt(c.getColumnIndex(IDADE)));
         lAnimal.setFoto(c.getString(c.getColumnIndex(FOTO)));
-        lAnimal.setFoto(c.getString(c.getColumnIndex(TIPO)));
+        lAnimal.setTipoAnimal(c.getString(c.getColumnIndex(TIPO)));
         return lAnimal;
     }
 }

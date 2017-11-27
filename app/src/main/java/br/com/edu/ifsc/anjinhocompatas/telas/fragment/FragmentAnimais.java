@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.edu.ifsc.anjinhocompatas.MainActivity;
 import br.com.edu.ifsc.anjinhocompatas.R;
 import br.com.edu.ifsc.anjinhocompatas.telas.AnimalDetalhesActivity;
 import br.com.edu.ifsc.anjinhocompatas.telas.adapter.GridViewAdapterAnimaisRecycler;
@@ -72,6 +73,7 @@ public class FragmentAnimais extends Fragment {
 //            Cria intente para abrir a activity
             Intent intent = new Intent(getActivity(), AnimalDetalhesActivity.class);
 //            passa como parametro uma animal para a activity que vai abrir
+            lAnimal.setFoto("");
             intent.putExtra("animalzinhoSelecionado", lAnimal);
 //            starta a activity
             startActivity(intent);
@@ -86,19 +88,21 @@ public class FragmentAnimais extends Fragment {
 
         //adiciona na lista
         if (isGato) {
-            listAnimal.add(new Animal(R.drawable.cat, "Cat 1", "siamês", "pequeno", "azul", 2));
-            listAnimal.add(new Animal(R.drawable.cat2, "Cat 2","siamês", "pequeno", "azul", 2));
-            listAnimal.add(new Animal(R.drawable.cat3, "Cat 3","siamês", "pequeno", "azul", 2));
-            listAnimal.add(new Animal(R.drawable.cat4, "Cat 4", "siamês", "pequeno", "azul", 2));
+            listAnimal = Animal.carregarTodosAnimaisPorTipo(getActivity(), "gato");
+//            listAnimal.add(new Animal(R.drawable.cat, "Cat 1", "siamês", "pequeno", "azul", 2));
+//            listAnimal.add(new Animal(R.drawable.cat2, "Cat 2","siamês", "pequeno", "azul", 2));
+//            listAnimal.add(new Animal(R.drawable.cat3, "Cat 3","siamês", "pequeno", "azul", 2));
+//            listAnimal.add(new Animal(R.drawable.cat4, "Cat 4", "siamês", "pequeno", "azul", 2));
         } else {
-            listAnimal.add(new Animal(R.drawable.dog, "Pedrinho", "siamês", "pequeno", "azul", 2));
-            listAnimal.add(new Animal(R.drawable.dog2, "Joãozinho", "siamês", "pequeno", "azul", 2));
-            listAnimal.add(new Animal(R.drawable.dog3, "Zé", "siamês", "pequeno", "azul", 2));
-            listAnimal.add(new Animal(R.drawable.dog4, "Mine", "siamês", "pequeno", "azul", 2));
-            listAnimal.add(new Animal(R.drawable.dog5, "Pompom", "siamês", "pequeno", "azul", 2));
-            listAnimal.add(new Animal(R.drawable.dog6, "Billy Gean","siamês", "pequeno", "azul", 2));
-            listAnimal.add(new Animal(R.drawable.dog7, "Molly","siamês", "pequeno", "azul", 2));
-            listAnimal.add(new Animal(R.drawable.dog8, "Pepê","siamês", "pequeno", "azul", 2));
+            listAnimal = Animal.carregarTodosAnimaisPorTipo(getActivity(), "cao");
+//            listAnimal.add(new Animal(R.drawable.dog, "Pedrinho", "siamês", "pequeno", "azul", 2));
+//            listAnimal.add(new Animal(R.drawable.dog2, "Joãozinho", "siamês", "pequeno", "azul", 2));
+//            listAnimal.add(new Animal(R.drawable.dog3, "Zé", "siamês", "pequeno", "azul", 2));
+//            listAnimal.add(new Animal(R.drawable.dog4, "Mine", "siamês", "pequeno", "azul", 2));
+//            listAnimal.add(new Animal(R.drawable.dog5, "Pompom", "siamês", "pequeno", "azul", 2));
+//            listAnimal.add(new Animal(R.drawable.dog6, "Billy Gean","siamês", "pequeno", "azul", 2));
+//            listAnimal.add(new Animal(R.drawable.dog7, "Molly","siamês", "pequeno", "azul", 2));
+//            listAnimal.add(new Animal(R.drawable.dog8, "Pepê","siamês", "pequeno", "azul", 2));
         }
     }
 }

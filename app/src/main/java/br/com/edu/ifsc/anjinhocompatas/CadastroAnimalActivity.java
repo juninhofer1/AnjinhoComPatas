@@ -22,8 +22,13 @@ import android.widget.Toast;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
+import br.com.edu.ifsc.anjinhocompatas.bancodedados.implementacao.AnimalDao;
 import br.com.edu.ifsc.anjinhocompatas.modelos.Animal;
+import br.com.edu.ifsc.anjinhocompatas.modelos.Usuario;
+import br.com.edu.ifsc.anjinhocompatas.telas.CadastroUsuarioActivity;
+import br.com.edu.ifsc.anjinhocompatas.utilitarios.DialogoUtil;
 import br.com.edu.ifsc.anjinhocompatas.utilitarios.ImagemUtil;
+import br.com.edu.ifsc.anjinhocompatas.utilitarios.SharedPreferencesUtil;
 
 /**
  * Created by keila on 06/11/2017.
@@ -33,14 +38,14 @@ public class CadastroAnimalActivity extends AppCompatActivity {
 
     private Bitmap imagemBitmapAnimalCadastro;
     private ImageView imageViewImagemCadastroAnimal;
-    private Animal animal;
+    private Animal mAnimal;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_animal);
 
-        final Animal mAnimal = new Animal();
+        mAnimal = new Animal();
 
         final String[] racaCao = {"Indeterminada",
                 "Bulldog Francês", "Bulldog Inglês",
@@ -112,6 +117,7 @@ public class CadastroAnimalActivity extends AppCompatActivity {
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                             //seta a raça selecionada do spinner na raca
                             mAnimal.setRaca(racaCao[position]);
+                            mAnimal.setTipoAnimal("cao");
                         }
 
                         @Override
@@ -138,6 +144,7 @@ public class CadastroAnimalActivity extends AppCompatActivity {
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                             //seta a raça selecionada do spinner na raca
                             mAnimal.setRaca(racaGato[position]);
+                            mAnimal.setTipoAnimal("gato");
                         }
 
                         @Override
@@ -194,7 +201,7 @@ public class CadastroAnimalActivity extends AppCompatActivity {
         imageViewImagemCadastroAnimal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                eventoDeEscolherFormaDePegarImagemAnimalCadastro();
             }
         });
 
@@ -211,12 +218,25 @@ public class CadastroAnimalActivity extends AppCompatActivity {
                     if (checkBoxCao.isChecked())
                         Toast.makeText(getApplicationContext(), "Adicione um nome para o cão", Toast.LENGTH_SHORT).show();
                     if (checkBoxGato.isChecked())
-                        Toast.makeText(getApplicationContext(), "Adicione um nome para o cão", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Adicione um nome para o gato", Toast.LENGTH_SHORT).show();
+                } else {
+                    cadastrar();
                 }
-
-
             }
         });
+    }
+
+
+    private void cadastrar(){
+        String lEmail = SharedPreferencesUtil.lerPreferenciaString(CadastroAnimalActivity.this, R.string.key_usuriao_logado);
+        Usuario.carregarPorEmail(CadastroAnimalActivity.this, lEmail);
+        mAnimal.setIdDoador(Usuario.carregarPorEmail(CadastroAnimalActivity.this, lEmail).getId());
+        if(Animal.savarAnimalBaseDados(CadastroAnimalActivity.this, mAnimal)){
+            Toast.makeText(CadastroAnimalActivity.this, R.string.msm_cadastro_sucesso, Toast.LENGTH_LONG).show();
+            finish();
+        } else {
+            Toast.makeText(CadastroAnimalActivity.this, R.string.msm_cadastro_erro, Toast.LENGTH_LONG).show();
+        }
     }
 
 
@@ -240,15 +260,16 @@ public class CadastroAnimalActivity extends AppCompatActivity {
             }
         };
 
+        DialogoUtil.dialogCamera(CadastroAnimalActivity.this, "Escolha uma opção para carregar a foto do animal", onClickListenerGaleria , onClickListenerCamera).show();
+
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
         if (requestCode == 2 && resultCode == Activity.RESULT_OK) {
             imagemBitmapAnimalCadastro = (Bitmap) data.getExtras().get("data");
             imageViewImagemCadastroAnimal.setImageBitmap(imagemBitmapAnimalCadastro);
-            animal.setFoto(ImagemUtil.converter(imagemBitmapAnimalCadastro));
+            mAnimal.setFoto(ImagemUtil.converter(imagemBitmapAnimalCadastro));
         } else if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
             Uri imagemUriAnimalCadastro = data.getData();
             InputStream imagemStreamAnimalCadastro = null;
@@ -258,7 +279,8 @@ public class CadastroAnimalActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             imagemBitmapAnimalCadastro = BitmapFactory.decodeStream(imagemStreamAnimalCadastro);
-            animal.setFoto(ImagemUtil.converter(imagemBitmapAnimalCadastro));
+            mAnimal.setFoto(ImagemUtil.converter(imagemBitmapAnimalCadastro));
+            imageViewImagemCadastroAnimal.setImageBitmap(imagemBitmapAnimalCadastro);
         }
     }
     }

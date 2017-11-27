@@ -23,8 +23,12 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
+import java.util.List;
+
+import br.com.edu.ifsc.anjinhocompatas.bancodedados.implementacao.AnimalDao;
 import br.com.edu.ifsc.anjinhocompatas.constantes.MenuLateralOpcoesProps;
 import br.com.edu.ifsc.anjinhocompatas.constantes.MenuLateralProps;
+import br.com.edu.ifsc.anjinhocompatas.modelos.Animal;
 import br.com.edu.ifsc.anjinhocompatas.utilitarios.CoresUtil;
 import br.com.edu.ifsc.anjinhocompatas.utilitarios.DialogoUtil;
 import br.com.edu.ifsc.anjinhocompatas.utilitarios.ImagemUtil;
@@ -82,6 +86,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void criarViewPager(ViewPager aViewPager) {
         //false cão;
+        AnimalDao animalDao = new AnimalDao(MainActivity.this);
+        animalDao.open();
+
+        List<Animal> animal = Animal.carregarTodosAnimaisPorTipo(MainActivity.this, "gato");
         Bundle bundleDog = new Bundle();
         bundleDog.putBoolean("animalzinho", false);
 

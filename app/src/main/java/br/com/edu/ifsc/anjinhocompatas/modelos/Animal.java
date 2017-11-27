@@ -151,11 +151,21 @@ public class Animal implements Serializable{
         List<Animal> lAnimais = lAnimalDao.carregarPorTipo(aTipo);
         return lAnimais;
     }
-    
+
     private static AnimalDao criarConexaoTabelaAnimal(Context aContext) {
         AnimalDao lAnimalDao = new AnimalDao(aContext);
         lAnimalDao.open();
         return lAnimalDao;
+    }
+
+    public static boolean savarAnimalBaseDados (Context aContext, Animal aAnimal){
+        AnimalDao lAnimalDao = criarConexaoTabelaAnimal(aContext);
+        long retornoBD = -1;
+        retornoBD = lAnimalDao.salvar(aAnimal);
+        if(retornoBD >= 0) {
+            return true;
+        }
+        return false;
     }
 
 }

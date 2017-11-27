@@ -13,6 +13,7 @@ import com.github.clans.fab.FloatingActionButton;
 import br.com.edu.ifsc.anjinhocompatas.R;
 import br.com.edu.ifsc.anjinhocompatas.modelos.Animal;
 import br.com.edu.ifsc.anjinhocompatas.utilitarios.CoresUtil;
+import br.com.edu.ifsc.anjinhocompatas.utilitarios.ImagemUtil;
 
 /**
      * Created by keila on 02/11/2017.
@@ -28,6 +29,10 @@ import br.com.edu.ifsc.anjinhocompatas.utilitarios.CoresUtil;
             setContentView(R.layout.grid_animal_detalhes);
 
             mAnimal = (Animal) getIntent().getExtras().get("animalzinhoSelecionado");
+            Animal lAnimal = Animal.carregarPorId(AnimalDetalhesActivity.this, mAnimal.getId());
+            if(lAnimal != null) {
+                mAnimal = lAnimal;
+            }
             FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
 
             floatingActionButton.setImageDrawable(CoresUtil.alterarCorDrawableMenuItem(getApplication(),
@@ -42,7 +47,11 @@ import br.com.edu.ifsc.anjinhocompatas.utilitarios.CoresUtil;
             TextView idadeAnimal = (TextView) findViewById(R.id.idadeAnimalId);
 
             racaAnimal.setText(mAnimal.getRaca());
-            imagemAnimalDetalhes.setImageResource(mAnimal.getImagem());
+            if(mAnimal.getFoto() != null) {
+                imagemAnimalDetalhes.setImageBitmap(ImagemUtil.converter(mAnimal.getFoto()));
+            } else {
+                imagemAnimalDetalhes.setImageResource(mAnimal.getImagem());
+            }
             nomeAnimal.setText(mAnimal.getNome());
             tamanhoAnimal.setText(mAnimal.getTamanho());
             corAnimal.setText(mAnimal.getCor());

@@ -12,6 +12,7 @@ import java.util.List;
 
 import br.com.edu.ifsc.anjinhocompatas.R;
 import br.com.edu.ifsc.anjinhocompatas.modelos.Animal;
+import br.com.edu.ifsc.anjinhocompatas.utilitarios.ImagemUtil;
 
 /**
  * Created by keila on 26/10/2017.
@@ -48,8 +49,12 @@ public class GridViewAdapterAnimaisRecycler extends RecyclerView.Adapter<GridVie
     public void onBindViewHolder(GridViewAdapterAnimaisRecycler.ViewHolder viewHolder, int i) {
         viewHolder.nome.setText(mAnimais.get(i).getNome());
         viewHolder.raca.setText(mAnimais.get(i).getRaca());
-//        viewHolder.img.setImageResource(Integer.parseInt(mAnimais.get(i).getFoto()));
-        viewHolder.img.setImageResource(mAnimais.get(i).getImagem());
+
+        if(mAnimais.get(i).getFoto() != null) {
+            viewHolder.img.setImageBitmap(ImagemUtil.converter(mAnimais.get(i).getFoto()));
+        } else {
+            viewHolder.img.setImageResource(mAnimais.get(i).getImagem());
+        }
     }
 
     @Override

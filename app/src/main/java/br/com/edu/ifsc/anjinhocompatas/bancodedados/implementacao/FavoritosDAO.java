@@ -85,6 +85,13 @@ public class FavoritosDAO extends BasicDAO {
         return lFavoritos;
     }
 
+    public Favorito carregarPorIdUsuarioEAnimal(long aIdUsuario, long aIdAnimal) {
+        Cursor c = consultar(TABELA, new String[] { ID_USUARIO, ID_ANIMAL },  new String[] { String.valueOf(aIdUsuario), String.valueOf(aIdAnimal)});
+        Favorito lFavoritos = cursorDaClasse(c);
+        c.close();
+        return lFavoritos;
+    }
+
     public List<Favorito> carregarFavoritosIdUsuario(long aId) {
         Cursor lCursor = consultar(TABELA, ID_USUARIO, String.valueOf(aId));
         List<Favorito> lFavoritos = new ArrayList<>();

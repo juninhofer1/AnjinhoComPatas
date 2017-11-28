@@ -50,5 +50,6 @@
 
     <string name="msm_usuario_invaldio">Usuario ou senha inválido</string>
     <string name="msm_realize_cadastro">Realize o cadastro</string>
+    <string name="nenhum_favorito">Não há favoritos</string>
 
 </resources>

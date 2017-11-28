@@ -121,7 +121,6 @@ public class Usuario implements Serializable {
 
     public static boolean savarUsuarioBaseDados (Context aContext, Usuario aUsuario){
         UsuarioDao lUsuarioDao = criarConexaoTabelaUsuario(aContext);
-        lUsuarioDao.open();
         long retornoBD = -1;
         Usuario lUsuario = lUsuarioDao.carregarPorEmail(aUsuario.getEmail());
         if(lUsuario != null){
@@ -138,7 +137,6 @@ public class Usuario implements Serializable {
 
     public static Usuario carregarPorEmail(Context aContext, String aEmail){
         UsuarioDao lUsuarioDao = criarConexaoTabelaUsuario(aContext);
-        lUsuarioDao.open();
         Usuario lUsuario = lUsuarioDao.carregarPorEmail(aEmail);
         return lUsuario;
     }

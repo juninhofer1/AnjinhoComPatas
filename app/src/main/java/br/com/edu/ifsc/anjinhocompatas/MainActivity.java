@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import com.facebook.login.LoginManager;
 import com.mikepenz.materialdrawer.Drawer;
@@ -175,13 +177,13 @@ public class MainActivity extends AppCompatActivity {
                 .withIcon(CoresUtil.alterarCorDrawableMenuItem(getApplication(), R.drawable.ic_favorite))
                 .withTextColor(getResources().getColor(R.color.colorPrimary)));
 
-        if(SharedPreferencesUtil.lerPreferenciaString(MainActivity.this, R.string.key_usuriao_logado) != null) {
-            this.navegationDrawerLeft.addItem(new PrimaryDrawerItem()
-                    .withIdentifier(MenuLateralProps.DOAR_UM_AMIGO.getmId())
-                    .withName(MenuLateralProps.DOAR_UM_AMIGO.getmNomeTela())
-                    .withIcon(CoresUtil.alterarCorDrawableMenuItem(getApplication(), R.drawable.icon_search))
-                    .withTextColor(getResources().getColor(R.color.colorPrimary)));
-        }
+
+        this.navegationDrawerLeft.addItem(new PrimaryDrawerItem()
+                .withIdentifier(MenuLateralProps.DOAR_UM_AMIGO.getmId())
+                .withName(MenuLateralProps.DOAR_UM_AMIGO.getmNomeTela())
+                .withIcon(CoresUtil.alterarCorDrawableMenuItem(getApplication(), R.drawable.icon_search))
+                .withTextColor(getResources().getColor(R.color.colorPrimary)));
+
 
         this.navegationDrawerLeft.addItem(new DividerDrawerItem());
 
@@ -229,10 +231,18 @@ public class MainActivity extends AppCompatActivity {
             case MenuLateralOpcoesProps.INICIAL:
                 break;
             case MenuLateralOpcoesProps.DOAR_UM_AMIGO:
-                startActivity(new Intent(MainActivity.this, CadastroAnimalActivity.class));
+                if(SharedPreferencesUtil.lerPreferenciaString(MainActivity.this, R.string.key_usuriao_logado) != null) {
+                    startActivity(new Intent(MainActivity.this, CadastroAnimalActivity.class));
+                } else {
+                    Toast.makeText(getApplicationContext(), "Efetue o login para ter acesso a essa funcionalidade", Toast.LENGTH_LONG).show();
+                }
                 break;
             case MenuLateralOpcoesProps.FAVORITOS:
-                startActivity(new Intent(MainActivity.this, FavoritosActivity.class));
+                if(SharedPreferencesUtil.lerPreferenciaString(MainActivity.this, R.string.key_usuriao_logado) != null) {
+                    startActivity(new Intent(MainActivity.this, FavoritosActivity.class));
+                } else {
+                    Toast.makeText(getApplicationContext(), "Efetue o login para ter acesso a essa funcionalidade", Toast.LENGTH_LONG).show();
+                }
                 break;
             case MenuLateralOpcoesProps.AJUDA:
                 startActivity(new Intent(MainActivity.this, DesenvolvimentoActivity.class));

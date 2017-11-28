@@ -104,7 +104,7 @@ public class FavoritosActivity extends AppCompatActivity {
 
 //        Define se o recyclerview será uma lista ou uma grid 2 para definir as colunas
             gridView.setHasFixedSize(true);
-            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(FavoritosActivity.this);
+            RecyclerView.LayoutManager layoutManager = new GridLayoutManager(FavoritosActivity.this,2);
 //        define a configuração acima em nosso recycler
             gridView.setLayoutManager(layoutManager);
 
